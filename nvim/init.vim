@@ -17,6 +17,7 @@ set termguicolors
 set background=dark
 colorscheme NeoSolarized
 set noshowmode "No mostrar el modo actual (ya lo muestra la barra de estado
+set number relativenumber
 
 let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas=
