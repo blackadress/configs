@@ -32,6 +32,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Abrir/Cerrar NERDTree con <F2>
 map <F2> :NERDTreeToggle<CR>
 
-" Ctrl + j remap a ESC
+" Alt + j remap a ESC
 inoremap <F8> <Esc>
 vnoremap <F8> <Esc>
+inoremap <A-j> <Esc>
+vnoremap <A-j> <Esc>
