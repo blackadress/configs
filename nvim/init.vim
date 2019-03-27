@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -32,5 +33,5 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 map <F2> :NERDTreeToggle<CR>
 
 " Ctrl + j remap a ESC
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
+inoremap <F8> <Esc>
+vnoremap <F8> <Esc>
