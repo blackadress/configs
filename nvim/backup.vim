@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
-" Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround' 
 Plug 'flazz/vim-colorschemes' "color schemes para nvim
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdtree'
@@ -11,27 +11,26 @@ Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
 Plug 'w0rp/ale'
 
 "cliente de lenguaje
-" Plug 'autozimu/LanguageClient-neovim', {
-"   \ 'branch': 'next',
-"   \ 'do': 'bash install.sh',
-"   \ }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'Shougo/deoplete.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
 " Soporte semantico de lenguaje
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 Plug 'rust-lang/rust.vim'
 
 " plugins de complecion
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
 
 " Soporte sintactico de lenguaje
-" Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 
@@ -109,45 +108,13 @@ let g:ale_linters = {'rust': ['rls']}
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "---------------------------------------------------------------------------
 " Automaticamente iniciar servidores de lenguaje
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-"omnifuncs
-augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-
-"tern
-if exists('g:plugs["tern_for_vim"]')
-    let g:tern_show_argument_hints = 'on_hold'
-    let g:tern_show_signature = 1
-    let g:tern_request_timeout = 1
-    let g:tern_request_timeout = 6000
-    let g:tern#command = ["tern"]
-    let g:tern#arguments = [" - persistent"]
-
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-
-" deoplete tab complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-autocmd Filetype javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-
-"let g:LanguageClient_serverCommands = {
-"   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"   \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-"   \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-"   \ 'python': ['/usr/local/bin/pyls'],
-"   \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -155,6 +122,8 @@ let g:rustfmt_autosave = 1
 map <F4> :NERDTreeToggle<CR>
 
 " Alt + j remap a ESC
+inoremap <F8> <Esc>
+vnoremap <F8> <Esc>
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
 
@@ -164,12 +133,11 @@ vnoremap <F5> <Esc>:set list!<CR>a
 inoremap <F5> <Esc>:set list!<CR>a
 
 "contextmenu
-" nnoremap <F8> :call LanguageClient_contextMenu()<CR>
-" map K a hover, gd a go definition, <F2> a rename
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
+nnoremap <F6> :call LanguageClient_contextMenu()<CR>
+"map K a hover, gd a go definition, <F2> a rename
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 "Cargo shorcuts
 nnoremap ,cb :!cargo build<CR>
 nnoremap ,cr :!cargo run<CR>
