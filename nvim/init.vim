@@ -27,14 +27,9 @@ Plug 'pangloss/vim-javascript'
 
 call plug#end()
 " Tratamiento de colores
-if !has('gui_running')
-    set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-    set termguicolors
-endif
 
 " Configuraciones visuales
+set termguicolors
 " Colores
 set background=dark
 colorscheme NeoSolarized
@@ -54,7 +49,7 @@ set ignorecase
 set smartcase
 
 " undo permanente
-set undodir ~/.config/nvim/.vimdid
+set undodir=~/.config/nvim/undodir
 set undofile
 
 " NERDTree
