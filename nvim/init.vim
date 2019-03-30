@@ -51,6 +51,13 @@ set smartcase
 
 "tabs
 set expandtab
+" tabs especificos para js y html
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+" tabs especificos para python y rust
+autocmd Filetype rust setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype python setlocal tabstop=2 shiftwidth=2 expandtab
+
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
