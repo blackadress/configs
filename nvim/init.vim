@@ -45,8 +45,12 @@ set number relativenumber
 syntax on
 let base16colorspace=256
 
+" configuraciones de busqueda
 set ignorecase
 set smartcase
+
+"tabs
+set expandtab
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
@@ -94,6 +98,11 @@ inoremap <F8> <Esc>
 vnoremap <F8> <Esc>
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
+
+" Shortcut para mostrar <Space> y <Tab>
+nnoremap <F5> :set list!<CR>
+vnoremap <F5> <Esc>:set list!<CR>a
+inoremap <F5> <Esc>:set list!<CR>a
 
 "Cargo shorcuts
 nnoremap ,cb :!cargo build<CR>
