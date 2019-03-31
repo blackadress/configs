@@ -20,18 +20,11 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
-" Soporte semantico de lenguaje
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
 Plug 'rust-lang/rust.vim'
 
 " plugins de complecion
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
 
 " Soporte sintactico de lenguaje
-" Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 
@@ -97,17 +90,6 @@ let g:ale_rust_rls_config = {
 let g:ale_rust_rls_toolchain = ''
 let g:ale_linters = {'rust': ['rls']}
 
-" -----------------------------------ncm2----------------------------------
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-" inoremap <c-c> <ESC>
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" Use <TAB> to select the popup menu:
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"---------------------------------------------------------------------------
 " Automaticamente iniciar servidores de lenguaje
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
@@ -142,12 +124,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 autocmd Filetype javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
-"let g:LanguageClient_serverCommands = {
-"   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"   \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-"   \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-"   \ 'python': ['/usr/local/bin/pyls'],
-"   \ }
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -162,13 +138,6 @@ vnoremap <A-j> <Esc>
 nnoremap <F5> :set list!<CR>
 vnoremap <F5> <Esc>:set list!<CR>a
 inoremap <F5> <Esc>:set list!<CR>a
-
-"contextmenu
-" nnoremap <F8> :call LanguageClient_contextMenu()<CR>
-" map K a hover, gd a go definition, <F2> a rename
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "Cargo shorcuts
 nnoremap ,cb :!cargo build<CR>
