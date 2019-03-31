@@ -60,8 +60,8 @@ autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
 " tabs especificos para python y rust
 autocmd BufReadPost *.rs setlocal filetype=rust
-" autocmd Filetype rust setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype python setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 
 
 " undo permanente
