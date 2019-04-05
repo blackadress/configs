@@ -1,4 +1,3 @@
 #!/bin/sh
 alias ls='exa' \
-	flux='xflux -l -13.1587801 -g -74.2232132'
-
+        flux='xflux -l -13.1587801 -g -74.2232132'

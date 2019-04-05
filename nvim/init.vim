@@ -11,10 +11,10 @@ Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
 Plug 'w0rp/ale'
 
 "cliente de lenguaje
-" Plug 'autozimu/LanguageClient-neovim', {
-"   \ 'branch': 'next',
-"   \ 'do': 'bash install.sh',
-"   \ }
+Plug 'autozimu/LanguageClient-neovim', {
+   \ 'branch': 'next',
+   \ 'do': 'bash install.sh',
+   \ }
 Plug 'Shougo/deoplete.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -35,7 +35,7 @@ call plug#end()
 set termguicolors
 " Colores
 set background=dark
-colorscheme NeoSolarized
+colorscheme adventurous
 
 "==================Configuraciones editor ====================================
 filetype plugin indent on
@@ -80,22 +80,24 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_rust_rls_config = {
-	\ 'rust': {
-		\ 'all_targets': 1,
-		\ 'build_on_save': 1,
-		\ 'clippy_preference': 'on'
-	\ }
-	\ }
-let g:ale_rust_rls_toolchain = ''
-let g:ale_linters = {'rust': ['rls']}
 
 " Automaticamente iniciar servidores de lenguaje
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 
-
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Language Client server
+let g:LanguageClient_serverCommands = {
+        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+        \ 'javascript.jsx': ['tcp:127.0.0.1:2089'],
+        \ 'python': ['/usr/local/bin/pyls'],
+        \}
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "omnifuncs
 augroup omnifuncs
@@ -124,7 +126,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 autocmd Filetype javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
-
 " rust.vim
 let g:rustfmt_autosave = 1
 " Abrir/Cerrar NERDTree con <F4>
@@ -133,6 +134,13 @@ map <F4> :NERDTreeToggle<CR>
 " Alt + j remap a ESC
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+
+" Parentesis y llaves
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
