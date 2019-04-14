@@ -138,9 +138,9 @@ inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
 " Parentesis y llaves
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
+" inoremap ( ()<Esc>i
+" inoremap { {}<Esc>i
+" inoremap [ []<Esc>i
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
