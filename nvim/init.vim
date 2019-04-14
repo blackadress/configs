@@ -22,7 +22,8 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
 Plug 'rust-lang/rust.vim'
 
-" plugins de complecion
+" live preview LaTex
+Plug 'lervag/vimtex'
 
 " Soporte sintactico de lenguaje
 Plug 'rust-lang/rust.vim'
@@ -137,10 +138,8 @@ vnoremap <A-j> <Esc>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
-" Parentesis y llaves
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
+" localleader
+
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
@@ -151,3 +150,6 @@ inoremap <F5> <Esc>:set list!<CR>a
 nnoremap ,cb :!cargo build<CR>
 nnoremap ,cr :!cargo run<CR>
 nnoremap ,cbr :!cargo build --release<CR>
+
+" compilar LaTex
+nnoremap ,p :!pdflatex %<CR>
