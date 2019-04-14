@@ -1,4 +1,4 @@
-n('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
 " Plug 'tpope/vim-surround' 
