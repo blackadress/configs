@@ -1,0 +1,2 @@
+> Desktop Environment instalar plasma-desktop.
+> Si se presenta el problema de "the module display and monitor is not a valid configuration" instalar kscreen and libkscreen and use X11.
