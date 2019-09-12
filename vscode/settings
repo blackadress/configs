@@ -1,0 +1,53 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "Eva Dark Bold",
+    "window.titleBarStyle": "custom",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[javascriptreact]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+    },
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[html]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[rust]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[jade]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.minimap.enabled": false,
+    "terminal.external.linuxExec": "truecolors",
+    "terminal.integrated.rendererType": "dom",
+}
