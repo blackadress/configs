@@ -56,14 +56,14 @@ set smartcase
 
 "tabs
 set expandtab
-" tabs especificos para js y html
+" tabs especificos para js, css y html
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
-" tabs especificos para python y rust
+" tabs especificos para latex, python y rust
 autocmd BufReadPost *.rs setlocal filetype=rust
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-
+autocmd Filetype tex setlocal tabstop=4 shiftwidth=4 expandtab
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
@@ -87,6 +87,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+"latex evitar concealment de caracteres utf8
+let g:tex_conceal = ""
 
 " Language Client server
 let g:LanguageClient_serverCommands = {
