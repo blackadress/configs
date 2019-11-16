@@ -2,16 +2,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
 " Plug 'tpope/vim-surround' 
-Plug 'flazz/vim-colorschemes' "color schemes para nvim
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'christoomey/vim-tmux-navigator'
 
 " theme-color
 Plug 'danilo-augusto/vim-afterglow'
@@ -58,10 +61,27 @@ set undofile
 
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" ctrlp
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " NERDTree
+let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
 let g:NERDTreeIgnore = ['^node_modules$']
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
 
 " airline Configurations
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
@@ -84,7 +104,6 @@ augroup omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
-
 " rust.vim
 
 " Abrir/Cerrar NERDTree con <F4>
@@ -96,6 +115,9 @@ vnoremap <A-j> <Esc>
 " Ctrl + j remap a ESC
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
+
+vmap ++ <plug>:NERDCommenterToggle
+nmap ++ <plug>:NERDCommenterToggle
 
 " localleader
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
@@ -114,7 +136,6 @@ nnoremap ,cbr :!cargo build --release<CR>
 nnoremap ,p :!pdflatex %<CR>
 
 " Tratamiento de colores
-
 " Configuraciones visuales
 " Colores
 set termguicolors
@@ -129,7 +150,7 @@ let g:coc_global_extensions = [
         \ 'coc-snippets',
         \ 'coc-pairs',
         \ 'coc-tsserver',
-        \ 'coc-eslit',
+        \ 'coc-eslint',
         \ 'coc-prettier',
         \ 'coc-json',
         \ ]
