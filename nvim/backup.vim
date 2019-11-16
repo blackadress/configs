@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
-Plug 'tpope/vim-surround' 
+" Plug 'tpope/vim-surround' 
 Plug 'flazz/vim-colorschemes' "color schemes para nvim
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdtree'
@@ -12,25 +12,20 @@ Plug 'w0rp/ale'
 
 "cliente de lenguaje
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+   \ 'branch': 'next',
+   \ 'do': 'bash install.sh',
+   \ }
 Plug 'Shougo/deoplete.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
-" Soporte semantico de lenguaje
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
 Plug 'rust-lang/rust.vim'
 
-" plugins de complecion
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+" live preview LaTex
+Plug 'lervag/vimtex'
 
 " Soporte sintactico de lenguaje
-Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 
@@ -41,7 +36,7 @@ call plug#end()
 set termguicolors
 " Colores
 set background=dark
-colorscheme NeoSolarized
+colorscheme adventurous
 
 "==================Configuraciones editor ====================================
 filetype plugin indent on
@@ -61,14 +56,14 @@ set smartcase
 
 "tabs
 set expandtab
-" tabs especificos para js y html
+" tabs especificos para js, css y html
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
-" tabs especificos para python y rust
+" tabs especificos para latex, python y rust
 autocmd BufReadPost *.rs setlocal filetype=rust
-" autocmd Filetype rust setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype python setlocal tabstop=2 shiftwidth=2 expandtab
-
+autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype tex setlocal tabstop=4 shiftwidth=4 expandtab
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
@@ -86,35 +81,54 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_rust_rls_config = {
-	\ 'rust': {
-		\ 'all_targets': 1,
-		\ 'build_on_save': 1,
-		\ 'clippy_preference': 'on'
-	\ }
-	\ }
-let g:ale_rust_rls_toolchain = ''
-let g:ale_linters = {'rust': ['rls']}
 
-" -----------------------------------ncm2----------------------------------
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-" inoremap <c-c> <ESC>
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" Use <TAB> to select the popup menu:
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"---------------------------------------------------------------------------
 " Automaticamente iniciar servidores de lenguaje
-let g:LanguageClient_autoStart = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+"latex evitar concealment
+let g:tex_conceal = ""
+
+" Language Client server
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ }
+        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+        \ 'javascript.jsx': ['tcp:127.0.0.1:2089'],
+        \ 'python': ['/usr/local/bin/pyls'],
+        \}
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+"omnifuncs
+augroup omnifuncs
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+"tern
+if exists('g:plugs["tern_for_vim"]')
+    let g:tern_show_argument_hints = 'on_hold'
+    let g:tern_show_signature = 1
+    let g:tern_request_timeout = 1
+    let g:tern_request_timeout = 6000
+    let g:tern#command = ["tern"]
+    let g:tern#arguments = [" - persistent"]
+
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
+
+" deoplete tab complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+autocmd Filetype javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -122,23 +136,23 @@ let g:rustfmt_autosave = 1
 map <F4> :NERDTreeToggle<CR>
 
 " Alt + j remap a ESC
-inoremap <F8> <Esc>
-vnoremap <F8> <Esc>
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+
+" localleader
+
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
 vnoremap <F5> <Esc>:set list!<CR>a
 inoremap <F5> <Esc>:set list!<CR>a
 
-"contextmenu
-nnoremap <F6> :call LanguageClient_contextMenu()<CR>
-"map K a hover, gd a go definition, <F2> a rename
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 "Cargo shorcuts
 nnoremap ,cb :!cargo build<CR>
 nnoremap ,cr :!cargo run<CR>
 nnoremap ,cbr :!cargo build --release<CR>
+
+" compilar LaTex
+nnoremap ,p :!pdflatex %<CR>

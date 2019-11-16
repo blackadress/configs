@@ -3,40 +3,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 " plugins a instalar
 " Plug 'tpope/vim-surround' 
 Plug 'flazz/vim-colorschemes' "color schemes para nvim
-Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
-Plug 'w0rp/ale'
+" theme-color
+Plug 'danilo-augusto/vim-afterglow'
 
-"cliente de lenguaje
-Plug 'autozimu/LanguageClient-neovim', {
-   \ 'branch': 'next',
-   \ 'do': 'bash install.sh',
-   \ }
-Plug 'Shougo/deoplete.nvim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-
-Plug 'rust-lang/rust.vim'
+" cliente de lenguaje
 
 " live preview LaTex
-Plug 'lervag/vimtex'
 
 " Soporte sintactico de lenguaje
-Plug 'rust-lang/rust.vim'
-Plug 'pangloss/vim-javascript'
 
 call plug#end()
-" Tratamiento de colores
-
-" Configuraciones visuales
-set termguicolors
-" Colores
-set background=dark
-colorscheme adventurous
 
 "==================Configuraciones editor ====================================
 filetype plugin indent on
@@ -59,11 +39,11 @@ set expandtab
 " tabs especificos para js, css y html
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
 " tabs especificos para latex, python y rust
 autocmd BufReadPost *.rs setlocal filetype=rust
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype tex setlocal tabstop=4 shiftwidth=4 expandtab
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
@@ -77,31 +57,9 @@ let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del ar
 "indentLine
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
-" Ale
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-" Automaticamente iniciar servidores de lenguaje
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 "latex evitar concealment
 let g:tex_conceal = ""
-
-" Language Client server
-let g:LanguageClient_serverCommands = {
-        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-        \ 'javascript.jsx': ['tcp:127.0.0.1:2089'],
-        \ 'python': ['/usr/local/bin/pyls'],
-        \}
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "omnifuncs
 augroup omnifuncs
@@ -113,36 +71,21 @@ augroup omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
-"tern
-if exists('g:plugs["tern_for_vim"]')
-    let g:tern_show_argument_hints = 'on_hold'
-    let g:tern_show_signature = 1
-    let g:tern_request_timeout = 1
-    let g:tern_request_timeout = 6000
-    let g:tern#command = ["tern"]
-    let g:tern#arguments = [" - persistent"]
-
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-
-" deoplete tab complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-autocmd Filetype javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " rust.vim
-let g:rustfmt_autosave = 1
+
 " Abrir/Cerrar NERDTree con <F4>
 map <F4> :NERDTreeToggle<CR>
 
 " Alt + j remap a ESC
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
+" Ctrl + j remap a ESC
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
 " localleader
-
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
@@ -156,3 +99,14 @@ nnoremap ,cbr :!cargo build --release<CR>
 
 " compilar LaTex
 nnoremap ,p :!pdflatex %<CR>
+
+" Tratamiento de colores
+
+" Configuraciones visuales
+" Colores
+set termguicolors
+" let g:afterglow_inherit_background=1
+let g:afterglow_italic_comments=1
+colorscheme afterglow
+hi Normal guibg=NONE ctermbg=NONE
+highlight NonText ctermbg=NONE
