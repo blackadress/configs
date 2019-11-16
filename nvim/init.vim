@@ -106,8 +106,17 @@ augroup end
 
 " rust.vim
 
+
+"nnoremap <A-k> <leader>c<space>
+xmap <C-]> <plug>NERDCommenterToggle
+nmap <C-]> <plug>NERDCommenterToggle
+" nmap <C-_> <plug>:NERDCommenterToggle
+
 " Abrir/Cerrar NERDTree con <F4>
 map <F4> :NERDTreeToggle<CR>
+
+" Leader
+let mapleader = " "
 
 " Alt + j remap a ESC
 inoremap <A-j> <Esc>
@@ -116,11 +125,8 @@ vnoremap <A-j> <Esc>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
-vmap ++ <plug>:NERDCommenterToggle
-nmap ++ <plug>:NERDCommenterToggle
-
 " localleader
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
