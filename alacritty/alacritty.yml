@@ -44,8 +44,8 @@ window:
   decorations: full
 
   # When true, alacritty starts maximized.
+  # start_maximized: false
   startup_mode: Windowed
-
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -146,12 +146,11 @@ font:
   # effect.
   use_thin_strokes: true
 
-debug:
-  # Display the time it takes to redraw each frame.
-  render_timer: false
+# Display the time it takes to redraw each frame.
+debug.render_timer: false
 
-  # Keep the log file after quitting Alacritty.
-  persistent_logging: false
+# Keep the log file after quitting Alacritty.
+debug.persistent_logging: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true

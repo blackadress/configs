@@ -58,7 +58,7 @@ let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del ar
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 
-"latex evitar concealment
+"latex evitar concealment de caracteres utf8
 let g:tex_conceal = ""
 
 "omnifuncs
