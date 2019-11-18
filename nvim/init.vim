@@ -106,10 +106,12 @@ augroup end
 
 " rust.vim
 
+"configuraciones de tabs en nvim
+nnoremap tn :tabnew<CR>
 
 "nnoremap <A-k> <leader>c<space>
-xmap <C-]> <plug>NERDCommenterToggle
-nmap <C-]> <plug>NERDCommenterToggle
+xmap <C-_> <plug>NERDCommenterToggle
+nmap <C-_> <plug>NERDCommenterToggle
 " nmap <C-_> <plug>:NERDCommenterToggle
 
 " Abrir/Cerrar NERDTree con <F4>
