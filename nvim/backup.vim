@@ -65,7 +65,7 @@ autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype tex setlocal tabstop=4 shiftwidth=4 expandtab
 
-" undo permanente
+" undo persistente
 set undodir=~/.config/nvim/undodir
 set undofile
 

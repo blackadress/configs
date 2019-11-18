@@ -1,73 +1,79 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" plugins a instalar
-" Plug 'tpope/vim-surround' 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'christoomey/vim-tmux-navigator'
 
-" theme-color
-Plug 'danilo-augusto/vim-afterglow'
+Plug 'morhetz/gruvbox'
 
-" cliente de lenguaje
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 
-" live preview LaTex
-
-" Soporte sintactico de lenguaje
-
+" Initialize plugin system
 call plug#end()
 
-"==================Configuraciones editor ====================================
-filetype plugin indent on
-set autoindent
-set encoding=utf-8
-set scrolloff=4
-set nojoinspaces
-set noshowmode "No mostrar el modo actual (ya lo muestra la barra de estado
-set number relativenumber
-set hidden " requerido para operaciones modificando multiples buffers como 'rename'
-syntax on
-let base16colorspace=256
+inoremap jk <ESC>
+nmap <F4> :NERDTreeToggle<CR>
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
-" configuraciones de busqueda
-set ignorecase
-set smartcase
+" open NERDTree automatically
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * NERDTree
 
-"tabs
-set expandtab
-" tabs especificos para js, css y html
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
-" tabs especificos para latex, python y rust
-autocmd BufReadPost *.rs setlocal filetype=rust
-autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+let g:NERDTreeGitStatusWithFlags = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:NERDTreeGitStatusNodeColorization = 1
+"let g:NERDTreeColorMapCustom = {
+    "\ "Staged"    : "#0ee375",  
+    "\ "Modified"  : "#d9bf91",  
+    "\ "Renamed"   : "#51C9FC",  
+    "\ "Untracked" : "#FCE77C",  
+    "\ "Unmerged"  : "#FC51E6",  
+    "\ "Dirty"     : "#FFBD61",  
+    "\ "Clean"     : "#87939A",   
+    "\ "Ignored"   : "#808080"   
+    "\ }                         
 
-" undo permanente
-set undodir=~/.config/nvim/undodir
-set undofile
 
+let g:NERDTreeIgnore = ['^node_modules$']
+
+" vim-prettier
+"let g:prettier#quickfix_enabled = 0
+"let g:prettier#quickfix_auto_focus = 0
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" run prettier on save
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" NERDTree
-let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
-let g:NERDTreeIgnore = ['^node_modules$']
+" j/k will move virtual lines (lines that wrap)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+colorscheme gruvbox
+
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
@@ -83,85 +89,18 @@ function! SyncTree()
   endif
 endfunction
 
-" airline Configurations
-let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
-let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
-" indentLine configurations
-let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
-let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
-
-"latex evitar concealment de caracteres utf8
-let g:tex_conceal = ""
-
-"omnifuncs
-augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-
-" rust.vim
-
-
-"nnoremap <A-k> <leader>c<space>
-xmap <C-]> <plug>NERDCommenterToggle
-nmap <C-]> <plug>NERDCommenterToggle
-" nmap <C-_> <plug>:NERDCommenterToggle
-
-" Abrir/Cerrar NERDTree con <F4>
-map <F4> :NERDTreeToggle<CR>
-
-" Leader
-let mapleader = " "
-
-" Alt + j remap a ESC
-inoremap <A-j> <Esc>
-vnoremap <A-j> <Esc>
-" Ctrl + j remap a ESC
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-
-" localleader
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-nnoremap <leader><leader> :nohlsearch<Enter>
-
-" Shortcut para mostrar <Space> y <Tab>
-nnoremap <F5> :set list!<CR>
-vnoremap <F5> <Esc>:set list!<CR>a
-inoremap <F5> <Esc>:set list!<CR>a
-
-"Cargo shorcuts
-nnoremap ,cb :!cargo build<CR>
-nnoremap ,cr :!cargo run<CR>
-nnoremap ,cbr :!cargo build --release<CR>
-
-" compilar LaTex
-nnoremap ,p :!pdflatex %<CR>
-
-" Tratamiento de colores
-" Configuraciones visuales
-" Colores
-set termguicolors
-" let g:afterglow_inherit_background=1
-let g:afterglow_italic_comments=1
-colorscheme afterglow
-hi Normal guibg=NONE ctermbg=NONE
-highlight NonText ctermbg=NONE
-
-" coc configurations
+" coc config
 let g:coc_global_extensions = [
-        \ 'coc-snippets',
-        \ 'coc-pairs',
-        \ 'coc-tsserver',
-        \ 'coc-eslint',
-        \ 'coc-prettier',
-        \ 'coc-json',
-        \ ]
-
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
