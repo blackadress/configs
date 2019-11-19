@@ -69,7 +69,7 @@ let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
 let g:NERDTreeIgnore = ['^node_modules$']
 " sync open file with NERDTree
-" " Check if NERDTree is open or active
+" Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
@@ -107,7 +107,10 @@ augroup end
 " rust.vim
 
 "configuraciones de tabs en nvim
-nnoremap tn :tabnew<CR>
+nnoremap tn :tabnew<Space>
+"desplazamiento de tabs
+nnoremap <S-Tab> :tabprev<CR>
+nnoremap <Tab> :tabnext<CR>
 
 "nnoremap <A-k> <leader>c<space>
 xmap <C-_> <plug>NERDCommenterToggle
@@ -117,8 +120,33 @@ nmap <C-_> <plug>NERDCommenterToggle
 " Abrir/Cerrar NERDTree con <F4>
 map <F4> :NERDTreeToggle<CR>
 
+"NERDTree split vertical
+let NERDTreeMapPreviewVSplit='sv'
+"let NERDTreeMapOpenSplit=''
+
+
 " Leader
 let mapleader = " "
+
+"Guardar con <C-s>
+nnoremap <silent> <C-s> :w<CR>
+
+"Move window
+nmap s<left> <C-w>h
+nmap s<right> <C-w>l
+nmap s<up> <C-w>k
+nmap s<down> <C-w>j
+nmap sh <C-w>h
+nmap sl <C-w>l
+nmap sk <C-w>k
+nmap sj <C-w>j
+
+"Rezise window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+
 
 " Alt + j remap a ESC
 inoremap <A-j> <Esc>
@@ -252,8 +280,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+"nmap <silent> <C-d> <Plug>(coc-range-select)
+"xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
