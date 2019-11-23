@@ -26,6 +26,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " Soporte sintactico de lenguaje
 
+"highlighters de lenguajes
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'yuezk/vim-js'
+
 call plug#end()
 
 "==================Configuraciones editor ====================================
@@ -49,7 +53,10 @@ set expandtab
 " tabs especificos para js, css y html
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 " tabs especificos para latex, python y rust
 autocmd BufReadPost *.rs setlocal filetype=rust
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
