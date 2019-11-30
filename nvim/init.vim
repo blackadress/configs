@@ -14,7 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " theme-color
 Plug 'danilo-augusto/vim-afterglow'
@@ -29,6 +29,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 "highlighters de lenguajes
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
+Plug 'elmcast/elm-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
@@ -36,7 +38,7 @@ call plug#end()
 filetype plugin indent on
 set autoindent
 set encoding=utf-8
-set scrolloff=4
+set scrolloff=2
 set nojoinspaces
 set noshowmode "No mostrar el modo actual (ya lo muestra la barra de estado
 set number relativenumber
@@ -58,7 +60,7 @@ autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 " tabs especificos para latex, python y rust
-autocmd BufReadPost *.rs setlocal filetype=rust
+autocmd Filetype go setlocal tabstop=4 shiftwidth=2 expandtab
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 
@@ -115,9 +117,12 @@ augroup end
 
 "configuraciones de tabs en nvim
 nnoremap tn :tabnew<Space>
+
+"buffers en vim
+
 "desplazamiento de tabs
-nnoremap <S-Tab> :tabprev<CR>
-nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :bp<CR>
+nnoremap <Tab> :bn<CR>
 
 "nnoremap <A-k> <leader>c<space>
 xmap <C-_> <plug>NERDCommenterToggle
@@ -131,28 +136,31 @@ map <F4> :NERDTreeToggle<CR>
 let NERDTreeMapPreviewVSplit='sv'
 "let NERDTreeMapOpenSplit=''
 
-
 " Leader
-let mapleader = " "
+let mapleader = "\\"
+
+"Vertical split on doc in normal mode
+nnoremap sv :vertical split<CR>
+nnoremap sa :split <CR>
 
 "Guardar con <C-s>
 nnoremap <silent> <C-s> :w<CR>
 
 "Move window
-nmap s<left> <C-w>h
-nmap s<right> <C-w>l
-nmap s<up> <C-w>k
-nmap s<down> <C-w>j
-nmap sh <C-w>h
-nmap sl <C-w>l
-nmap sk <C-w>k
-nmap sj <C-w>j
+nnoremap s<left> <C-w>h
+nnoremap s<right> <C-w>l
+nnoremap s<up> <C-w>k
+nnoremap s<down> <C-w>j
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+nnoremap sk <C-w>k
+nnoremap sj <C-w>j
 
 "Rezise window
-nmap <C-w><left> <C-w><
-nmap <C-w><right> <C-w>>
-nmap <C-w><up> <C-w>+
-nmap <C-w><down> <C-w>-
+nnoremap <C-w><left> <C-w><
+nnoremap <C-w><right> <C-w>>
+nnoremap <C-w><up> <C-w>+
+nnoremap <C-w><down> <C-w>-
 
 
 " Alt + j remap a ESC
@@ -171,25 +179,16 @@ nnoremap <F5> :set list!<CR>
 vnoremap <F5> <Esc>:set list!<CR>a
 inoremap <F5> <Esc>:set list!<CR>a
 
-"Cargo shorcuts
-nnoremap ,cb :!cargo build<CR>
-nnoremap ,cr :!cargo run<CR>
-nnoremap ,cbr :!cargo build --release<CR>
-
-" compilar LaTex
-nnoremap ,p :!pdflatex %<CR>
-
 " Tratamiento de colores
 " Configuraciones visuales
-" Colores
 set termguicolors
-" let g:afterglow_inherit_background=1
+let g:afterglow_inherit_background=1
 let g:afterglow_italic_comments=1
 colorscheme afterglow
-hi Normal guibg=NONE ctermbg=NONE
-highlight NonText ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
+"highlight NonText ctermbg=NONE
 
-" coc configurations
+" COC CONFIGURATIONS
 let g:coc_global_extensions = [
         \ 'coc-snippets',
         \ 'coc-pairs',
@@ -224,7 +223,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
