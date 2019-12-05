@@ -31,6 +31,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -114,6 +115,7 @@ augroup omnifuncs
 augroup end
 
 " rust.vim
+let g:rustfmt_autosave = 1
 
 "configuraciones de tabs en nvim
 nnoremap tn :tabnew<Space>

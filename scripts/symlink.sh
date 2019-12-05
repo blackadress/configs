@@ -10,4 +10,4 @@ ln -sf ~/Documents/configs/scripts/xflux_setup.sh ~/bin/xflux_setup.sh
 ln -sf ~/Documents/configs/scripts/xflux_stop.sh ~/bin/xflux_stop.sh
 
 ln -sf ~/Documents/configs/scripts/chunks.sh ~/bin/chunks.sh
-ln -sf ~/Documents/configs/scripts/ide ~/bin/ide
+#ln -sf ~/Documents/configs/scripts/ide ~/bin/ide
