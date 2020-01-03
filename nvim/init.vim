@@ -11,10 +11,16 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'Yggdroot/indentLine' "mostrar guias de indentacion
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
-
-"Plug 'christoomey/vim-tmux-navigator'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" coc list:
+" snippets
+" rls
+" python
+" tsserver
+" prettier
+" json
+" eslint
 
 " theme-color
 Plug 'danilo-augusto/vim-afterglow'
@@ -35,6 +41,7 @@ Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
+
 "==================Configuraciones editor ====================================
 filetype plugin indent on
 set autoindent
@@ -53,15 +60,17 @@ set smartcase
 
 "tabs
 set expandtab
-" tabs especificos para js, css y html
+
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype htmldjango setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype plaintex setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-" tabs especificos para latex, python y rust
-autocmd Filetype go setlocal tabstop=4 shiftwidth=2 expandtab
+
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 
@@ -81,16 +90,16 @@ let g:NERDTreeIgnore = ['^node_modules$']
 " sync open file with NERDTree
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
 function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
+ if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+   NERDTreeFind
+   wincmd p
+ endif
 endfunction
 
 " airline Configurations
@@ -106,12 +115,12 @@ let g:tex_conceal = ""
 
 "omnifuncs
 augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+   autocmd!
+   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
 " rust.vim
@@ -123,13 +132,12 @@ nnoremap tn :tabnew<Space>
 "buffers en vim
 
 "desplazamiento de tabs
-nnoremap <S-Tab> :bp<CR>
-nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> gT
+nnoremap <Tab> gt
 
-"nnoremap <A-k> <leader>c<space>
+" Toggle comentario
 xmap <C-_> <plug>NERDCommenterToggle
 nmap <C-_> <plug>NERDCommenterToggle
-" nmap <C-_> <plug>:NERDCommenterToggle
 
 " Abrir/Cerrar NERDTree con <F4>
 map <F4> :NERDTreeToggle<CR>
@@ -148,7 +156,7 @@ nnoremap sa :split <CR>
 "Guardar con <C-s>
 nnoremap <silent> <C-s> :w<CR>
 
-"Move window
+"Move between windows
 nnoremap s<left> <C-w>h
 nnoremap s<right> <C-w>l
 nnoremap s<up> <C-w>k
@@ -192,13 +200,15 @@ colorscheme afterglow
 
 " COC CONFIGURATIONS
 let g:coc_global_extensions = [
-        \ 'coc-snippets',
-        \ 'coc-pairs',
-        \ 'coc-tsserver',
-        \ 'coc-eslint',
-        \ 'coc-prettier',
-        \ 'coc-json',
-        \ ]
+       \ 'coc-snippets',
+       "\ 'coc-pairs',
+       \ 'coc-tsserver',
+       \ 'coc-eslint',
+       \ 'coc-prettier',
+       \ 'coc-json',
+       \ 'coc-emmet',
+       \ ]
+
 
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -214,24 +224,24 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+     \ pumvisible() ? "\<C-n>" :
+     \ <SID>check_back_space() ? "\<TAB>" :
+     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+ let col = col('.') - 1
+ return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -247,11 +257,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+ if (index(['vim','help'], &filetype) >= 0)
+   execute 'h '.expand('<cword>')
+ else
+   call CocAction('doHover')
+ endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -265,11 +275,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+ autocmd!
+ " Setup formatexpr specified filetype(s).
+ autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+ " Update signature help on jump placeholder
+ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
