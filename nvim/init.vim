@@ -180,6 +180,9 @@ vnoremap <A-j> <Esc>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
+" copy to system clipboard
+xnoremap <C-c> "+y
+
 " localleader
 inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 nnoremap <leader><leader> :nohlsearch<Enter>
