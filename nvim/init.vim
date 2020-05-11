@@ -61,6 +61,7 @@ set smartcase
 "tabs
 set expandtab
 
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype htmldjango setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
