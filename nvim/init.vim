@@ -24,6 +24,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " theme-color
 Plug 'danilo-augusto/vim-afterglow'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " cliente de lenguaje
 Plug 'HerringtonDarkholme/yats.vim'
@@ -106,6 +107,7 @@ endfunction
 " airline Configurations
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
 let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
+let g:airline_theme='onehalfdark'
 
 " indentLine configurations
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
@@ -158,14 +160,13 @@ nnoremap sa :split <CR>
 nnoremap <silent> <C-s> :w<CR>
 
 "Move between windows
-nnoremap s<left> <C-w>h
-nnoremap s<right> <C-w>l
-nnoremap s<up> <C-w>k
-nnoremap s<down> <C-w>j
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
 nnoremap sk <C-w>k
 nnoremap sj <C-w>j
+"Swap splits
+nnoremap s<left> <C-w>r
+nnoremap s<right> <C-w>r
 
 "Rezise window
 nnoremap <C-w><left> <C-w><
@@ -196,16 +197,16 @@ inoremap <F5> <Esc>:set list!<CR>a
 " Tratamiento de colores
 " Configuraciones visuales
 set termguicolors
-let g:afterglow_inherit_background=1
-let g:afterglow_italic_comments=1
-colorscheme afterglow
-"hi Normal guibg=NONE ctermbg=NONE
-"highlight NonText ctermbg=NONE
+syntax enable
+colorscheme onehalfdark
+" Transparencia de nvim
+hi Normal guibg=NONE ctermbg=NONE
+highlight NonText ctermbg=NONE
 
 " COC CONFIGURATIONS
 let g:coc_global_extensions = [
        \ 'coc-snippets',
-       "\ 'coc-pairs',
+       \ 'coc-pairs',
        \ 'coc-tsserver',
        \ 'coc-eslint',
        \ 'coc-prettier',
