@@ -39,6 +39,7 @@ Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'rust-lang/rust.vim'
+Plug 'habamax/vim-godot'
 
 call plug#end()
 
@@ -75,6 +76,7 @@ autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+"autocmd Filetype godot setlocal tabstop=4 shiftwidth=4 expandtab
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
@@ -92,7 +94,7 @@ let g:NERDTreeIgnore = ['^node_modules$']
 " sync open file with NERDTree
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
-return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
@@ -103,6 +105,20 @@ function! SyncTree()
    wincmd p
  endif
 endfunction
+
+function! GodotSettings() abort
+  setlocal foldmethod=expr
+  setlocal foldlevel=99
+  setlocal tabstop=4 shiftwidth=4
+  "nnoremap <buffer> <F4> :GodotRunLast<CR>
+  "nnoremap <buffer> <F5> :GodotRun<CR>
+  "nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+  "nnoremap <buffer> <F7> :GodotRunFZF<CR>
+endfunction
+
+augroup godot | au!
+  au FileType gdscript call GodotSettings()
+augroup end
 
 " airline Configurations
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
