@@ -1,3 +1,5 @@
+set nocompatible
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
@@ -23,8 +25,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " eslint
 
 " theme-color
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+"Plug 'danilo-augusto/vim-afterglow'
+"Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'morhetz/gruvbox'
 
 " cliente de lenguaje
 Plug 'HerringtonDarkholme/yats.vim'
@@ -34,12 +37,15 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Soporte sintactico de lenguaje
 
 "highlighters de lenguajes
+Plug 'sheerun/vim-polyglot'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'rust-lang/rust.vim'
 Plug 'habamax/vim-godot'
+
 
 call plug#end()
 
@@ -76,6 +82,7 @@ autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype sql setlocal tabstop=4 shiftwidth=4 expandtab
 "autocmd Filetype godot setlocal tabstop=4 shiftwidth=4 expandtab
 
 " undo permanente
@@ -214,10 +221,16 @@ inoremap <F5> <Esc>:set list!<CR>a
 " Configuraciones visuales
 set termguicolors
 syntax enable
-colorscheme onehalfdark
+
+let g:gruvbox_italic=1
+set background=dark
+colorscheme gruvbox
 " Transparencia de nvim
-hi Normal guibg=NONE ctermbg=NONE
-highlight NonText ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
+"highlight NonText ctermbg=NONE
+
+" configuraciones de encoding
+set encoding=UTF-8
 
 " COC CONFIGURATIONS
 let g:coc_global_extensions = [
