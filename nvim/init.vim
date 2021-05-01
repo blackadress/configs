@@ -25,14 +25,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " eslint
 
 " theme-color
-"Plug 'danilo-augusto/vim-afterglow'
-"Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
 
 " cliente de lenguaje
 Plug 'HerringtonDarkholme/yats.vim'
-
-" live preview LaTex
 
 " Soporte sintactico de lenguaje
 
@@ -107,6 +103,9 @@ endfunction
 " Python3 provider
 let g:python3_host_prog = '/usr/bin/python'
 
+" Haskell language server
+let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
 function! SyncTree()
@@ -141,6 +140,9 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 
 "latex evitar concealment de caracteres utf8
 let g:tex_conceal = ""
+autocmd FileType tex let b:coc_pairs = [["$", "$"]]
+autocmd FileType tex let b:coc_pairs_disabled=["'", "\"", "`"]
+autocmd FileType markdown let b:coc_pairs_disabled=["'", "\"", "`"]
 
 "omnifuncs
 augroup omnifuncs
@@ -239,11 +241,12 @@ set encoding=UTF-8
 let g:coc_global_extensions = [
        \ 'coc-snippets',
        \ 'coc-pairs',
+       \ 'coc-go',
        \ 'coc-tsserver',
        \ 'coc-eslint',
        \ 'coc-prettier',
-       \ 'coc-json',
        \ 'coc-emmet',
+       "\ 'coc-json',
        \ ]
 
 

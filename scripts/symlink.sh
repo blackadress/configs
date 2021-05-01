@@ -15,9 +15,10 @@ ln -sf ~/Documents/configs/scripts/xflux_setup.sh ~/bin/xflux_setup.sh
 ln -sf ~/Documents/configs/scripts/xflux_stop.sh ~/bin/xflux_stop.sh
 
 # BASH CONFIGS
-ln -sf ~/Documents/configs/bash-configs/.bashrc ~/.bashrc
+ln -sf ~/Documents/configs/bash-configs/bashrc ~/.bashrc
 ln -sf ~/Documents/configs/bash-configs/aliasrc ~/.config/aliasrc
-ln -sf ~/Documents/configs/bash-configs/.profile ~/.profile
+ln -sf ~/Documents/configs/bash-configs/profile ~/.profile
+ln -sf ~/Documents/configs/bash-configs/bash_profile ~/.bash_profile
 
 # SCRIPTS
 ln -sf ~/Documents/configs/scripts/chunks.sh ~/bin/chunks.sh
