@@ -26,6 +26,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " theme-color
 Plug 'morhetz/gruvbox'
+Plug 'cocopon/iceberg.vim'
 
 " cliente de lenguaje
 Plug 'HerringtonDarkholme/yats.vim'
@@ -132,7 +133,7 @@ augroup end
 " airline Configurations
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
 let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
-let g:airline_theme='onehalfdark'
+let g:airline_theme='iceberg'
 
 " indentLine configurations
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
@@ -227,9 +228,9 @@ inoremap <F5> <Esc>:set list!<CR>a
 set termguicolors
 syntax enable
 
-let g:gruvbox_italic=1
+let g:iceberg_italic=1
 set background=dark
-colorscheme gruvbox
+colorscheme iceberg
 " Transparencia de nvim
 "hi Normal guibg=NONE ctermbg=NONE
 "highlight NonText ctermbg=NONE
