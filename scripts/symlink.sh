@@ -23,4 +23,5 @@ ln -sf ~/Documents/configs/bash-configs/bash_profile ~/.bash_profile
 # SCRIPTS
 ln -sf ~/Documents/configs/scripts/chunks.sh ~/bin/chunks.sh
 ln -sf ~/Documents/configs/scripts/before_tmux.sh ~/bin/before_tmux.sh
+ln -sf ~/Documents/configs/scripts/brightness ~/bin/brightness
 

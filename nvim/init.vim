@@ -15,14 +15,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" coc list:
-" snippets
-" rls
-" python
-" tsserver
-" prettier
-" json
-" eslint
 
 " theme-color
 Plug 'morhetz/gruvbox'
@@ -32,7 +24,6 @@ Plug 'cocopon/iceberg.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Soporte sintactico de lenguaje
-
 "highlighters de lenguajes
 Plug 'sheerun/vim-polyglot'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -42,7 +33,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'rust-lang/rust.vim'
 Plug 'habamax/vim-godot'
-
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
@@ -59,104 +50,39 @@ set hidden " requerido para operaciones modificando multiples buffers como 'rena
 syntax on
 let base16colorspace=256
 
-" configuraciones de busqueda
-set ignorecase
-set smartcase
-
-"tabs
-set expandtab
-
-autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype htmldjango setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype plaintex setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-
-autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype sql setlocal tabstop=4 shiftwidth=4 expandtab
-"autocmd Filetype godot setlocal tabstop=4 shiftwidth=4 expandtab
-
 " undo permanente
 set undodir=~/.config/nvim/undodir
 set undofile
 
-" prettier command for coc
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" configuraciones de busqueda
+set ignorecase
+set smartcase
 
-" NERDTree
-let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
-let g:NERDTreeIgnore = ['^node_modules$']
-" sync open file with NERDTree
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
+" copy to system clipboard
+xnoremap <C-c> "+y
 
-" Python3 provider
-let g:python3_host_prog = '/usr/bin/python'
+" localleader
+nnoremap <leader><leader> :nohlsearch<Enter>
 
-" Haskell language server
-let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+" Shortcut para mostrar <Space> y <Tab>
+nnoremap <F5> :set list!<CR>
+vnoremap <F5> <Esc>:set list!<CR>a
+inoremap <F5> <Esc>:set list!<CR>a
 
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
- if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-   NERDTreeFind
-   wincmd p
- endif
-endfunction
+" Tratamiento de colores
+" Configuraciones visuales
+set termguicolors
+syntax enable
 
-function! GodotSettings() abort
-  setlocal foldmethod=expr
-  setlocal foldlevel=99
-  setlocal tabstop=4 shiftwidth=4
-  "nnoremap <buffer> <F4> :GodotRunLast<CR>
-  "nnoremap <buffer> <F5> :GodotRun<CR>
-  "nnoremap <buffer> <F6> :GodotRunCurrent<CR>
-  "nnoremap <buffer> <F7> :GodotRunFZF<CR>
-endfunction
+let g:iceberg_italic=1
+set background=dark
+colorscheme iceberg
+" Transparencia de nvim
+"hi Normal guibg=NONE ctermbg=NONE
+"highlight NonText ctermbg=NONE
 
-augroup godot | au!
-  au FileType gdscript call GodotSettings()
-augroup end
-
-" airline Configurations
-let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
-let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
-let g:airline_theme='iceberg'
-
-" indentLine configurations
-let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
-let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
-
-"latex evitar concealment de caracteres utf8
-let g:tex_conceal = ""
-autocmd FileType tex let b:coc_pairs = [["$", "$"]]
-autocmd FileType tex let b:coc_pairs_disabled=["'", "\"", "`"]
-autocmd FileType markdown let b:coc_pairs_disabled=["'", "\"", "`"]
-
-"omnifuncs
-augroup omnifuncs
-   autocmd!
-   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-
-" rust.vim
-let g:rustfmt_autosave = 1
+" configuraciones de encoding
+set encoding=UTF-8
 
 "configuraciones de tabs en nvim
 nnoremap tn :tabnew<Space>
@@ -166,17 +92,6 @@ nnoremap tn :tabnew<Space>
 "desplazamiento de tabs
 nnoremap <S-Tab> gT
 nnoremap <Tab> gt
-
-" Toggle comentario
-xmap <C-_> <plug>NERDCommenterToggle
-nmap <C-_> <plug>NERDCommenterToggle
-
-" Abrir/Cerrar NERDTree con <F4>
-map <F4> :NERDTreeToggle<CR>
-
-"NERDTree split vertical
-let NERDTreeMapPreviewVSplit='sv'
-"let NERDTreeMapOpenSplit=''
 
 " Leader
 let mapleader = "\\"
@@ -203,7 +118,6 @@ nnoremap <C-w><right> <C-w>>
 nnoremap <C-w><up> <C-w>+
 nnoremap <C-w><down> <C-w>-
 
-
 " Alt + j remap a ESC
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
@@ -211,32 +125,107 @@ vnoremap <A-j> <Esc>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
-" copy to system clipboard
-xnoremap <C-c> "+y
+"tabs
+set expandtab
 
-" localleader
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-nnoremap <leader><leader> :nohlsearch<Enter>
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype htmldjango setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype plaintex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 
-" Shortcut para mostrar <Space> y <Tab>
-nnoremap <F5> :set list!<CR>
-vnoremap <F5> <Esc>:set list!<CR>a
-inoremap <F5> <Esc>:set list!<CR>a
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype sql setlocal tabstop=4 shiftwidth=4 expandtab
 
-" Tratamiento de colores
-" Configuraciones visuales
-set termguicolors
-syntax enable
+"omnifuncs
+augroup omnifuncs
+   autocmd!
+   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
 
-let g:iceberg_italic=1
-set background=dark
-colorscheme iceberg
-" Transparencia de nvim
-"hi Normal guibg=NONE ctermbg=NONE
-"highlight NonText ctermbg=NONE
+" Python3 provider
+let g:python3_host_prog = '/usr/bin/python'
 
-" configuraciones de encoding
-set encoding=UTF-8
+" Haskell language server
+"let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+"let g:haskell_classic_highlighting = 1
+autocmd Filetype haskell setlocal formatprg=hindent
+autocmd Filetype haskell nnoremap <C-g> :%!hindent<CR>
+
+function! GodotSettings() abort
+  setlocal foldmethod=expr
+  setlocal foldlevel=99
+  setlocal tabstop=4 shiftwidth=4
+  "nnoremap <buffer> <F4> :GodotRunLast<CR>
+  "nnoremap <buffer> <F5> :GodotRun<CR>
+  "nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+  "nnoremap <buffer> <F7> :GodotRunFZF<CR>
+endfunction
+
+augroup godot | au!
+  au FileType gdscript call GodotSettings()
+augroup end
+
+" rust.vim
+let g:rustfmt_autosave = 1
+
+"latex evitar concealment de caracteres utf8
+let g:tex_conceal = ""
+autocmd FileType tex let b:coc_pairs = [["$", "$"]]
+autocmd FileType tex let b:coc_pairs_disabled=["'", "\"", "`"]
+autocmd FileType markdown let b:coc_pairs_disabled=["'", "\"", "`"]
+
+" airline Configurations
+let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
+let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
+let g:airline_theme='iceberg'
+
+" indentLine configurations
+let g:indentLine_fileTypeExclude = ['text', 'help', 'terminal']
+let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
+
+" NERDTree
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeChDirMode = 2 " Cambia el directorio actual al nodo padre actual
+let g:NERDTreeIgnore = ['^node_modules$']
+" Abrir/Cerrar NERDTree con <F4>
+map <F4> :NERDTreeToggle<CR>
+"NERDTree split vertical
+let NERDTreeMapPreviewVSplit='sv'
+"let NERDTreeMapOpenSplit=''
+
+" sync open file with NERDTree
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+ if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+   NERDTreeFind
+   wincmd p
+ endif
+endfunction
+
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" ctrlp
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Toggle comentario
+xmap <C-_> <plug>NERDCommenterToggle
+nmap <C-_> <plug>NERDCommenterToggle
 
 " COC CONFIGURATIONS
 let g:coc_global_extensions = [
@@ -249,7 +238,6 @@ let g:coc_global_extensions = [
        \ 'coc-emmet',
        "\ 'coc-json',
        \ ]
-
 
 " from readme
 " if hidden is not set, TextEdit might fail.

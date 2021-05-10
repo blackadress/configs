@@ -1,5 +1,5 @@
 #!/bin/sh
 alias ls='lsd' \
-      flux='xflux -l -13.1587801 -g -74.2232132'
+      reds='redshift -P -O 3500 -b .7'
 
 alias tmux='before_tmux.sh'
