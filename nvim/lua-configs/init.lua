@@ -1,7 +1,7 @@
-require('lua/plugins')
-require('lua/keymaps')
-require('lua/editor')
-require('lua/plugconfigs')
-require('lua/languages')
+require('plugins')
+require('keymaps')
+require('editor')
+require('plugconfigs')
+require('languages')
 
 vim.cmd('colorscheme flattened_dark')
