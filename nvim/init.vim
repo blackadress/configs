@@ -3,7 +3,6 @@ set nocompatible
 call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins a instalar
-" Plug 'tpope/vim-surround' 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -15,22 +14,33 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'vimwiki/vimwiki'
 
 " theme-color
+Plug 'romainl/flattened'
+Plug 'challenger-deep-theme/vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'sainnhe/edge'
 Plug 'morhetz/gruvbox'
-Plug 'cocopon/iceberg.vim'
 
-" cliente de lenguaje
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'wadackel/vim-dogrun'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'hachy/eva01.vim'
+Plug 'ajmwagar/vim-deus'
+Plug 'w0ng/vim-hybrid'
+
+Plug 'glepnir/oceanic-material'
 
 " Soporte sintactico de lenguaje
-"highlighters de lenguajes
-Plug 'sheerun/vim-polyglot'
+Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'sheerun/vim-polyglot'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim'
 Plug 'habamax/vim-godot'
 Plug 'neovimhaskell/haskell-vim'
@@ -44,19 +54,38 @@ set autoindent
 set encoding=utf-8
 set scrolloff=2
 set nojoinspaces
-set noshowmode "No mostrar el modo actual (ya lo muestra la barra de estado
+set noshowmode "No mostrar el modo actual ya lo muestra la barra de estado
 set number relativenumber
 set hidden " requerido para operaciones modificando multiples buffers como 'rename'
-syntax on
-let base16colorspace=256
+set mouse=nvc
+"set mouse=a " movimiento dentro de ventanas flotantes
+"let base16colorspace=256
 
 " undo permanente
 set undodir=~/.config/nvim/undodir
 set undofile
+set conceallevel=0
 
 " configuraciones de busqueda
 set ignorecase
 set smartcase
+
+" Tratamiento de colores
+" Configuraciones visuales
+set termguicolors
+lua require'colorizer'.setup()
+"syntax enable
+
+set background=dark
+colorscheme flattened_dark
+" Transparencia de nvim
+"hi Normal guibg=NONE ctermbg=NONE
+"hi LineNr guibg=NONE ctermbg=NONE
+"hi NonText ctermbg=NONE
+
+" configuraciones de encoding
+set encoding=UTF-8
+set colorcolumn=100
 
 " copy to system clipboard
 xnoremap <C-c> "+y
@@ -64,28 +93,21 @@ xnoremap <C-c> "+y
 " localleader
 nnoremap <leader><leader> :nohlsearch<Enter>
 
+ "move line
+"xnoremap <A-k> :move '<-2<CR>gv-gv
+"xnoremap <C-A-j> :move '>+1<CR>gv-gv
+
+" better indenting
+vnoremap < <gv
+vnoremap > >gv
+
 " Shortcut para mostrar <Space> y <Tab>
 nnoremap <F5> :set list!<CR>
 vnoremap <F5> <Esc>:set list!<CR>a
 inoremap <F5> <Esc>:set list!<CR>a
 
-" Tratamiento de colores
-" Configuraciones visuales
-set termguicolors
-syntax enable
-
-let g:iceberg_italic=1
-set background=dark
-colorscheme iceberg
-" Transparencia de nvim
-"hi Normal guibg=NONE ctermbg=NONE
-"highlight NonText ctermbg=NONE
-
-" configuraciones de encoding
-set encoding=UTF-8
-
 "configuraciones de tabs en nvim
-nnoremap tn :tabnew<Space>
+nnoremap tn :tabnew<CR>
 
 "buffers en vim
 
@@ -94,11 +116,11 @@ nnoremap <S-Tab> gT
 nnoremap <Tab> gt
 
 " Leader
-let mapleader = "\\"
+let mapleader = " "
 
 "Vertical split on doc in normal mode
 nnoremap sv :vertical split<CR>
-nnoremap sa :split <CR>
+nnoremap sa :split<CR>
 
 "Guardar con <C-s>
 nnoremap <silent> <C-s> :w<CR>
@@ -126,7 +148,7 @@ inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
 "tabs
-set expandtab
+"set expandtab
 
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
@@ -138,7 +160,7 @@ autocmd Filetype plaintex setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 
-autocmd Filetype go setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype sql setlocal tabstop=4 shiftwidth=4 expandtab
@@ -166,10 +188,6 @@ function! GodotSettings() abort
   setlocal foldmethod=expr
   setlocal foldlevel=99
   setlocal tabstop=4 shiftwidth=4
-  "nnoremap <buffer> <F4> :GodotRunLast<CR>
-  "nnoremap <buffer> <F5> :GodotRun<CR>
-  "nnoremap <buffer> <F6> :GodotRunCurrent<CR>
-  "nnoremap <buffer> <F7> :GodotRunFZF<CR>
 endfunction
 
 augroup godot | au!
@@ -179,16 +197,21 @@ augroup end
 " rust.vim
 let g:rustfmt_autosave = 1
 
-"latex evitar concealment de caracteres utf8
+" latex evitar concealment de caracteres utf8
 let g:tex_conceal = ""
 autocmd FileType tex let b:coc_pairs = [["$", "$"]]
 autocmd FileType tex let b:coc_pairs_disabled=["'", "\"", "`"]
 autocmd FileType markdown let b:coc_pairs_disabled=["'", "\"", "`"]
 
+" Vim-Wiki configs
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/'}]
+                      "\ 'syntax': 'markdown', 'ext': '.md'}]
+
 " airline Configurations
 let g:airline#extensions#tabline#enabled = 1 "mostrar buffers (como pestañas)
 let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del archivo
-let g:airline_theme='iceberg'
+"let g:airline_theme='solarized'
+let g:airline_theme='solarized_flood'
 
 " indentLine configurations
 let g:indentLine_fileTypeExclude = ['text', 'help', 'terminal']
@@ -229,19 +252,19 @@ nmap <C-_> <plug>NERDCommenterToggle
 
 " COC CONFIGURATIONS
 let g:coc_global_extensions = [
-       \ 'coc-snippets',
-       \ 'coc-pairs',
-       \ 'coc-go',
        \ 'coc-tsserver',
-       \ 'coc-eslint',
+       \ 'coc-snippets',
+       \ 'coc-pyright',
        \ 'coc-prettier',
+       \ 'coc-pairs',
+       \ 'coc-json',
+       \ 'coc-go',
+       \ 'coc-eslint',
        \ 'coc-emmet',
-       "\ 'coc-json',
        \ ]
 
 " from readme
 " if hidden is not set, TextEdit might fail.
-set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
 " don't give |ins-completion-menu| messages.
@@ -282,8 +305,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use 0 to show documentation in preview window
+nnoremap <silent> ) :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
  if (index(['vim','help'], &filetype) >= 0)
@@ -319,16 +342,6 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-"nmap <silent> <C-d> <Plug>(coc-range-select)
-"xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')

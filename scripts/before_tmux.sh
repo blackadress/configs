@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PID=$(pidof fcitx)
+PID=$(pidof fcitx5)
 if [ -z "$PID" ]
 then
         tmux

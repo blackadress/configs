@@ -11,17 +11,18 @@ end
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  use 'scrooloose/nerdtree'
-  use 'Xuyuanp/nerdtree-git-plugin'
-  use 'tiagofumo/vim-nerdtree-syntax-highlight'
-  use 'ryanoasis/vim-devicons'
-  use 'airblade/vim-gitgutter'
-  use 'ctrlpvim/ctrlp.vim'
-  use 'Yggdroot/indentLine'
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use 'terrortylor/nvim-comment'
+  -- falta configurar
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
-  use 'scrooloose/nerdcommenter'
-  use { 'neoclide/coc.nvim', 'branch': 'release' }
+
+  -- falta configurar
+  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'norcalli/nvim-colorizer.lua'
   use 'vimwiki/vimwiki'
 
@@ -44,12 +45,12 @@ return require('packer').startup(function()
   
   -- Soporte sintactico de lenguaje
   -- todavia no estoy usando el LSP nativo de neovim
-  -- use 'sheerun/vim-polyglot'
+  -- falta configurar
   use 'HerringtonDarkholme/yats.vim'
   use 'MaxMEllon/vim-jsx-pretty'
   use 'yuezk/vim-js'
   use 'elmcast/elm-vim'
-  use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
+  use { 'fatih/vim-go' } --, run = ':GoUpdateBinaries' 
   use { 'numirias/semshi', run = ':UpdateRemote  useins' }
   use 'rust-lang/rust.vim'
   use 'habamax/vim-godot'

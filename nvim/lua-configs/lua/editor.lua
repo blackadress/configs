@@ -1,6 +1,5 @@
 -- GLOBAL OPTS
 vim.o.scrolloff = 2
-vim.o.nojoinspaces = true
 vim.o.showmode = false -- una barra de estado ya muestra el modo
 vim.o.joinspaces = false
 vim.o.hidden = true
@@ -21,6 +20,9 @@ vim.cmd('syntax enable')
 -- LOCAL OPTS TO WINDOW
 -- I may need to set the global "vim.o.{option}" for some of them to work properly
 vim.wo.number = true
+vim.o.conceallevel = 0
+vim.wo.conceallevel = 0
+vim.wo.concealcursor = 'i'
 vim.wo.relativenumber = true
 vim.wo.colorcolumn = '100'
 vim.wo.signcolumn = 'yes'
@@ -28,4 +30,4 @@ vim.wo.signcolumn = 'yes'
 -- LOCAL OPTS TO BUFFER
 -- I may need to set the global "vim.o.{option}" for some of them to work properly
 vim.bo.autoindent = true
-vim.bo.encoding = 'utf-8
+--vim.bo.encoding = 'utf-8'

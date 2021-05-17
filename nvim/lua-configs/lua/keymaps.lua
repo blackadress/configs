@@ -1,6 +1,6 @@
 --leader
 vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
-vim.gi.mapleader = ' '
+vim.g.mapleader = ' '
 
 -- copy to systemclipboard
 vim.api.nvim_set_keymap('x', '<C-c>', '"+y', { noremap = true } )

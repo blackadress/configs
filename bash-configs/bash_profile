@@ -12,6 +12,8 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/flutter/bin:$PATH"
 #RUBY
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+#GO
+export PATH="$HOME/go/bin:$PATH"
 #SCRIPTS Y BINARIOS PROPIOS
 export PATH="$HOME/bin:$PATH"
 
