@@ -1,5 +1,26 @@
 #!/bin/sh
+# alias para programas
 alias ls='lsd' \
-      reds='redshift -P -O 3500 -b .7'
+      cat='bat' \
+      reds='redshift -P -O 3500 -b .7' \
+      upd='sudo pacman -Syu' \
+      res='du -h --max-depth=1'
 
+# alias
 alias tmux='before_tmux.sh'
+
+# alias para ubicaciones
+alias conf='cd ~/Documents/configs/' \
+      proy='cd ~/proyectos/' \
+      pgo='cd ~/proyectos/go/' \
+      ppy='cd ~/proyectos/python/' \
+      pru='cd ~/proyectos/rust/' \
+      pjs='cd ~/proyectos/node/'
+
+
+# alias open configs
+alias neoconf='nvim ~/Documents/configs/nvim/init.vim' \
+      bashconf='nvim ~/Documents/configs/bash-configs/bashrc' \
+      profileconf='nvim ~/Documents/configs/bash-configs/bash_profile' \
+      aliasconf='nvim ~/Documents/configs/bash-configs/aliasrc' \
+      alaconf='nvim ~/Documents/configs/alacritty/alacritty.yml'
