@@ -24,6 +24,13 @@ augroup omnifuncs
    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 ]]--
+vim.cmd('autocmd FileType lua setlocal tabstop=2 shiftwidth=2')
+vim.cmd('autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab')
+
+vim.cmd('autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab')
+vim.cmd('autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab')
+vim.cmd('autocmd FileType go setlocal tabstop=4 shiftwidth=4')
+vim.cmd('autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab')
 
 -- PYTHON
 vim.api.nvim_set_var('python3_host_prog', '/usr/bin/python')
