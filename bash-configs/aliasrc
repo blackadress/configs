@@ -21,6 +21,7 @@ alias conf='cd ~/Documents/configs/' \
 
 # alias open configs
 alias neoconf='nvim ~/Documents/configs/nvim/init.vim' \
+	  nconf='cd ~/Documents/configs/nvim/lua-configs/ && nvim init.lua' \
       bashconf='nvim ~/Documents/configs/bash-configs/bashrc' \
       profileconf='nvim ~/Documents/configs/bash-configs/bash_profile' \
       aliasconf='nvim ~/Documents/configs/bash-configs/aliasrc' \

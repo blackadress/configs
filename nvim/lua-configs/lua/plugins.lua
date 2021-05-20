@@ -12,12 +12,16 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }  }
+
   use 'terrortylor/nvim-comment'
   use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
   use { 'nvim-telescope/telescope-fzy-native.nvim' }
   -- falta configurar
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'mhartington/formatter.nvim'
 
   use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/vim-vsnip'
