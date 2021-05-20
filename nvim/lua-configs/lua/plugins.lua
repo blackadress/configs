@@ -51,7 +51,7 @@ return require('packer').startup(function()
   use 'MaxMEllon/vim-jsx-pretty'
   use 'yuezk/vim-js'
   use 'elmcast/elm-vim'
-  use { 'fatih/vim-go' } --, run = ':GoUpdateBinaries' 
+  -- use { 'fatih/vim-go' } --, run = ':GoUpdateBinaries' 
   use { 'numirias/semshi', run = ':UpdateRemote  useins' }
   use 'rust-lang/rust.vim'
   use 'habamax/vim-godot'

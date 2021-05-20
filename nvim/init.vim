@@ -35,7 +35,6 @@ Plug 'glepnir/oceanic-material'
 
 " Soporte sintactico de lenguaje
 Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'sheerun/vim-polyglot'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
@@ -265,7 +264,7 @@ let g:coc_global_extensions = [
        \ 'coc-prettier',
        \ 'coc-pairs',
        \ 'coc-json',
-       \ 'coc-go',
+       "\ 'coc-go',
        \ 'coc-eslint',
        \ 'coc-emmet',
        \ ]
