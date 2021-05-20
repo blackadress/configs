@@ -39,7 +39,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'elmcast/elm-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim'
 Plug 'habamax/vim-godot'
@@ -90,6 +90,10 @@ set colorcolumn=100
 " copy to system clipboard
 xnoremap <C-c> "+y
 
+" Leader
+nnoremap <Space> <Nop>
+let mapleader = " "
+
 " localleader
 nnoremap <leader><leader> :nohlsearch<Enter>
 
@@ -115,8 +119,6 @@ nnoremap tn :tabnew<CR>
 nnoremap <S-Tab> gT
 nnoremap <Tab> gt
 
-" Leader
-let mapleader = " "
 
 "Vertical split on doc in normal mode
 nnoremap sv :vertical split<CR>
@@ -197,6 +199,11 @@ augroup end
 " rust.vim
 let g:rustfmt_autosave = 1
 
+" vim-go
+"let g:go_highlight_structs = 0
+"let g:go_highlight_interfaces = 0
+"let g:go_highlight_operators = 0
+
 " latex evitar concealment de caracteres utf8
 let g:tex_conceal = ""
 autocmd FileType tex let b:coc_pairs = [["$", "$"]]
@@ -214,7 +221,7 @@ let g:airline#extensions#tabline#fnamemomd = ':t' "Mostrar solo el nombre del ar
 let g:airline_theme='solarized_flood'
 
 " indentLine configurations
-let g:indentLine_fileTypeExclude = ['text', 'help', 'terminal']
+let g:indentLine_fileTypeExclude = ['text', 'help', 'terminal', 'md', 'vimwiki', 'vim']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 
 " NERDTree
