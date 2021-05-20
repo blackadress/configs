@@ -30,4 +30,8 @@ vim.wo.signcolumn = 'yes'
 -- LOCAL OPTS TO BUFFER
 -- I may need to set the global "vim.o.{option}" for some of them to work properly
 vim.bo.autoindent = true
---vim.bo.encoding = 'utf-8'
+
+vim.bo.tabstop = 4
+vim.o.tabstop = 4
+vim.bo.shiftwidth = 4
+vim.o.shiftwidth = 4
