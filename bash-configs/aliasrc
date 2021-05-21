@@ -14,6 +14,7 @@ alias tmux='before_tmux.sh' \
 alias conf='cd ~/Documents/configs/' \
       proy='cd ~/proyectos/' \
       pgo='cd ~/proyectos/go/' \
+      pgoa='cd ~/proyectos/go/aula_virtual/' \
       ppy='cd ~/proyectos/python/' \
       pru='cd ~/proyectos/rust/' \
       pjs='cd ~/proyectos/node/'

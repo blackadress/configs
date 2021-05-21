@@ -25,8 +25,11 @@ return require("packer").startup(
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
 
-    use "vim-airline/vim-airline"
-    use "vim-airline/vim-airline-themes"
+    use {
+      "glepnir/galaxyline.nvim",
+      branch = "main",
+      requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    }
 
     use "norcalli/nvim-colorizer.lua"
     use "vimwiki/vimwiki"
@@ -38,14 +41,12 @@ return require("packer").startup(
     use "sainnhe/edge"
     use "morhetz/gruvbox"
 
+    use "hachy/eva01.vim"
     use "tyrannicaltoucan/vim-deep-space"
     use "wadackel/vim-dogrun"
     use "danilo-augusto/vim-afterglow"
-    use "hachy/eva01.vim"
     use "ajmwagar/vim-deus"
     use "w0ng/vim-hybrid"
-
-    use "glepnir/oceanic-material"
 
     -- Soporte sintactico de lenguaje
     -- todavia no estoy usando el LSP nativo de neovim
@@ -53,11 +54,8 @@ return require("packer").startup(
     use "HerringtonDarkholme/yats.vim"
     use "MaxMEllon/vim-jsx-pretty"
     use "yuezk/vim-js"
-    use "elmcast/elm-vim"
-    -- use { 'fatih/vim-go' } --, run = ':GoUpdateBinaries'
     use {"numirias/semshi", run = ":UpdateRemote  useins"}
     use "rust-lang/rust.vim"
-    use "habamax/vim-godot"
     use "neovimhaskell/haskell-vim"
   end
 )
