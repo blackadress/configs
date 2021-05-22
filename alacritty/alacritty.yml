@@ -175,6 +175,8 @@ live_config_reload: true
 alt_send_esc: true
 
 key_bindings:
+  # - { key: Space,        mods: Control, action: ClearLogNotice                   }
+  - { key: P, mods: Control|Shift, chars: "fzf \x0D" }
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
   - { key: L,        mods: Control, action: ClearLogNotice                   }
