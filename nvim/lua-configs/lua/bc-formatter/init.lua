@@ -8,7 +8,11 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = {
+              "--stdin-filepath",
+              vim.api.nvim_buf_get_name(0),
+              "--single-quote"
+            },
             stdin = true
           }
         end
@@ -16,20 +20,13 @@ require("formatter").setup(
       rust = {
         -- Rustfmt
         function()
-          return {
-            exe = "rustfmt",
-            args = {"--emit=stdout"},
-            stdin = true
-          }
+          return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
         end
       },
       go = {
         -- gofmt
         function()
-          return {
-            exe = "gofmt",
-            stdin = true
-          }
+          return {exe = "gofmt", stdin = true}
         end
       },
       lua = {
@@ -37,18 +34,18 @@ require("formatter").setup(
         function()
           return {
             exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
+            args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
             stdin = true
+            -- exe = "lua-format",
+            -- args = {"--indent-width", 2},
+            -- stdin = true
           }
         end
       },
       haskell = {
         -- hindent
         function()
-          return {
-            exe = "hindent",
-            stdin = true
-          }
+          return {exe = "hindent", stdin = true}
         end
       }
     }
