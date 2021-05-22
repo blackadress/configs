@@ -158,7 +158,7 @@ mouse:
 
   hide_when_typing: false
 
-  url:
+  hints:
     modifiers: None
 
 selection:
