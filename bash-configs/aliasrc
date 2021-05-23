@@ -27,4 +27,5 @@ alias neoconf='nvim ~/Documents/configs/nvim/init.vim' \
       bashconf='nvim ~/Documents/configs/bash-configs/bashrc' \
       profileconf='nvim ~/Documents/configs/bash-configs/bash_profile' \
       aliasconf='nvim ~/Documents/configs/bash-configs/aliasrc' \
+      aweconf='nvim ~/Documents/configs/awesome/rc.lua' \
       alaconf='nvim ~/Documents/configs/alacritty/alacritty.yml'
