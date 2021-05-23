@@ -1,0 +1,11 @@
+#! /bin/bash
+
+LIBRO="$(fd -e epub  -e pdf . /mnt/particion_ntfs/Documentos/Libros/ | fzf)"
+# FBReader $LIBRO &
+# xargs -d '\n' okular &
+
+if [[ $LIBRO =~ \.pdf$ ]]; then
+	okular "$LIBRO"
+elif [[ $LIBRO =~ \.epub$ ]]; then
+	FBReader "$LIBRO"
+fi
