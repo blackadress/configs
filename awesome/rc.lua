@@ -745,11 +745,11 @@ root.keys(globalkeys)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-  {
-    -- without this firefox was always 'floating'
-    rule = {class = "firefox"},
-    properties = {opacity = 1, maximized = false, floating = false}
-  },
+  -- {
+  --   -- without this firefox was always 'floating'
+  --   rule = {class = "firefox"},
+  --   properties = {opacity = 1, maximized = false, floating = false}
+  -- },
   -- All clients will match this rule.
   {
     rule = {},
@@ -796,12 +796,12 @@ awful.rules.rules = {
       }
     },
     properties = {floating = true}
-  },
-  -- Set Firefox to always map on the tag named "2" on screen 1.
-  {
-    rule = {class = "Firefox"},
-    properties = {screen = 1, tag = "2"}
   }
+  -- Set Firefox to always map on the tag named "2" on screen 1.
+  -- {
+  --   rule = {class = "Firefox"},
+  --   properties = {screen = 1, tag = "2"}
+  -- }
 }
 -- }}}
 
@@ -847,5 +847,6 @@ client.connect_signal(
 beautiful.useless_gap = 3
 
 -- autostart applications
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom -i 1.0")
+awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell("nitrogen --restore")
