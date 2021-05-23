@@ -27,6 +27,7 @@ augroup end
 vim.cmd("autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab")
 vim.cmd("autocmd FileType lua setlocal tabstop=2 shiftwidth=2 expandtab")
 vim.cmd("autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab")
+vim.cmd("autocmd FileType haskell setlocal tabstop=2 shiftwidth=2 expandtab")
 vim.cmd("autocmd FileType htmldjango setlocal tabstop=2 shiftwidth=2 expandtab")
 vim.cmd("autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab expandtab expandtab")
 vim.cmd("autocmd FileType javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab expandtab")
