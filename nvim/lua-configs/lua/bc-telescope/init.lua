@@ -1,5 +1,5 @@
 -- TELESCOPE
-local actions = require('telescope.actions')
+local actions = require("telescope.actions")
 require("telescope").setup {
   defaults = {
     file_sorter = require "telescope.sorters".get_fuzzy_file,
@@ -10,12 +10,8 @@ require("telescope").setup {
       }
     },
     mappings = {
-      i = {
-        ["<C-j>"] = actions.close
-      },
-      n = {
-        ["<C-j>"] = actions.close
-      }
+      i = {["<C-j>"] = actions.close},
+      n = {["<C-j>"] = actions.close}
     }
   }
 }
@@ -24,4 +20,3 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":Telescope find_files<CR>", {noremap = tr
 vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>fb", ":Telescope buffers<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", {noremap = true})
-

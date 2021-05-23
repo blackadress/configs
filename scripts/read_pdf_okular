@@ -1,0 +1,5 @@
+#! /bin/bash
+
+LIBRO=$(fd -e pdf . /mnt/particion_ntfs/Documentos/Libros/ | fzf)
+okular $LIBRO &
+# xargs -d '\n' okular &

@@ -35,7 +35,14 @@ gls.left[1] = {
 gls.left[2] = {
   ViMode = {
     provider = function()
-      local alias = {n = "NORMAL", i = "INSERT", c = "COMMAND", v = "VISUAL", V = "VISUAL LINE", [""] = "VISUAL BLOCK"}
+      local alias = {
+        n = "NORMAL",
+        i = "INSERT",
+        c = "COMMAND",
+        v = "VISUAL",
+        V = "VISUAL LINE",
+        [""] = "VISUAL BLOCK"
+      }
       return alias[vim.fn.mode()]
     end,
     separator = "",
@@ -196,4 +203,3 @@ gls.short_line_right[1] = {
     highlight = {colors.grey, colors.purple}
   }
 }
-

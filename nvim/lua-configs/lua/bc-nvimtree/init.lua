@@ -31,4 +31,3 @@ vim.g.nvim_tree_bindings = {
   ["sv"] = tree_cb("vsplit"),
   ["sa"] = tree_cb("split")
 }
-
