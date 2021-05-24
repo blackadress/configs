@@ -47,6 +47,15 @@ require("formatter").setup(
         function()
           return {exe = "hindent", stdin = true}
         end
+      },
+      python = {
+        -- black
+        function()
+          return {
+            exe = "black",
+            stdin = false
+          }
+        end
       }
     }
   }

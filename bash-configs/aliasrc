@@ -8,7 +8,7 @@ alias ls='lsd' \
 	  shutdown='shutdown -h now'
 
 # alias
-alias tmux='before_tmux.sh' \
+alias tx='before_tmux.sh' \
       jap='exec fcitx5 &'
 
 # alias para ubicaciones
@@ -18,14 +18,15 @@ alias conf='cd ~/Documents/configs/' \
       pgoa='cd ~/proyectos/go/aula_virtual/' \
       ppy='cd ~/proyectos/python/' \
       pru='cd ~/proyectos/rust/' \
-      pjs='cd ~/proyectos/node/'
+      pjs='cd ~/proyectos/node/' \
+      phs='cd ~/proyectos/haskell/'
 
 
 # alias open configs
-alias neoconf='nvim ~/Documents/configs/nvim/init.vim' \
+alias neoconf='cd ~/Documents/configs/nvim/ && nvim init.vim' \
 	  nconf='cd ~/Documents/configs/nvim/lua-configs/ && nvim init.lua' \
-      bashconf='nvim ~/Documents/configs/bash-configs/bashrc' \
-      profileconf='nvim ~/Documents/configs/bash-configs/bash_profile' \
-      aliasconf='nvim ~/Documents/configs/bash-configs/aliasrc' \
-      aweconf='nvim ~/Documents/configs/awesome/rc.lua' \
-      alaconf='nvim ~/Documents/configs/alacritty/alacritty.yml'
+      bashconf='cd ~/Documents/configs/bash-configs/ && nvim bashrc' \
+      profileconf='cd ~/Documents/configs/bash-configs/ && nvim bash_profile' \
+      aliasconf='cd ~/Documents/configs/bash-configs/ && nvim aliasrc' \
+      aweconf='cd ~/Documents/configs/awesome/ && nvim rc.lua' \
+      alaconf='cd ~/Documents/configs/alacritty/ && nvim alacritty.yml'

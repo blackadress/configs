@@ -61,7 +61,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- theme.font = 'Source Code Pro 10'
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -79,7 +79,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.spiral,
-   awful.layout.suit.tile.top
+  awful.layout.suit.tile.top
 }
 -- }}}
 
@@ -336,8 +336,18 @@ root.buttons(
 globalkeys =
   gears.table.join(
   awful.key({modkey}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
-  awful.key({modkey, "Control"}, "h", awful.tag.viewprev, {description = "view previous", group = "tag"}),
-  awful.key({modkey, "Control"}, "l", awful.tag.viewnext, {description = "view next", group = "tag"}),
+  awful.key(
+    {modkey, "Control"},
+    "h",
+    awful.tag.viewprev,
+    {description = "view previous", group = "tag"}
+  ),
+  awful.key(
+    {modkey, "Control"},
+    "l",
+    awful.tag.viewnext,
+    {description = "view next", group = "tag"}
+  ),
   awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
   -- media buttons
   awful.key(
@@ -429,7 +439,12 @@ globalkeys =
     end,
     {description = "focus the previous screen", group = "screen"}
   ),
-  awful.key({modkey}, "u", awful.client.urgent.jumpto, {description = "jump to urgent client", group = "client"}),
+  awful.key(
+    {modkey},
+    "u",
+    awful.client.urgent.jumpto,
+    {description = "jump to urgent client", group = "client"}
+  ),
   awful.key(
     {modkey},
     "Tab",
@@ -450,7 +465,12 @@ globalkeys =
     end,
     {description = "open a terminal", group = "launcher"}
   ),
-  awful.key({modkey, "Control"}, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
+  awful.key(
+    {modkey, "Control"},
+    "r",
+    awesome.restart,
+    {description = "reload awesome", group = "awesome"}
+  ),
   awful.key({modkey, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
   awful.key(
     {modkey},
@@ -747,11 +767,6 @@ root.keys(globalkeys)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-  -- {
-  --   -- without this firefox was always 'floating'
-  --   rule = {class = "firefox"},
-  --   properties = {opacity = 1, maximized = false, floating = false}
-  -- },
   -- All clients will match this rule.
   {
     rule = {},
