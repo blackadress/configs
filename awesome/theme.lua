@@ -9,8 +9,8 @@ local theme = {}
 
 theme.font = "Source Code Pro 10"
 
-theme.bg_normal = "#073642"
-theme.bg_focus = "#00b5ff"
+theme.bg_normal = "#002b36"
+theme.bg_focus = "#004c8c"
 theme.bg_urgent = "#e90752"
 theme.bg_minimize = "#444444"
 theme.bg_systray = theme.bg_normal
@@ -23,7 +23,7 @@ theme.fg_minimize = "#ffffff"
 theme.useless_gap = dpi(0)
 theme.border_width = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus = "#535d6c"
+theme.border_focus = "#073642"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
