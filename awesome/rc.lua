@@ -79,7 +79,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.spiral,
-  awful.layout.suit.tile.top
+  awful.layout.suit.tile.bottom
 }
 -- }}}
 
