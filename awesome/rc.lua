@@ -769,6 +769,10 @@ root.keys(globalkeys)
 awful.rules.rules = {
   -- All clients will match this rule.
   {
+    rule = {class = "firefox"},
+    properties = { maximized = false }
+  },
+  {
     rule = {},
     properties = {
       border_width = beautiful.border_width,
