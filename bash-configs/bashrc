@@ -3,6 +3,7 @@
 #
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
+export EDITOR="nvim"
 [[ $- != *i* ]] && return
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
