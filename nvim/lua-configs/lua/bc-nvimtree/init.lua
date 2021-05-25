@@ -1,6 +1,6 @@
 -- NVIM-TREE
 local glob = vim.g
-glob.nvim_tree_width = 40 -- "30 by default
+glob.nvim_tree_width = 25 -- "30 by default
 glob.nvim_tree_ignore = {".git", "node_modules", ".cache"} -- "empty by default
 glob.nvim_tree_gitignore = 0 -- "0 by default
 glob.nvim_tree_auto_open = 1 -- "0 by default, opens the tree when typing `vim $DIR` or `vim`

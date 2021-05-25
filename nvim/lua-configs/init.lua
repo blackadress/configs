@@ -11,6 +11,7 @@ require("bc-compe")
 require("bc-nvimtree")
 require("bc-telescope")
 require("bc-treesitter")
+require("bc-pairs")
 require("bc-vimwiki")
 
 require("lsp-config")

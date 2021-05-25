@@ -78,9 +78,9 @@ lua require'colorizer'.setup()
 set background=dark
 colorscheme flattened_dark
 " Transparencia de nvim
-"hi Normal guibg=NONE ctermbg=NONE
-"hi LineNr guibg=NONE ctermbg=NONE
-"hi NonText ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+" hi NonText ctermbg=NONE
 
 " configuraciones de encoding
 set encoding=UTF-8

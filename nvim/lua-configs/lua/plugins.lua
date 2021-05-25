@@ -27,6 +27,7 @@ return require("packer").startup(
     use "neovim/nvim-lspconfig"
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
+    use "windwp/nvim-autopairs"
 
     use {
       "glepnir/galaxyline.nvim",
@@ -54,6 +55,7 @@ return require("packer").startup(
     -- Soporte sintactico de lenguaje
     -- todavia no estoy usando el LSP nativo de neovim
     -- falta configurar
+    use "fatih/vim-go"
     use "HerringtonDarkholme/yats.vim"
     use "MaxMEllon/vim-jsx-pretty"
     use "yuezk/vim-js"
