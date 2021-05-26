@@ -351,12 +351,28 @@ globalkeys =
   awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
   -- media buttons
   awful.key(
+    {modkey},
+    "=",
+    function()
+      os.execute("pactl set-sink-volume 0 +3%")
+    end,
+    {description = "increase volume with =", group = "media keys"}
+  ),
+  awful.key(
+    {modkey},
+    "-",
+    function()
+      os.execute("pactl set-sink-volume 0 -3%")
+    end,
+    {description = "decrease volume with -", group = "media keys"}
+  ),
+  awful.key(
     {},
     "XF86AudioRaiseVolume",
     function()
       os.execute("pactl set-sink-volume 0 +5%")
     end,
-    {description = "raise volume", group = "media keys"}
+    {description = "increase volume", group = "media keys"}
   ),
   awful.key(
     {},
@@ -364,15 +380,7 @@ globalkeys =
     function()
       os.execute("pactl set-sink-volume 0 -5%")
     end,
-    {description = "lower volume", group = "media keys"}
-  ),
-  awful.key(
-    {},
-    "XF86MonBrightnessDown",
-    function()
-      awful.util.spawn("xbacklight -dec 15")
-    end,
-    {description = "lower brightness", group = "media keys"}
+    {description = "decrease volume", group = "media keys"}
   ),
   awful.key(
     {},
@@ -381,6 +389,14 @@ globalkeys =
       awful.util.spawn("xbacklight -inc 15")
     end,
     {description = "raise brightness", group = "media keys"}
+  ),
+  awful.key(
+    {},
+    "XF86MonBrightnessDown",
+    function()
+      awful.util.spawn("xbacklight -dec 15")
+    end,
+    {description = "decrease brightness", group = "media keys"}
   ),
   awful.key(
     {modkey},
@@ -398,14 +414,14 @@ globalkeys =
     end,
     {description = "focus previous by index", group = "client"}
   ),
-  awful.key(
-    {modkey},
-    "w",
-    function()
-      mymainmenu:show()
-    end,
-    {description = "show main menu", group = "awesome"}
-  ),
+  -- awful.key(
+  --   {modkey},
+  --   "w",
+  --   function()
+  --     mymainmenu:show()
+  --   end,
+  --   {description = "show main menu", group = "awesome"}
+  -- ),
   -- Layout manipulation
   awful.key(
     {modkey, "Shift"},
@@ -506,7 +522,7 @@ globalkeys =
   ),
   awful.key(
     {modkey, "Control"},
-    "h",
+    "p",
     function()
       awful.tag.incncol(1, nil, true)
     end,
@@ -514,7 +530,7 @@ globalkeys =
   ),
   awful.key(
     {modkey, "Control"},
-    "l",
+    "0",
     function()
       awful.tag.incncol(-1, nil, true)
     end,
@@ -556,6 +572,28 @@ globalkeys =
       awful.util.spawn("dmenu_run")
     end,
     {description = "run dmenu", group = "launcher"}
+  ),
+  awful.key(
+    {modkey},
+    "w",
+    function()
+      -- awful.util.spawn("nitrogen --set-zoom-fill --random /path/to/wp/")
+      awful.util.spawn(
+        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+      )
+    end,
+    {description = "change wallpaper randomly", group = "launcher"}
+  ),
+  awful.key(
+    {modkey},
+    "`",
+    function()
+      -- awful.util.spawn("nitrogen --set-zoom-fill --random /path/to/wp/")
+      awful.util.spawn(
+        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+      )
+    end,
+    {description = "change wallpaper randomly", group = "launcher"}
   ),
   awful.key(
     {modkey},
@@ -770,7 +808,11 @@ awful.rules.rules = {
   -- All clients will match this rule.
   {
     rule = {class = "firefox"},
-    properties = { maximized = false }
+    properties = {maximized = false}
+  },
+  {
+    rule = {class = "brave"},
+    properties = {maximized = false}
   },
   {
     rule = {},
@@ -833,7 +875,9 @@ client.connect_signal(
   function(c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then
+      awful.client.setslave(c)
+    end
 
     if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then
       -- Prevent clients from being unreachable after screen count changes.
@@ -870,4 +914,7 @@ beautiful.useless_gap = 3
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("key_remap")
-awful.spawn.with_shell("nitrogen --restore")
+-- awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell(
+  "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+)

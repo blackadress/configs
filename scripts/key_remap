@@ -1,0 +1,5 @@
+#!/bin/bash
+
+setxkbmap -option "ctrl:nocaps"
+setxkbmap -option "shift:both_capslock"
+xset r rate 310 50
