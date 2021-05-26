@@ -577,10 +577,10 @@ globalkeys =
     {modkey},
     "w",
     function()
-      -- awful.util.spawn("nitrogen --set-zoom-fill --random /path/to/wp/")
-      awful.util.spawn(
-        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-      )
+      awful.util.spawn("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
+      -- awful.util.spawn(
+      --   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+      -- )
     end,
     {description = "change wallpaper randomly", group = "launcher"}
   ),
@@ -811,6 +811,18 @@ awful.rules.rules = {
     properties = {maximized = false}
   },
   {
+    rule = {class = "discord"},
+    properties = {
+      maximized = false,
+      floating = true,
+      tag = "5"
+    }
+  },
+  {
+    rule = {class = "vlc"},
+    properties = {tag = "6"}
+  },
+  {
     rule = {class = "brave"},
     properties = {maximized = false}
   },
@@ -914,7 +926,7 @@ beautiful.useless_gap = 3
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("key_remap")
--- awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell(
-  "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-)
+awful.spawn.with_shell("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
+-- awful.spawn.with_shell(
+--   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+-- )
