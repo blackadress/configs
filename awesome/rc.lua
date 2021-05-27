@@ -8,6 +8,9 @@ local awful = require("awful")
 require("awful.autofocus")
 -- git clone https://github.com/Elv13/collision
 require("collision")()
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+-- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -306,7 +309,16 @@ awful.screen.connect_for_each_screen(
       {
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
+        -- net_speed_widget(),
         mykeyboardlayout,
+        volume_widget({widget_type = "arc"}),
+        brightness_widget(
+          {
+            type = "arc",
+            program = "xbacklight",
+            step = 6
+          }
+        ),
         wibox.widget.systray(),
         mytextclock,
         s.mylayoutbox
@@ -370,7 +382,8 @@ globalkeys =
     {},
     "XF86AudioRaiseVolume",
     function()
-      os.execute("pactl set-sink-volume 0 +5%")
+      volume_widget:inc()
+      -- os.execute("pactl set-sink-volume 0 +5%")
     end,
     {description = "increase volume", group = "media keys"}
   ),
@@ -378,7 +391,8 @@ globalkeys =
     {},
     "XF86AudioLowerVolume",
     function()
-      os.execute("pactl set-sink-volume 0 -5%")
+      volume_widget:dec()
+      -- os.execute("pactl set-sink-volume 0 -5%")
     end,
     {description = "decrease volume", group = "media keys"}
   ),
@@ -386,7 +400,8 @@ globalkeys =
     {},
     "XF86MonBrightnessUp",
     function()
-      awful.util.spawn("xbacklight -inc 15")
+      brightness_widget:inc()
+      -- awful.util.spawn("xbacklight -inc 15")
     end,
     {description = "raise brightness", group = "media keys"}
   ),
@@ -394,7 +409,8 @@ globalkeys =
     {},
     "XF86MonBrightnessDown",
     function()
-      awful.util.spawn("xbacklight -dec 15")
+      brightness_widget:dec()
+      -- awful.util.spawn("xbacklight -dec 15")
     end,
     {description = "decrease brightness", group = "media keys"}
   ),
@@ -586,12 +602,10 @@ globalkeys =
   ),
   awful.key(
     {modkey},
-    "`",
+    "b",
     function()
       -- awful.util.spawn("nitrogen --set-zoom-fill --random /path/to/wp/")
-      awful.util.spawn(
-        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-      )
+      awful.util.spawn("firefox")
     end,
     {description = "change wallpaper randomly", group = "launcher"}
   ),

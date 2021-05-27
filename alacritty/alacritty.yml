@@ -29,6 +29,7 @@ scrolling:
   multiplier: 3
 
 font:
+  # 🌙
   normal:
     family: "Source Code Pro"
     style: Regular
