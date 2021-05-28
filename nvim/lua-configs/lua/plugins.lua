@@ -20,7 +20,7 @@ return require("packer").startup(
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
     }
     use {"nvim-telescope/telescope-fzy-native.nvim"}
-    -- falta configurar
+    -- falta configurar*
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "mhartington/formatter.nvim"
 
@@ -55,7 +55,7 @@ return require("packer").startup(
     -- Soporte sintactico de lenguaje
     -- todavia no estoy usando el LSP nativo de neovim
     -- falta configurar
-    use "fatih/vim-go"
+    -- use "fatih/vim-go"
     use "HerringtonDarkholme/yats.vim"
     use "MaxMEllon/vim-jsx-pretty"
     use "yuezk/vim-js"

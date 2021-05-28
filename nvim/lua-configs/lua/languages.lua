@@ -20,15 +20,8 @@ vim.cmd("autocmd FileType haskell setlocal tabstop=2 shiftwidth=2 expandtab")
 -- GO
 vim.cmd("autocmd FileType go setlocal tabstop=4 shiftwidth=4")
 -- VIM-GO
-vim.cmd('let g:go_highlight_build_constraints = 1')
-vim.cmd('let g:go_highlight_extra_types = 1')
-vim.cmd('let g:go_highlight_fields = 1')
-vim.cmd('let g:go_highlight_functions = 1')
-vim.cmd('let g:go_highlight_methods = 1')
-vim.cmd('let g:go_highlight_operators = 1')
-vim.cmd('let g:go_highlight_structs = 1')
-vim.cmd('let g:go_highlight_types = 1')
 vim.cmd('let g:go_auto_sameids = 1')
+vim.cmd('let g:go_updatetime = 300')
 
 -- RUST
 vim.cmd("autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab")
