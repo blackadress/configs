@@ -26,3 +26,40 @@ local servers = {"rust_analyzer", "tsserver", "gopls", "pyright"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {on_attach = on_attach}
 end
+
+-- nvim_lsp.sumneko_lua.setup{}
+require "lspconfig".sumneko_lua.setup {
+  cmd = {"/usr/bin/lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
+  settings = {
+    settings = {
+      Lua = {
+        -- runtime = {
+        --   version = "Lua 5.3",
+        --   path = {
+        --     "/usr/share/lua/5.3/lgi/init.lua"
+        --   }
+        -- },
+        -- workspace = {
+        --   library = {
+        --     [vim.fn.expand "~/.luarocks/share/lua/5.3"] = true,
+        --     ["/usr/share/lua/5.3"] = true
+        --   }
+        -- }
+
+        runtime = {
+          version = "LuaJIT",
+          path = vim.split(package.path, ";")
+        },
+        diagnostics = {
+          globals = {"vim"}
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+          }
+        }
+      }
+    }
+  }
+}

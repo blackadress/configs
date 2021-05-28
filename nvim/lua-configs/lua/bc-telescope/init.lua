@@ -2,7 +2,8 @@
 local actions = require("telescope.actions")
 require("telescope").setup {
   defaults = {
-    file_sorter = require "telescope.sorters".get_fuzzy_file,
+    -- file_sorter = require("telescope.sorters").get_fuzzy_file,
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
     extensions = {
       fzy_native = {
         override_generic_sorter = false,
