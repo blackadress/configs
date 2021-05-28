@@ -366,7 +366,8 @@ globalkeys =
     {modkey},
     "=",
     function()
-      os.execute("pactl set-sink-volume 0 +3%")
+      volume_widget:inc_small()
+      -- os.execute("pactl set-sink-volume 0 +3%")
     end,
     {description = "increase volume with =", group = "media keys"}
   ),
@@ -374,7 +375,8 @@ globalkeys =
     {modkey},
     "-",
     function()
-      os.execute("pactl set-sink-volume 0 -3%")
+      volume_widget:dec_small()
+      -- os.execute("pactl set-sink-volume 0 -3%")
     end,
     {description = "decrease volume with -", group = "media keys"}
   ),
@@ -395,6 +397,30 @@ globalkeys =
       -- os.execute("pactl set-sink-volume 0 -5%")
     end,
     {description = "decrease volume", group = "media keys"}
+  ),
+  awful.key(
+    {modkey},
+    "Home",
+    function()
+      os.execute("playerctl play-pause")
+    end,
+    {description = "pause/play media", group = "media keys"}
+  ),
+  awful.key(
+    {modkey},
+    "Next",
+    function()
+      os.execute("playerctl next")
+    end,
+    {description = "next track on media", group = "media keys"}
+  ),
+  awful.key(
+    {modkey},
+    "Prior",
+    function()
+      os.execute("playerctl previous")
+    end,
+    {description = "previous track on media", group = "media keys"}
   ),
   awful.key(
     {},
@@ -593,10 +619,10 @@ globalkeys =
     {modkey},
     "w",
     function()
-      awful.util.spawn("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
-      -- awful.util.spawn(
-      --   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-      -- )
+      -- awful.util.spawn("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
+      awful.util.spawn(
+        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+      )
     end,
     {description = "change wallpaper randomly", group = "launcher"}
   ),
@@ -815,6 +841,14 @@ clientbuttons =
 -- Set keys
 root.keys(globalkeys)
 -- }}}
+client.connect_signal("manage", function (c)
+  if c.class == nil then c.minimized = true
+    c:connect_signal("property::class", function ()
+      c.minimized = false
+      awful.rules.apply(c)
+    end)
+  end
+end)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -830,6 +864,14 @@ awful.rules.rules = {
       maximized = false,
       floating = true,
       tag = "5"
+    }
+  },
+  {
+    rule = {class = "Spotify"},
+    properties = {
+      maximized = false,
+      floating = false,
+      tag = "4"
     }
   },
   {
@@ -940,7 +982,7 @@ beautiful.useless_gap = 3
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("key_remap")
-awful.spawn.with_shell("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
--- awful.spawn.with_shell(
---   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
--- )
+-- awful.spawn.with_shell("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
+awful.spawn.with_shell(
+  "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
+)

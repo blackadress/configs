@@ -25,6 +25,7 @@ return require("packer").startup(
     use "mhartington/formatter.nvim"
 
     use "neovim/nvim-lspconfig"
+    use "kabouzeid/nvim-lspinstall"
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
     use "windwp/nvim-autopairs"
