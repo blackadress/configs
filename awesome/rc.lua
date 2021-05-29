@@ -877,8 +877,8 @@ awful.rules.rules = {
     rule = {class = "Anki"},
     properties = {
       maximized = false,
-      floating = false,
-      tag = "6"
+      floating = true,
+      -- tag = "6"
       -- switchtotag = true
     }
   },
