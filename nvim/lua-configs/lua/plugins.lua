@@ -40,7 +40,8 @@ return require("packer").startup(
     use "vimwiki/vimwiki"
 
     --color themes
-    use "romainl/flattened"
+    use "knowledgejunkie/vim-colors-flattened"
+    use "kadekillary/subtle_solo"
     use "challenger-deep-theme/vim"
     use "liuchengxu/space-vim-dark"
     use "sainnhe/edge"

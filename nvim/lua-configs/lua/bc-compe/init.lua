@@ -1,5 +1,5 @@
 -- nvim-compe | completitions on nvim
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menuone,noselect,noinsert"
 require "compe".setup {
   enabled = true,
   autocomplete = true,
@@ -62,7 +62,26 @@ _G.s_tab_complete = function()
   end
 end
 
+_G.enter_confirm = function()
+  if vim.fn.pumvisible() == 1 then
+    return vim.fn["compe#confirm"]('<CR>')
+  else
+    return t ""
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua.enter_confirm()", {expr = true})
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits"
+  }
+}

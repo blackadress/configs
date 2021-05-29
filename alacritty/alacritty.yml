@@ -178,5 +178,5 @@ alt_send_esc: true
 key_bindings:
   # - { key: Space,        mods: Control, action: ClearLogNotice                   }
   - { key: P, mods: Control|Shift, chars: "fzf \x0D" }
-  - { key: N,              mods: Control,                    action: SpawnNewInstance      }
+  - { key: N,              mods: Control|Shift,                    action: SpawnNewInstance      }
   - { key: N, mods: Alt, command: { program: "alacritty", args: [] } }

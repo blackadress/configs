@@ -17,4 +17,4 @@ require("bc-vimwiki")
 require("lsp-config")
 require("languages")
 
-vim.cmd("colorscheme flattened_dark")
+vim.cmd("colorscheme subtle_dark")
