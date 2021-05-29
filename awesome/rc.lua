@@ -841,14 +841,21 @@ clientbuttons =
 -- Set keys
 root.keys(globalkeys)
 -- }}}
-client.connect_signal("manage", function (c)
-  if c.class == nil then c.minimized = true
-    c:connect_signal("property::class", function ()
-      c.minimized = false
-      awful.rules.apply(c)
-    end)
+client.connect_signal(
+  "manage",
+  function(c)
+    if c.class == nil then
+      c.minimized = true
+      c:connect_signal(
+        "property::class",
+        function()
+          c.minimized = false
+          awful.rules.apply(c)
+        end
+      )
+    end
   end
-end)
+)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -864,6 +871,15 @@ awful.rules.rules = {
       maximized = false,
       floating = true,
       tag = "5"
+    }
+  },
+  {
+    rule = {class = "Anki"},
+    properties = {
+      maximized = false,
+      floating = false,
+      tag = "6"
+      -- switchtotag = true
     }
   },
   {
