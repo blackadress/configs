@@ -61,7 +61,7 @@ return require("packer").startup(
     use "HerringtonDarkholme/yats.vim"
     use "MaxMEllon/vim-jsx-pretty"
     use "yuezk/vim-js"
-    use {"numirias/semshi", run = ":UpdateRemote  useins"}
+    -- use {"numirias/semshi", run = ":UpdateRemote  useins"}
     use "rust-lang/rust.vim"
     use "neovimhaskell/haskell-vim"
   end
