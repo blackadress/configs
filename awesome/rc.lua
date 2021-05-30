@@ -630,7 +630,6 @@ globalkeys =
     {modkey},
     "b",
     function()
-      -- awful.util.spawn("nitrogen --set-zoom-fill --random /path/to/wp/")
       awful.util.spawn("firefox")
     end,
     {description = "change wallpaper randomly", group = "launcher"}
@@ -877,7 +876,7 @@ awful.rules.rules = {
     rule = {class = "Anki"},
     properties = {
       maximized = false,
-      floating = true,
+      floating = true
       -- tag = "6"
       -- switchtotag = true
     }
