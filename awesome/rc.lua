@@ -9,6 +9,7 @@ require("awful.autofocus")
 -- git clone https://github.com/Elv13/collision
 require("collision")()
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local keyboard_layout = require("keyboard_layout")
 -- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 -- Widget and layout library
@@ -129,7 +130,35 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
+local kbdcfg = keyboard_layout.kbdcfg()
+
+kbdcfg.add_primary_layout("English", "us", "us")
+kbdcfg.add_primary_layout("Spanish", "es", "es")
+-- kbdcfg.add_primary_layout("English",  "us", "fcitx-keyboard-us")
+-- kbdcfg.add_primary_layout("Spanish",  "es", "fcitx-keyboard-es")
+-- kbdcfg.add_primary_layout("Japanese", "ja", "mozc")
+
+kbdcfg.bind()
+
+kbdcfg.widget:buttons(
+  awful.util.table.join(
+    awful.button(
+      {},
+      1,
+      function()
+        kbdcfg.switch_next()
+      end
+    ),
+    awful.button(
+      {},
+      3,
+      function()
+        kbdcfg.menu:toggle()
+      end
+    )
+  )
+)
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -310,7 +339,7 @@ awful.screen.connect_for_each_screen(
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
         -- net_speed_widget(),
-        mykeyboardlayout,
+        kbdcfg,
         volume_widget({widget_type = "arc"}),
         brightness_widget(
           {
@@ -361,6 +390,55 @@ globalkeys =
     {description = "view next", group = "tag"}
   ),
   awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
+  -- Ctrl + F1, F2, F3, F4 changes to tag
+  awful.key(
+    {"Control"},
+    "F1",
+    function()
+      local screen = awful.screen.focused()
+      local tag = screen.tags[1]
+      if tag then
+        tag:view_only()
+      end
+    end,
+    {description = "view tag #1"}
+  ),
+  awful.key(
+    {"Control"},
+    "F2",
+    function()
+      local screen = awful.screen.focused()
+      local tag = screen.tags[2]
+      if tag then
+        tag:view_only()
+      end
+    end,
+    {description = "view tag #2"}
+  ),
+  awful.key(
+    {"Control"},
+    "F3",
+    function()
+      local screen = awful.screen.focused()
+      local tag = screen.tags[3]
+      if tag then
+        tag:view_only()
+      end
+    end,
+    {description = "view tag #3"}
+  ),
+  awful.key(
+    {"Control"},
+    "F4",
+    function()
+      local screen = awful.screen.focused()
+      local tag = screen.tags[4]
+      if tag then
+        tag:view_only()
+      end
+    end,
+    {description = "view tag #4"}
+  ),
   -- media buttons
   awful.key(
     {modkey},
@@ -439,6 +517,16 @@ globalkeys =
       -- awful.util.spawn("xbacklight -dec 15")
     end,
     {description = "decrease brightness", group = "media keys"}
+  ),
+  awful.key(
+    {modkey, "Mod1"},
+    "l",
+    function()
+      -- Shift-Alt to change keyboard layout
+      kbdcfg.switch_next()
+      -- awful.util.spawn("xbacklight -dec 15")
+    end,
+    {description = "change keyboard layout", group = "media keys"}
   ),
   awful.key(
     {modkey},
