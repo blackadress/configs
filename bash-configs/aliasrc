@@ -5,7 +5,8 @@ alias ls='lsd' \
       reds='redshift -P -O 3500 -b .7' \
       upd='sudo pacman -Syu' \
       res='du -h --max-depth=1' \
-	  shutdown='shutdown -h now'
+	  shutdown='systemctl poweroff'
+	  # shutdown='shutdown -h now'
 
 # alias
 alias tx='before_tmux.sh' \
