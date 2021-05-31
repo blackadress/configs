@@ -14,6 +14,7 @@ alias cp="cp -i"                        # confirm before overwriting something
 alias df='df -h'                        # human-readable sizes
 alias free='free -m'                    # show sizes in MB
 set -o vi 								# VI navigation enabled
+bind -m vi-insert "\C-l":clear-screen
 
 shopt -s checkwinsize
 
