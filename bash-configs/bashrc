@@ -10,9 +10,10 @@ export EDITOR="nvim"
 
 use_color=true
 
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+alias cp="cp -i"                        # confirm before overwriting something
+alias df='df -h'                        # human-readable sizes
+alias free='free -m'                    # show sizes in MB
+set -o vi 								# VI navigation enabled
 
 shopt -s checkwinsize
 
