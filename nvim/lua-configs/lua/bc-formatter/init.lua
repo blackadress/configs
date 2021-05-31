@@ -26,7 +26,7 @@ require("formatter").setup(
       go = {
         -- gofmt
         function()
-          return {exe = "gofmt", stdin = true}
+          return {exe = "goimports", stdin = true}
         end
       },
       lua = {

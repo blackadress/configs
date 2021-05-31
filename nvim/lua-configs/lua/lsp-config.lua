@@ -19,17 +19,22 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
   buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("n", "<c-n>", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", opts)
 
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  buf_set_keymap(
+    "n",
+    "<leader>wl",
+    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+    opts
+  )
+  buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 
 -- local servers = {"rust_analyzer", "tsserver", "gopls", "pyright"}
@@ -43,32 +48,32 @@ end
 --   settings = {
 --     settings = {
 --       Lua = {
-        -- runtime = {
-        --   version = "Lua 5.3",
-        --   path = {
-        --     "/usr/share/lua/5.3/lgi/init.lua"
-        --   }
-        -- },
-        -- workleader = {
-        --   library = {
-        --     [vim.fn.expand "~/.luarocks/share/lua/5.3"] = true,
-        --     ["/usr/share/lua/5.3"] = true
-        --   }
-        -- }
+-- runtime = {
+--   version = "Lua 5.3",
+--   path = {
+--     "/usr/share/lua/5.3/lgi/init.lua"
+--   }
+-- },
+-- workleader = {
+--   library = {
+--     [vim.fn.expand "~/.luarocks/share/lua/5.3"] = true,
+--     ["/usr/share/lua/5.3"] = true
+--   }
+-- }
 
-        -- runtime = {
-        --   version = "LuaJIT",
-        --   path = vim.split(package.path, ";")
-        -- },
-        -- diagnostics = {
-        --   globals = {"vim"}
-        -- },
-        -- workleader = {
-        --   library = {
-        --     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-        --     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-        --   }
-        -- }
+-- runtime = {
+--   version = "LuaJIT",
+--   path = vim.split(package.path, ";")
+-- },
+-- diagnostics = {
+--   globals = {"vim"}
+-- },
+-- workleader = {
+--   library = {
+--     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+--   }
+-- }
 --       }
 --     }
 --   }
@@ -79,20 +84,20 @@ local lua_settings = {
   Lua = {
     runtime = {
       -- LuaJIT in the case of Neovim
-      version = 'LuaJIT',
-      path = vim.split(package.path, ';'),
+      version = "LuaJIT",
+      path = vim.split(package.path, ";")
     },
     diagnostics = {
       -- Get the language server to recognize the `vim` global
-      globals = {'vim'},
+      globals = {"vim"}
     },
     workleader = {
       -- Make the server aware of Neovim runtime files
       library = {
-        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-      },
-    },
+        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+      }
+    }
   }
 }
 
@@ -104,16 +109,16 @@ local function make_config()
     -- enable snippet support
     capabilities = capabilities,
     -- map buffer local keybindings when the language server attaches
-    on_attach = on_attach,
+    on_attach = on_attach
   }
 end
 
 -- lsp-install
 local function setup_servers()
-  require'lspinstall'.setup()
+  require "lspinstall".setup()
 
   -- get all installed servers
-  local servers = require'lspinstall'.installed_servers()
+  local servers = require "lspinstall".installed_servers()
   -- ... and add manually installed servers
   table.insert(servers, "clangd")
   table.insert(servers, "sourcekit")
@@ -126,20 +131,20 @@ local function setup_servers()
       config.settings = lua_settings
     end
     if server == "sourcekit" then
-      config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
+      config.filetypes = {"swift", "objective-c", "objective-cpp"} -- we don't want c and cpp!
     end
     if server == "clangd" then
-      config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
+      config.filetypes = {"c", "cpp"} -- we don't want objective-c and objective-cpp!
     end
 
-    require'lspconfig'[server].setup(config)
+    require "lspconfig"[server].setup(config)
   end
 end
 
 setup_servers()
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
+require "lspinstall".post_install_hook = function()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
