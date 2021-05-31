@@ -58,90 +58,82 @@ debug.render_timer: false
 debug.persistent_logging: false
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night Bright)
-#colors:
-  #primary:
-    #background: '#080d08'
-    #foreground: '#25bebe'
-
-  #text: '#000000'
-
-  ## Normal colors
-  #normal:
-    #black:   '#000000'
-    #red:     '#d54e53'
-    #green:   '#b9ca4a'
-    #yellow:  '#e6c547'
-    #blue:    '#7aa6da'
-    #magenta: '#c397d8'
-    #cyan:    '#70c0ba'
-    #white:   '#eaeaea'
-
-  ## Bright colors
-  #bright:
-    #black:   '#666666'
-    #red:     '#ff3334'
-    #green:   '#9ec400'
-    #yellow:  '#e7c547'
-    #blue:    '#7aa6da'
-    #magenta: '#b77ee0'
-    #cyan:    '#54ced6'
-    #white:   '#ffffff'
-
-  #dim:
-    #black:   '#000000'
-    #red:     '#8c3336'
-    #green:   '#7a8530'
-    #yellow:  '#97822e'
-    #blue:    '#506d8f'
-    #magenta: '#80638e'
-    #cyan:    '#497e7a'
-    #white:   '#9a9a9a'
-
  #Colors (Solarized Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#002b36' # base03
+#     foreground: '#839496' # base0
+
+#   # Cursor colors
+#   cursor:
+#     text:   '#002b36' # base03
+#     cursor: '#839496' # base0
+
+#   # Normal colors
+#   normal:
+#     black:   '#073642' # base02
+#     red:     '#dc322f' # red
+#     green:   '#859900' # green
+#     yellow:  '#b58900' # yellow
+#     blue:    '#268bd2' # blue
+#     magenta: '#d33682' # magenta
+#     cyan:    '#2aa198' # cyan
+#     white:   '#eee8d5' # base2
+
+#   # Bright colors
+#   bright:
+#     black:   '#002b36' # base03
+#     red:     '#cb4b16' # orange
+#     green:   '#2da600' # base01
+#     yellow:  '#cd9e23'
+#     blue:    '#00b5ff' # base0
+#     magenta: '#e90752' # violet
+#     cyan:    '#00a5ba' # base1
+#     white:   '#fdf6e3' # base3
+
+#   # Dim colors
+#   dim:
+#     black:   '#000000'
+#     red:     '#8c3336'
+#     green:   '#00aebf'
+#     yellow:  '#899800' # base00
+#     blue:    '#004c8c'
+#     magenta: '#dd97b1'
+#     cyan:    '#96b1ad'
+#     white:   '#9a9a9a'
+# TokyoNight Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: '#002b36' # base03
-    foreground: '#839496' # base0
-
-  # Cursor colors
-  cursor:
-    text:   '#002b36' # base03
-    cursor: '#839496' # base0
+    background: '0x24283b'
+    foreground: '0xc0caf5'
 
   # Normal colors
   normal:
-    black:   '#073642' # base02
-    red:     '#dc322f' # red
-    green:   '#859900' # green
-    yellow:  '#b58900' # yellow
-    blue:    '#268bd2' # blue
-    magenta: '#d33682' # magenta
-    cyan:    '#2aa198' # cyan
-    white:   '#eee8d5' # base2
+    black:   '0x1D202F'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
   # Bright colors
   bright:
-    black:   '#002b36' # base03
-    red:     '#cb4b16' # orange
-    green:   '#2da600' # base01
-    yellow:  '#cd9e23'
-    blue:    '#00b5ff' # base0
-    magenta: '#e90752' # violet
-    cyan:    '#00a5ba' # base1
-    white:   '#fdf6e3' # base3
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
 
-  # Dim colors
-  dim:
-    black:   '#000000'
-    red:     '#8c3336'
-    green:   '#00aebf'
-    yellow:  '#899800' # base00
-    blue:    '#004c8c'
-    magenta: '#dd97b1'
-    cyan:    '#96b1ad'
-    white:   '#9a9a9a'
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 
 bell:
   animation: EaseOutExpo
@@ -178,5 +170,6 @@ alt_send_esc: true
 key_bindings:
   # - { key: Space,        mods: Control, action: ClearLogNotice                   }
   - { key: P, mods: Control|Shift, chars: "fzf \x0D" }
-  - { key: N,              mods: Control|Shift,                    action: SpawnNewInstance      }
+  - { key: J, mods: Control, chars: "\x1b" } # Ctrl+J acts as ESC (same as neovim)
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: N, mods: Alt, command: { program: "alacritty", args: [] } }
