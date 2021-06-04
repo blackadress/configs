@@ -62,38 +62,18 @@ _G.s_tab_complete = function()
   end
 end
 
-_G.enter_confirm = function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.fn["compe#confirm"]("<CR>")
-  else
-    return t "<CR>"
-  end
-end
+keymap = vim.api.nvim_set_keymap
+keymap("i", "<CR>", "compe#confirm('<CR>')", {noremap = true, expr = true, silent = true})
+-- vim.api.nvim_set_keymap(
+--   "i",
+--   "<C-Space>",
+--   "compe#complete()",
+--   {noremap = true, expr = true, silent = true}
+-- )
 
-_G.com_confirm = function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.fn["compe#complete"]()
-  else
-    return t ""
-  end
-end
-
-vim.api.nvim_set_keymap(
-  "i",
-  "<CR>",
-  "v:lua.enter_confirm()",
-  {noremap = true, expr = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-  "i",
-  "<C-Space>",
-  "v:lua.com_confirm()",
-  {noremap = true, expr = true, silent = true}
-)
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 -- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true}) -- "s" select mode
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

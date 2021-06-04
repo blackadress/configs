@@ -30,6 +30,7 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
+    use "rafamadriz/friendly-snippets"
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
     use "windwp/nvim-autopairs"
