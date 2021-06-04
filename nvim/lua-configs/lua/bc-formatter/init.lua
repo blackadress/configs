@@ -3,18 +3,34 @@ require("formatter").setup(
   {
     logging = false,
     filetype = {
-      javascript = {
-        -- prettier
+      html = {
         function()
           return {
             exe = "prettier",
-            args = {
-              "--stdin-filepath",
-              vim.api.nvim_buf_get_name(0),
-              "--single-quote"
-            },
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
             stdin = true
           }
+        end
+      },
+      css = {
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      },
+      javascript = {
+        -- prettier
+        function()
+          return {exe = "dprint", args = {"fmt"}, stdin = false}
+        end
+      },
+      typescript = {
+        -- prettier
+        function()
+          return {exe = "dprint", args = {"fmt"}, stdin = false}
         end
       },
       rust = {
@@ -36,9 +52,6 @@ require("formatter").setup(
             exe = "luafmt",
             args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
             stdin = true
-            -- exe = "lua-format",
-            -- args = {"--indent-width", 2},
-            -- stdin = true
           }
         end
       },
@@ -51,10 +64,7 @@ require("formatter").setup(
       python = {
         -- black
         function()
-          return {
-            exe = "black",
-            stdin = false
-          }
+          return {exe = "black", stdin = false}
         end
       }
     }
@@ -62,3 +72,12 @@ require("formatter").setup(
 )
 
 vim.api.nvim_set_keymap("n", "<Leader>ff", ":Format<CR>", {noremap = true, silent = true})
+vim.api.nvim_exec(
+  [[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePre *.html,*.js,*.ts,*.rs,*.lua,*.hs,*.go,*py FormatWrite
+augroup END
+]],
+  true
+)

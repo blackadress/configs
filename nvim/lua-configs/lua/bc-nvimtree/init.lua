@@ -2,8 +2,8 @@
 local glob = vim.g
 glob.nvim_tree_width = 25 -- "30 by default
 glob.nvim_tree_ignore = {".git", "node_modules", ".cache"} -- "empty by default
-glob.nvim_tree_gitignore = 0 -- "0 by default
-glob.nvim_tree_auto_open = 1 -- "0 by default, opens the tree when typing `vim $DIR` or `vim`
+glob.nvim_tree_gitignore = 1 -- "0 by default
+glob.nvim_tree_auto_open = 0 -- "0 by default, opens the tree when typing `vim $DIR` or `vim`
 glob.nvim_tree_auto_close = 1 -- "0 by default, closes the tree when it's the last window
 glob.nvim_tree_auto_ignore_ft = {"startify", "dashboard"} -- "empty by default, don't auto open tree on specific filetypes.
 glob.nvim_tree_quit_on_open = 0 -- "0 by default, closes the tree when you open a file

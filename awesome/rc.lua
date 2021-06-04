@@ -1058,12 +1058,12 @@ client.connect_signal(
 )
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal(
-  "mouse::enter",
-  function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-  end
-)
+-- client.connect_signal(
+--   "mouse::enter",
+--   function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = false})
+--   end
+-- )
 
 client.connect_signal(
   "focus",
@@ -1081,7 +1081,7 @@ client.connect_signal(
 
 -- GAPS
 beautiful.useless_gap = 3
- beautiful.notification_icon_size = 70
+ beautiful.notification_icon_size = 80
 
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
