@@ -953,6 +953,10 @@ awful.rules.rules = {
     properties = {maximized = false}
   },
   {
+    rule = {class = "okular"},
+    properties = {maximized = false}
+  },
+  {
     rule = {class = "discord"},
     properties = {
       maximized = false,
@@ -1081,7 +1085,7 @@ client.connect_signal(
 
 -- GAPS
 beautiful.useless_gap = 3
- beautiful.notification_icon_size = 80
+beautiful.notification_icon_size = 80
 
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
