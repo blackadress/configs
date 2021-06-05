@@ -1,9 +1,0 @@
-#! /bin/bash
-# xdotool search --onlyvisible --classname AlacrittyFuzzy windowunmap \
-#   || xdotool search --classname AlacrittyFuzzy windowmap \
-#   || alacritty --class AlacrittyFuzzy -e sh -c 'compgen -c | sort -u | fzf | sh'
-
-	# -o position.x=1020 -o position.y=500 \
-alacritty -o window.dimensions.columns=60 -o window.dimensions.lines=20 \
-	-o background_opacity=1.0 -o window.padding.x=25 -o window.padding.y=30\
-	--class AlacrittyFuzzy,AlacrittyFuzzy -e './launcher'

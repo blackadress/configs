@@ -1,0 +1,11 @@
+#! /bin/bash
+desktop_file() {
+	fd . --extension desktop '/usr/share/applications' 2>/dev/null \
+	&& fd . --extension desktop '/usr/local/share/applications' 2>/dev/null \
+	&& fd . --extension desktop '$HOME/.local/share/applications' 2>/dev/null
+}
+
+selected="$(desktop_file | sed 's/.desktop//g' | sort | fzf -i --multi --reverse --delimiter / --with-nth -1)"
+[ -z "$selected" ] && exit
+
+echo "$selected" | while read -r line ; do setsid exo-open "$line".desktop ; done
