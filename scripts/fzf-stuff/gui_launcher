@@ -1,4 +1,4 @@
 #!/bin/bash
 alacritty -o window.dimensions.columns=60 -o window.dimensions.lines=20 \
 	-o background_opacity=1.0 -o window.padding.x=25 -o window.padding.y=30\
-	--class AlacrittyFuzzy,AlacrittyFuzzy -t AlacrittyFuzzy -e './launcher'
+	--class AlacrittyFuzzy,AlacrittyFuzzy -t AlacrittyFuzzy -e './_launcher'
