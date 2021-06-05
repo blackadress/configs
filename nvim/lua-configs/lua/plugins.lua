@@ -16,6 +16,7 @@ return require("packer").startup(
 
     -- falta configurar*
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use "nvim-treesitter/nvim-treesitter-angular"
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
 

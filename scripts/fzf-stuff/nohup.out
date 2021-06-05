@@ -1,0 +1,4 @@
+
+(gimp:147462): Gtk-WARNING **: 21:46:40.722: Unable to locate theme engine in module_path: "adwaita",
+/usr/lib/gimp/2.0/plug-ins/script-fu/script-fu terminated: Interrupt
+/usr/bin/gimp: terminated: Interrupt
