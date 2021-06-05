@@ -7,7 +7,7 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- git clone https://github.com/Elv13/collision
-require("collision")()
+-- require("collision")()
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 local keyboard_layout = require("keyboard_layout")
 -- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
@@ -946,11 +946,22 @@ client.connect_signal(
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+-- local s_width = awful.screen.geometry.width
+-- local s_height = awful.screen.geometry.height
 awful.rules.rules = {
-  -- All clients will match this rule.
   {
     rule = {class = "firefox"},
     properties = {maximized = false}
+  },
+  {
+    rule = {class = "AlacrittyFuzzy"},
+    properties = {
+      floating = true,
+      -- x = s_width / 2,
+      -- y = s_height / 2
+      x = 920,
+      y = 300
+    }
   },
   {
     rule = {class = "okular"},
@@ -961,7 +972,8 @@ awful.rules.rules = {
     properties = {
       maximized = false,
       floating = true,
-      tag = "5"
+      tag = "5",
+      placement = awful.placement.centered
     }
   },
   {
@@ -989,6 +1001,7 @@ awful.rules.rules = {
     rule = {class = "brave"},
     properties = {maximized = false}
   },
+  -- All clients will match this rule.
   {
     rule = {},
     properties = {
@@ -1035,11 +1048,6 @@ awful.rules.rules = {
     },
     properties = {floating = true}
   }
-  -- Set Firefox to always map on the tag named "2" on screen 1.
-  -- {
-  --   rule = {class = "Firefox"},
-  --   properties = {screen = 1, tag = "2"}
-  -- }
 }
 -- }}}
 
