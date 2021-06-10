@@ -1,0 +1,7 @@
+#! /bin/bash
+tex_files() {
+	fd . -t d "$HOME/Documents/tex/" 2>/dev/null
+}
+selected="$(proyectos_files | sort | fzf -i --reverse --delimiter $HOME --with-nth -1)"
+[ -z "$selected" ] && exit
+alacritty --working-directory "$selected"

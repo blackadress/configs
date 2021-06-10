@@ -1,4 +1,4 @@
 #! /bin/bash
 
 # echo -n $PATH | xargs -d : -I {} -r fd . -L {} -d 1 -t x | fzf --color=bw --reverse --border | xargs lnch
-compgen -c | fzf --color --reverse | xargs lnch
+compgen -c | fzf --color light --reverse | xargs setsid -f

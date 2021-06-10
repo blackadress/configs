@@ -19,6 +19,7 @@ return require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-angular"
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
+    use "glepnir/lspsaga.nvim"
 
     use {
       "nvim-telescope/telescope.nvim",
@@ -47,9 +48,9 @@ return require("packer").startup(
     use "norcalli/nvim-colorizer.lua"
 
     -- Soporte sintactico de lenguaje
-    use "HerringtonDarkholme/yats.vim"
+    -- use "HerringtonDarkholme/yats.vim"
     use "MaxMEllon/vim-jsx-pretty"
-    use "yuezk/vim-js"
+    -- use "yuezk/vim-js"
     use "rust-lang/rust.vim"
     use "neovimhaskell/haskell-vim"
     use "mattn/emmet-vim"

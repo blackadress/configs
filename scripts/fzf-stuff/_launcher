@@ -1,4 +1,8 @@
 #! /bin/bash
 
-launcher=$(fd . | rg --pcre2 '^((?!_launcher)_)' | sort | fzf -i --delimiter _ --with-nth='2..' --reverse --prompt="fzf-launcher: )")
+launcher=$(fd . \
+	| rg --pcre2 '^((?!_launcher)_)' \
+	| sort \
+	| fzf -i --delimiter _ --with-nth='2..' --reverse --prompt="fzf-launcher: )")
+
 bash $launcher

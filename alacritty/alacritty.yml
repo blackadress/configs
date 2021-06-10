@@ -32,7 +32,7 @@ font:
   # 🌙
   normal:
     family: "Source Code Pro"
-    style: Regular
+    style: Normal
 
   bold:
     family: "Source Code Pro"

@@ -1,0 +1,14 @@
+#! /bin/bash
+
+LIBRO="$(fd \
+	-e epub -e pdf -e mobi . /mnt/particion_ntfs/Documentos/Libros/ \
+	| fzf -i --reverse --delimiter / --with-nth -2,-1)"
+
+if [[ $LIBRO =~ \.pdf$ ]]; then
+	setsid -f okular "$LIBRO"
+elif [[ $LIBRO =~ \.epub$ ]]; then
+	setsid -f FBReader "$LIBRO"
+elif [[ $LIBRO =~ \.mobi$ ]]; then
+	setsid -f FBReader "$LIBRO"
+fi
+
