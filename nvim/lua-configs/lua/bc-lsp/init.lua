@@ -1,5 +1,6 @@
 -- nvim LSP-CONFIG
 local nvim_lsp = require("lspconfig")
+require("bc-lsp/lspsaga_config")
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
@@ -92,6 +93,9 @@ local on_attach = function(client, bufnr)
     opts
   )
 end
+
+-- vim.cmd([[set updatetime=300]])
+-- vim.cmd([[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]])
 
 -- local servers = {"rust_analyzer", "tsserver", "gopls", "pyright"}
 -- for _, lsp in ipairs(servers) do

@@ -544,6 +544,14 @@ globalkeys =
     end,
     {description = "focus previous by index", group = "client"}
   ),
+  awful.key(
+    {},
+    "Print",
+    function()
+      awful.spawn.with_shell("flameshot gui")
+    end,
+    {description = "focus previous by index", group = "client"}
+  ),
   -- awful.key(
   --   {modkey},
   --   "w",

@@ -14,7 +14,7 @@ require("bc-pairs")
 require("bc-colorizer")
 require("bc-vimwiki")
 
-require("lsp-config")
+require("bc-lsp")
 require("languages")
 
 vim.cmd("colorscheme tokyonight")
