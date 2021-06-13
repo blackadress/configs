@@ -18,8 +18,8 @@ local on_attach = function(client, bufnr)
   local opts = {noremap = true, silent = true}
   buf_set_keymap("n", "gh", "<cmd>lua require('lspsaga.provider').lsp_finder()<CR>", opts)
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  -- buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gd", "<cmd>lua require('lspsaga.provider').preview_definition()<CR>", opts)
+  buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  -- buf_set_keymap("n", "gd", "<cmd>lua require('lspsaga.provider').preview_definition()<CR>", opts)
   buf_set_keymap("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
@@ -200,6 +200,9 @@ local function setup_servers()
     require "lspconfig"[server].setup(config)
   end
 end
+
+local config = require "lspinstall/util".extract_config("angularls")
+config.default_config.cmd[1] = "ngserver"
 
 setup_servers()
 

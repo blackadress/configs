@@ -30,7 +30,11 @@ require("formatter").setup(
       typescript = {
         -- prettier
         function()
-          return {exe = "dprint", args = {"fmt"}, stdin = false}
+          return {
+            exe = "dprint",
+            args = {"fmt", "--config", "~/Documents/configs/dprint/config.json"},
+            stdin = false
+          }
         end
       },
       rust = {

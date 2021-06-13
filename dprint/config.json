@@ -1,0 +1,21 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "projectType": "educational",
+  "incremental": true,
+  "lineWidth": 100,
+  "typescript": {
+	  "indentWidth": 2
+  },
+  "json": {
+	  "indentWidth": 2
+  },
+  "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json}"],
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.46.0.wasm",
+    "https://plugins.dprint.dev/json-0.11.0.wasm"
+  ]
+}
