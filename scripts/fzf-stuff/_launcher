@@ -1,7 +1,7 @@
 #! /bin/bash
 
-launcher=$(fd . \
-	| rg --pcre2 '^((?!_launcher)_)' \
+launcher=$(fd . ~/bin/fzf-stuff/ -x basename \
+	| grep -P '^((?!_launcher)_)' \
 	| sort \
 	| fzf -i --delimiter _ --with-nth='2..' --reverse --prompt="fzf-launcher: )")
 
