@@ -340,7 +340,7 @@ awful.screen.connect_for_each_screen(
         layout = wibox.layout.fixed.horizontal,
         -- net_speed_widget(),
         kbdcfg,
-        volume_widget({widget_type = "arc"}),
+        volume_widget({widget_type = "icon_and_text"}),
         brightness_widget(
           {
             type = "arc",
@@ -705,7 +705,7 @@ globalkeys =
   -- Prompt
   awful.key(
     {modkey},
-    "r",
+    "d",
     function()
       awful.util.spawn("dmenu_run")
     end,
@@ -728,7 +728,15 @@ globalkeys =
     function()
       awful.util.spawn("firefox")
     end,
-    {description = "change wallpaper randomly", group = "launcher"}
+    {description = "open firefox browser", group = "launcher"}
+  ),
+  awful.key(
+    {modkey},
+    "r",
+    function()
+      awful.util.spawn("gui_launcher")
+    end,
+    {description = "launcher", group = "launcher"}
   ),
   awful.key(
     {modkey},
