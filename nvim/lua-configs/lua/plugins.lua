@@ -16,7 +16,6 @@ return require("packer").startup(
 
     -- falta configurar*
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "nvim-treesitter/nvim-treesitter-angular"
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
     use "glepnir/lspsaga.nvim"
@@ -41,6 +40,8 @@ return require("packer").startup(
     use "mhartington/formatter.nvim"
     use "tpope/vim-surround"
 
+    use "mattn/emmet-vim"
+
     --color themes
     use "folke/tokyonight.nvim"
 
@@ -49,10 +50,9 @@ return require("packer").startup(
 
     -- Soporte sintactico de lenguaje
     -- use "HerringtonDarkholme/yats.vim"
-    use "MaxMEllon/vim-jsx-pretty"
+    -- use "MaxMEllon/vim-jsx-pretty"
     -- use "yuezk/vim-js"
-    use "rust-lang/rust.vim"
+    -- use "rust-lang/rust.vim"
     use "neovimhaskell/haskell-vim"
-    use "mattn/emmet-vim"
   end
 )

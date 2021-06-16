@@ -17,5 +17,5 @@ require("bc-vimwiki")
 require("bc-lsp")
 require("languages")
 
-vim.cmd("colorscheme tokyonight")
 vim.g.tokyonight_style = "night"
+vim.cmd("colorscheme tokyonight")

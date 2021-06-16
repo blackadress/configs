@@ -14,6 +14,7 @@ local colors = {
   red = "#dc322f",
   blue = "#004c8c",
   mid_blue = "#081633",
+  terminal_dark = "#1f2335"
 }
 
 local separators = {
@@ -136,7 +137,7 @@ gls.left[10] = {
       return separators.slanted_left
     end,
     separator = " ",
-    separator_highlight = {colors.blue, colors.darkblue},
+    separator_highlight = {colors.blue, colors.terminal_dark},
     highlight = {colors.blue, colors.blue}
   }
 }
@@ -158,28 +159,28 @@ gls.left[13] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
-    highlight = {colors.yellow, colors.darkblue}
+    highlight = {colors.yellow, colors.terminal_dark}
   }
 }
 gls.left[14] = {
   DiagnosticError = {
-    provider = 'DiagnosticError',
-    icon = '  ',
-    highlight = {colors.red,colors.darkblue}
+    provider = "DiagnosticError",
+    icon = "  ",
+    highlight = {colors.red, colors.terminal_dark}
   }
 }
 gls.mid[1] = {
   ShowLspClient = {
-    provider = 'GetLspClient',
-    condition = function ()
-      local tbl = {['dashboard'] = true,['']=true}
+    provider = "GetLspClient",
+    condition = function()
+      local tbl = {["dashboard"] = true, [""] = true}
       if tbl[vim.bo.filetype] then
         return false
       end
       return true
     end,
-    icon = ' LSP:',
-    highlight = {colors.cyan,colors.mid_blue,'bold'}
+    icon = " LSP:",
+    highlight = {colors.cyan, colors.terminal_dark, "bold"}
   }
 }
 gls.right[1] = {

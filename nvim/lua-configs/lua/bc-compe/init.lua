@@ -62,7 +62,7 @@ _G.s_tab_complete = function()
   end
 end
 
-keymap = vim.api.nvim_set_keymap
+local keymap = vim.api.nvim_set_keymap
 keymap("i", "<CR>", "compe#confirm('<CR>')", {noremap = true, expr = true, silent = true})
 -- vim.api.nvim_set_keymap(
 --   "i",

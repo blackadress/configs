@@ -75,7 +75,7 @@ require("formatter").setup(
   }
 )
 
-vim.api.nvim_set_keymap("n", "<Leader>ff", ":Format<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>xf", ":Format<CR>", {noremap = true, silent = true})
 vim.api.nvim_exec(
   [[
 augroup FormatAutogroup

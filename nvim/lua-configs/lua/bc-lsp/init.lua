@@ -1,5 +1,6 @@
 -- nvim LSP-CONFIG
-local nvim_lsp = require("lspconfig")
+-- local nvim_lsp = require("lspconfig")
+require("lspconfig")
 require("bc-lsp/lspsaga_config")
 
 local on_attach = function(client, bufnr)
@@ -94,51 +95,6 @@ local on_attach = function(client, bufnr)
   )
 end
 
--- vim.cmd([[set updatetime=300]])
--- vim.cmd([[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]])
-
--- local servers = {"rust_analyzer", "tsserver", "gopls", "pyright"}
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {on_attach = on_attach}
--- end
-
--- nvim_lsp.sumneko_lua.setup{}
--- require "lspconfig".sumneko_lua.setup {
---   cmd = {"/usr/bin/lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
---   settings = {
---     settings = {
---       Lua = {
--- runtime = {
---   version = "Lua 5.3",
---   path = {
---     "/usr/share/lua/5.3/lgi/init.lua"
---   }
--- },
--- workleader = {
---   library = {
---     [vim.fn.expand "~/.luarocks/share/lua/5.3"] = true,
---     ["/usr/share/lua/5.3"] = true
---   }
--- }
-
--- runtime = {
---   version = "LuaJIT",
---   path = vim.split(package.path, ";")
--- },
--- diagnostics = {
---   globals = {"vim"}
--- },
--- workleader = {
---   library = {
---     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
---     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
---   }
--- }
---       }
---     }
---   }
--- }
-
 -- Configure lua language server for neovim development
 local lua_settings = {
   Lua = {
@@ -196,13 +152,19 @@ local function setup_servers()
     if server == "clangd" then
       config.filetypes = {"c", "cpp"} -- we don't want objective-c and objective-cpp!
     end
+    if server == "tailwindcss" then
+      config.filetypes = {"html", "css"}
+    end
+    if server == "angularls" then
+      config.filetypes = {"html"}
+    end
 
     require "lspconfig"[server].setup(config)
   end
 end
 
-local config = require "lspinstall/util".extract_config("angularls")
-config.default_config.cmd[1] = "ngserver"
+local ang_config = require("lspinstall/util").extract_config("angularls")
+ang_config.default_config.cmd[1] = "ngserver"
 
 setup_servers()
 
