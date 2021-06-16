@@ -1,6 +1,6 @@
 #!/bin/sh
 # alias para programas
-alias ls='lsd' \
+alias ls='exa --icons' \
       cat='bat' \
       reds='redshift -P -O 3500 -b .7' \
       upd='sudo pacman -Syu' \
