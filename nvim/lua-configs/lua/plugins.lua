@@ -35,12 +35,12 @@ return require("packer").startup(
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
     use "windwp/nvim-autopairs"
-    use "windwp/nvim-ts-autotag"
+	use "windwp/nvim-ts-autotag"
     use "terrortylor/nvim-comment"
     use "mhartington/formatter.nvim"
     use "tpope/vim-surround"
 
-    use "mattn/emmet-vim"
+	use "mattn/emmet-vim"
 
     --color themes
     use "folke/tokyonight.nvim"
