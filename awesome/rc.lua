@@ -376,7 +376,7 @@ root.buttons(
 -- {{{ Key bindings
 globalkeys =
   gears.table.join(
-  awful.key({modkey}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
+  awful.key({modkey}, "/", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
   awful.key(
     {modkey, "Control"},
     "h",
@@ -729,6 +729,22 @@ globalkeys =
       awful.util.spawn("firefox")
     end,
     {description = "open firefox browser", group = "launcher"}
+  ),
+  awful.key(
+    {modkey},
+    "e",
+    function()
+      awful.util.spawn("dolphin")
+    end,
+    {description = "open file browser", group = "launcher"}
+  ),
+  awful.key(
+    {modkey},
+    "s",
+    function()
+      awful.util.spawn("spty")
+    end,
+    {description = "open spotify with the spty self written command", group = "launcher"}
   ),
   awful.key(
     {modkey},
