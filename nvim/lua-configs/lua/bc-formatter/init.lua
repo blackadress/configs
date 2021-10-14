@@ -24,7 +24,11 @@ require("formatter").setup(
       javascript = {
         -- prettier
         function()
-          return {exe = "dprint", args = {"fmt"}, stdin = false}
+          return {
+            exe = "dprint",
+            args = {"fmt", "--config", "~/Documents/configs/dprint/config.json"},
+            stdin = false
+          }
         end
       },
       typescript = {
