@@ -22,7 +22,15 @@ require("formatter").setup(
         end
       },
       javascript = {
-        -- prettier
+        function()
+          return {
+            exe = "dprint",
+            args = {"fmt", "--config", "~/Documents/configs/dprint/config.json"},
+            stdin = false
+          }
+        end
+      },
+      javascriptreact = {
         function()
           return {
             exe = "dprint",
@@ -32,7 +40,6 @@ require("formatter").setup(
         end
       },
       typescript = {
-        -- prettier
         function()
           return {
             exe = "dprint",
@@ -42,19 +49,16 @@ require("formatter").setup(
         end
       },
       rust = {
-        -- Rustfmt
         function()
           return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
         end
       },
       go = {
-        -- gofmt
         function()
           return {exe = "goimports", stdin = true}
         end
       },
       lua = {
-        -- luafmt
         function()
           return {
             exe = "luafmt",
@@ -64,13 +68,11 @@ require("formatter").setup(
         end
       },
       haskell = {
-        -- hindent
         function()
           return {exe = "hindent", stdin = true}
         end
       },
       python = {
-        -- black
         function()
           return {exe = "black", stdin = false}
         end
@@ -84,8 +86,9 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.html,*.js,*.ts,*.rs,*.lua,*.hs,*.go,*py FormatWrite
+  autocmd BufWritePost *.rs,*.lua,*.hs,*.go, FormatWrite
 augroup END
 ]],
   true
 )
+-- autocmd BufWritePost *.html,*.js,*.jsx,*.ts,*.rs,*.lua,*.hs,*.go,*py FormatWrite
