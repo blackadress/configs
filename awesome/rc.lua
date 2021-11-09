@@ -12,6 +12,7 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 local keyboard_layout = require("keyboard_layout")
 -- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -83,6 +84,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.spiral,
+  awful.layout.suit.floating,
   awful.layout.suit.tile.bottom
 }
 -- }}}
@@ -340,6 +342,7 @@ awful.screen.connect_for_each_screen(
         layout = wibox.layout.fixed.horizontal,
         -- net_speed_widget(),
         kbdcfg,
+        ram_widget(),
         volume_widget({widget_type = "icon_and_text"}),
         brightness_widget(
           {
@@ -1022,12 +1025,12 @@ awful.rules.rules = {
     properties = {
       maximized = false,
       floating = false,
-      tag = "4"
+      tag = "6"
     }
   },
   {
     rule = {class = "vlc"},
-    properties = {tag = "6"}
+    properties = {tag = "7"}
   },
   {
     rule = {class = "brave"},
