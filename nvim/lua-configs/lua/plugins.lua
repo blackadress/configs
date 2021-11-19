@@ -18,7 +18,8 @@ return require("packer").startup(
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
-    use "glepnir/lspsaga.nvim"
+    use "tami5/lspsaga.nvim"
+    -- use "glepnir/lspsaga.nvim"
 
     use {
       "nvim-telescope/telescope.nvim",
@@ -35,12 +36,12 @@ return require("packer").startup(
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
     use "windwp/nvim-autopairs"
-	use "windwp/nvim-ts-autotag"
+    use "windwp/nvim-ts-autotag"
     use "terrortylor/nvim-comment"
     use "mhartington/formatter.nvim"
     use "tpope/vim-surround"
 
-	use "mattn/emmet-vim"
+    use "mattn/emmet-vim"
 
     --color themes
     use "folke/tokyonight.nvim"

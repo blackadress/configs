@@ -42,19 +42,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
   -- buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap(
-    "n",
-    "<leader>ca",
-    "<cmd>lua require('lspsaga.codeaction').code_action()<CR>",
-    opts
-  )
-  buf_set_keymap(
-    "v",
-    "<leader>ca",
-    "<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>",
-    opts
-  )
-  buf_set_keymap("n", "<c-n>", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap("n", "<leader>ca", "<cmd>lua require('lspsaga.sp.diagnostic.goto_prev()<CR>", opts)
 
   buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
