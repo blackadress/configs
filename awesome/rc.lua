@@ -745,9 +745,9 @@ globalkeys =
     {modkey},
     "s",
     function()
-      awful.util.spawn("spty")
+      awful.util.spawn("spotify")
     end,
-    {description = "open spotify with the spty self written command", group = "launcher"}
+    {description = "open spotify", group = "launcher"}
   ),
   awful.key(
     {modkey},

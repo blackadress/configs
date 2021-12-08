@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require("packer").startup(
-  function()
+  function(use)
     use "wbthomason/packer.nvim"
     use {"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons"}}
     use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
@@ -17,7 +17,7 @@ return require("packer").startup(
     -- falta configurar*
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "neovim/nvim-lspconfig"
-    use "kabouzeid/nvim-lspinstall"
+    use "williamboman/nvim-lsp-installer"
     use "tami5/lspsaga.nvim"
     -- use "glepnir/lspsaga.nvim"
 

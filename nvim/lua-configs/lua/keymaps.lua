@@ -52,3 +52,42 @@ vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>", {noremap = true})
 vim.api.nvim_set_keymap("v", "<A-j>", "<Esc>", {noremap = true})
 vim.api.nvim_set_keymap("i", "<C-j>", "<Esc>", {noremap = true})
 vim.api.nvim_set_keymap("v", "<C-j>", "<Esc>", {noremap = true})
+
+local map = vim.api.nvim_set_keymap
+local opts = {noremap = true, silent = true}
+map("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {noremap = true, silent = true})
+map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+map("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
+map("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
+
+map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+map("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
+
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+map("n", "gs", "<cmd>Lspsaga signature_help<CR>", opts)
+map("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+map("n", "<leader>gd", "<cmd>Lspsaga preview_definition<CR>", opts)
+map("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+map("n", "<leader>cc", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics<CR>", opts)
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+
+map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+map("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+map("n", "grr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+-- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+-- buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+
+map("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+map("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+map(
+  "n",
+  "<leader>wl",
+  "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+  opts
+)
+map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
