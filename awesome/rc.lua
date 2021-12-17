@@ -488,6 +488,14 @@ globalkeys =
     {description = "pause/play media", group = "media keys"}
   ),
   awful.key(
+    {},
+    "XF86AudioPlay",
+    function()
+      os.execute("playerctl play-pause")
+    end,
+    {description = "pause/play media", group = "media keys"}
+  ),
+  awful.key(
     {modkey},
     "Next",
     function()
@@ -496,8 +504,24 @@ globalkeys =
     {description = "next track on media", group = "media keys"}
   ),
   awful.key(
+    {},
+    "XF86AudioNext",
+    function()
+      os.execute("playerctl next")
+    end,
+    {description = "next track on media", group = "media keys"}
+  ),
+  awful.key(
     {modkey},
     "Prior",
+    function()
+      os.execute("playerctl previous")
+    end,
+    {description = "previous track on media", group = "media keys"}
+  ),
+  awful.key(
+    {},
+    "XF86AudioPrev",
     function()
       os.execute("playerctl previous")
     end,
@@ -1001,6 +1025,10 @@ awful.rules.rules = {
   {
     rule = {class = "okular"},
     properties = {maximized = false}
+  },
+  {
+    rule = {class = "Slack"},
+    properties = {tag = "5"}
   },
   {
     rule = {class = "discord"},

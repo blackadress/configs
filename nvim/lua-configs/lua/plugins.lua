@@ -21,16 +21,22 @@ return require("packer").startup(
     use "tami5/lspsaga.nvim"
     -- use "glepnir/lspsaga.nvim"
 
+    use "lukas-reineke/indent-blankline.nvim"
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
     }
     use {"nvim-telescope/telescope-fzy-native.nvim"}
-    use {
-      "glepnir/galaxyline.nvim",
-      branch = "main",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    }
+    -- use {
+    --   "glepnir/galaxyline.nvim",
+    --   branch = "main",
+    --   requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    -- } -- glepnir come back :(
+    use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
+    use {"nvim-lualine/lualine.nvim"}
+
+    -- rest client
+    use {"NTBBloodbath/rest.nvim"}
 
     use "rafamadriz/friendly-snippets"
     use "hrsh7th/vim-vsnip"
