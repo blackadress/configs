@@ -480,6 +480,38 @@ globalkeys =
     {description = "decrease volume", group = "media keys"}
   ),
   awful.key(
+    {},
+    "XF86AudioMute",
+    function()
+      local command = "amixer sset Capture toggle"
+      local handle = io.popen(command)
+      local result = handle:read("*a")
+
+      local split_array = function(text, separator)
+        local ans = {}
+        for match in (text .. separator):gmatch("(.-)" .. separator) do
+          table.insert(ans, match)
+        end
+        return ans
+      end
+
+      local text_lines = split_array(result, "\n")
+      local mic_status_line = table.remove(text_lines, 5)
+      local last_line_text_array = split_array(mic_status_line, " ")
+      local is_mic_on = table.remove(last_line_text_array, 7)
+      local msg = "Mic is " .. is_mic_on
+      naughty.notify {
+        title = msg,
+        timeout = 3,
+        urgency = "normal",
+        position = "top_right",
+        height = 100,
+        width = 300
+      }
+    end,
+    {description = "toggle mute mic", group = "media keys"}
+  ),
+  awful.key(
     {modkey},
     "Home",
     function()
