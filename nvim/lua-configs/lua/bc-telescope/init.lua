@@ -18,6 +18,18 @@ require("telescope").setup {
 }
 require("telescope").load_extension("fzy_native") -- Is this even necessary?
 vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files<CR>", {noremap = true})
+vim.api.nvim_set_keymap(
+  "n",
+  "<Leader>ss",
+  "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<CR>",
+  {noremap = true}
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<Leader>..",
+  "<cmd>lua require('telescope.builtin').find_files({hidden=true})<CR>",
+  {noremap = true}
+)
 vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>fb", ":Telescope buffers<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", {noremap = true})
