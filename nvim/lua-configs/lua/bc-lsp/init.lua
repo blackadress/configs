@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
 end
 
 vim.cmd([[set updatetime=250]])
-vim.cmd([[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]])
+-- vim.cmd([[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]])
 
 -- Configure lua language server for neovim development
 local lua_settings = {

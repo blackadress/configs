@@ -48,6 +48,15 @@ require("formatter").setup(
           }
         end
       },
+      json = {
+        function()
+          return {
+            exe = "dprint",
+            args = {"fmt", "--config", "~/Documents/configs/dprint/config.json"},
+            stdin = false
+          }
+        end
+      },
       rust = {
         function()
           return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
