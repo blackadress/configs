@@ -22,6 +22,11 @@ vim.api.nvim_set_keymap("v", "<F5>", "<Esc>:set list!<CR>", {noremap = true})
 
 -- new tab
 vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Left>", "gT", {noremap = true})
+vim.api.nvim_set_keymap("n", "<A-h>", "gT", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Right>", "gt", {noremap = true})
+vim.api.nvim_set_keymap("n", "<A-l>", "gt", {noremap = true})
+
 -- desplazamiento tabs
 vim.api.nvim_set_keymap("n", "<S-Tab>", "gT", {noremap = true})
 -- vim.api.nvim_set_keymap("n", "<Tab>", "gt", {noremap = true})
@@ -93,3 +98,5 @@ map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
 map("n", "<Leader>re", "<cmd>lua require('rest-nvim').run()<CR>", opts)
+map("n", "<Leader>rr", "<cmd>lua require('rest-nvim').last()<CR>", opts)
+map("n", "<Leader>pr", "<cmd>lua require('rest-nvim').run(true)<CR>", opts)

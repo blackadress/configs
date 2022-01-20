@@ -61,3 +61,7 @@ HISTFILESIZE=20000
 
 # config de STARSHIP
 eval "$(starship init bash)"
+
+# pyenv
+eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"

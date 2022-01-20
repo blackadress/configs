@@ -132,7 +132,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
--- mykeyboardlayout = awful.widget.keyboardlayout()
+mykeyboardlayout = awful.widget.keyboardlayout()
 local kbdcfg = keyboard_layout.kbdcfg()
 
 kbdcfg.add_primary_layout("English", "us", "us")
@@ -309,53 +309,59 @@ awful.screen.connect_for_each_screen(
     )
     -- Create a taglist widget
     s.mytaglist =
-      awful.widget.taglist {
-      screen = s,
-      filter = awful.widget.taglist.filter.all,
-      buttons = taglist_buttons
-    }
+      awful.widget.taglist(
+      {
+        screen = s,
+        filter = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons
+      }
+    )
 
     -- Create a tasklist widget
     s.mytasklist =
-      awful.widget.tasklist {
-      screen = s,
-      filter = awful.widget.tasklist.filter.currenttags,
-      buttons = tasklist_buttons
-    }
+      awful.widget.tasklist(
+      {
+        screen = s,
+        filter = awful.widget.tasklist.filter.currenttags,
+        buttons = tasklist_buttons
+      }
+    )
 
     -- Create the wibox
     s.mywibox = awful.wibar({position = "top", screen = s})
 
     -- Add widgets to the wibox
-    s.mywibox:setup {
-      layout = wibox.layout.align.horizontal,
+    s.mywibox:setup(
       {
-        -- Left widgets
-        layout = wibox.layout.fixed.horizontal,
-        mylauncher,
-        s.mytaglist,
-        s.mypromptbox
-      },
-      s.mytasklist, -- Middle widget
-      {
-        -- Right widgets
-        layout = wibox.layout.fixed.horizontal,
-        -- net_speed_widget(),
-        kbdcfg,
-        ram_widget(),
-        volume_widget({widget_type = "icon_and_text"}),
-        brightness_widget(
-          {
-            type = "arc",
-            program = "xbacklight",
-            step = 6
-          }
-        ),
-        wibox.widget.systray(),
-        mytextclock,
-        s.mylayoutbox
+        layout = wibox.layout.align.horizontal,
+        {
+          -- Left widgets
+          layout = wibox.layout.fixed.horizontal,
+          mylauncher,
+          s.mytaglist,
+          s.mypromptbox
+        },
+        s.mytasklist, -- Middle widget
+        {
+          -- Right widgets
+          layout = wibox.layout.fixed.horizontal,
+          -- net_speed_widget(),
+          kbdcfg,
+          volume_widget({widget_type = "icon_and_text"}),
+          ram_widget(),
+          brightness_widget(
+            {
+              type = "arc",
+              program = "xbacklight",
+              step = 6
+            }
+          ),
+          wibox.widget.systray(),
+          mytextclock,
+          s.mylayoutbox
+        }
       }
-    }
+    )
   end
 )
 -- }}}
@@ -393,62 +399,12 @@ globalkeys =
     {description = "view next", group = "tag"}
   ),
   awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
-  -- Ctrl + F1, F2, F3, F4 changes to tag
-  awful.key(
-    {"Control"},
-    "F1",
-    function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[1]
-      if tag then
-        tag:view_only()
-      end
-    end,
-    {description = "view tag #1"}
-  ),
-  awful.key(
-    {"Control"},
-    "F2",
-    function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[2]
-      if tag then
-        tag:view_only()
-      end
-    end,
-    {description = "view tag #2"}
-  ),
-  awful.key(
-    {"Control"},
-    "F3",
-    function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[3]
-      if tag then
-        tag:view_only()
-      end
-    end,
-    {description = "view tag #3"}
-  ),
-  awful.key(
-    {"Control"},
-    "F4",
-    function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[4]
-      if tag then
-        tag:view_only()
-      end
-    end,
-    {description = "view tag #4"}
-  ),
   -- media buttons
   awful.key(
     {modkey},
     "=",
     function()
-      volume_widget:inc_small()
-      -- os.execute("pactl set-sink-volume 0 +3%")
+      volume_widget:inc(3)
     end,
     {description = "increase volume with =", group = "media keys"}
   ),
@@ -456,8 +412,7 @@ globalkeys =
     {modkey},
     "-",
     function()
-      volume_widget:dec_small()
-      -- os.execute("pactl set-sink-volume 0 -3%")
+      volume_widget:dec(3)
     end,
     {description = "decrease volume with -", group = "media keys"}
   ),
@@ -465,8 +420,7 @@ globalkeys =
     {},
     "XF86AudioRaiseVolume",
     function()
-      volume_widget:inc()
-      -- os.execute("pactl set-sink-volume 0 +5%")
+      volume_widget:inc(5)
     end,
     {description = "increase volume", group = "media keys"}
   ),
@@ -474,8 +428,7 @@ globalkeys =
     {},
     "XF86AudioLowerVolume",
     function()
-      volume_widget:dec()
-      -- os.execute("pactl set-sink-volume 0 -5%")
+      volume_widget:dec(5)
     end,
     {description = "decrease volume", group = "media keys"}
   ),
@@ -483,31 +436,27 @@ globalkeys =
     {},
     "XF86AudioMute",
     function()
-      local command = "amixer sset Capture toggle"
-      local handle = io.popen(command)
+      local toggle_command = "pamixer --source 42 -t"
+      awful.spawn.with_shell(toggle_command)
+      local is_muted_cmd = "pamixer --source 42 --get-mute"
+      local handle = io.popen(is_muted_cmd)
       local result = handle:read("*a")
-
-      local split_array = function(text, separator)
-        local ans = {}
-        for match in (text .. separator):gmatch("(.-)" .. separator) do
-          table.insert(ans, match)
-        end
-        return ans
+      result = result:gsub("%s+", "")
+      local is_mic_on = "OFF"
+      if result == "true" then
+        is_mic_on = "ON"
       end
-
-      local text_lines = split_array(result, "\n")
-      local mic_status_line = table.remove(text_lines, 5)
-      local last_line_text_array = split_array(mic_status_line, " ")
-      local is_mic_on = table.remove(last_line_text_array, 7)
       local msg = "Mic is " .. is_mic_on
-      naughty.notify {
-        title = msg,
-        timeout = 3,
-        urgency = "normal",
-        position = "top_right",
-        height = 100,
-        width = 300
-      }
+      naughty.notify(
+        {
+          title = msg,
+          timeout = 3,
+          urgency = "normal",
+          position = "top_right",
+          height = 100,
+          width = 300
+        }
+      )
     end,
     {description = "toggle mute mic", group = "media keys"}
   ),
@@ -817,12 +766,14 @@ globalkeys =
     {modkey},
     "x",
     function()
-      awful.prompt.run {
-        prompt = "Run Lua code: ",
-        textbox = awful.screen.focused().mypromptbox.widget,
-        exe_callback = awful.util.eval,
-        history_path = awful.util.get_cache_dir() .. "/history_eval"
-      }
+      awful.prompt.run(
+        {
+          prompt = "Run Lua code: ",
+          textbox = awful.screen.focused().mypromptbox.widget,
+          exe_callback = awful.util.eval,
+          history_path = awful.util.get_cache_dir() .. "/history_eval"
+        }
+      )
     end,
     {description = "lua execute prompt", group = "awesome"}
   ),
@@ -1059,6 +1010,12 @@ awful.rules.rules = {
     properties = {maximized = false}
   },
   {
+    rule = {class = "DBeaver"},
+    properties = {
+      tag = "3"
+    }
+  },
+  {
     rule = {class = "Slack"},
     properties = {tag = "5"}
   },
@@ -1197,3 +1154,4 @@ awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell(
   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
 )
+os.execute("pamixer --source 42 -m")

@@ -73,6 +73,8 @@ require("formatter").setup(
             exe = "luafmt",
             args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
             stdin = true
+            -- exe = "stylua",
+            -- stdin = false
           }
         end
       },
@@ -84,6 +86,14 @@ require("formatter").setup(
       python = {
         function()
           return {exe = "black", stdin = false}
+        end
+      },
+      sql = {
+        function()
+          return {
+            exe = "pg_format",
+            stdin = true
+          }
         end
       }
     }
