@@ -1154,4 +1154,5 @@ awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell(
   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
 )
+awful.spawn.with_shell("eval `ssh-agent`")
 os.execute("pamixer --source 42 -m")
