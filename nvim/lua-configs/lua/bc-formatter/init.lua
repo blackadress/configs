@@ -70,11 +70,11 @@ require("formatter").setup(
       lua = {
         function()
           return {
-            exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
-            stdin = true
-            -- exe = "stylua",
-            -- stdin = false
+            -- exe = "luafmt",
+            -- args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
+            -- stdin = true
+            exe = "stylua",
+            stdin = false,
           }
         end
       },
@@ -105,7 +105,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.rs,*.lua,*.hs,*.go, FormatWrite
+  autocmd BufWritePost *.rs,*.hs,*.go, FormatWrite
 augroup END
 ]],
   true

@@ -36,7 +36,8 @@ return require("packer").startup(
     use {"nvim-lualine/lualine.nvim"}
 
     -- rest client
-    use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}}
+    -- use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}}
+    use {"blackadress/rest.nvim", requires = {"nvim-lua/plenary.nvim"}} --patched version of above
 
     use "rafamadriz/friendly-snippets"
     use "hrsh7th/vim-vsnip"
