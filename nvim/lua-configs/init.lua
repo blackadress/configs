@@ -20,5 +20,4 @@ require("bc-indentline")
 require("bc-lsp")
 require("languages")
 
-vim.cmd("colorscheme tokyonight")
-vim.g.tokyonight_style = "night"
+require("bc-colorscheme")
