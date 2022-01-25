@@ -6,13 +6,9 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- git clone https://github.com/Elv13/collision
--- require("collision")()
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 local keyboard_layout = require("keyboard_layout")
--- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
-local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -348,7 +344,6 @@ awful.screen.connect_for_each_screen(
           -- net_speed_widget(),
           kbdcfg,
           volume_widget({widget_type = "icon_and_text"}),
-          ram_widget(),
           brightness_widget(
             {
               type = "arc",
@@ -436,9 +431,9 @@ globalkeys =
     {},
     "XF86AudioMute",
     function()
-      local toggle_command = "pamixer --source 42 -t"
+      local toggle_command = "pamixer --source 51 -t"
       awful.spawn.with_shell(toggle_command)
-      local is_muted_cmd = "pamixer --source 42 --get-mute"
+      local is_muted_cmd = "pamixer --source 51 --get-mute"
       local handle = io.popen(is_muted_cmd)
       local result = handle:read("*a")
       result = result:gsub("%s+", "")
@@ -1154,5 +1149,5 @@ awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell(
   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
 )
-awful.spawn.with_shell("eval `ssh-agent`")
-os.execute("pamixer --source 42 -m")
+awful.spawn.with_shell("eval `ssh-agent -s`")
+os.execute("pamixer --source 51 -m")
