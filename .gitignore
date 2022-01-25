@@ -2,4 +2,3 @@ stylish-haskell/**
 nvim/config_separated/**
 **/~/**
 /* telescope shenanigans? */
-bash-configs/aliasrc
