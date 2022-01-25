@@ -23,6 +23,8 @@ window:
 
   dynamic_title: true
 
+  opacity: 0.80
+
 scrolling:
   history: 10000
 
@@ -39,11 +41,11 @@ font:
     style: Bold
 
   italic:
-    family: "Source Code Pro"
+    family: "Fira Code iScript"
     style: Italic
 
   # Point size
-  size: 14.0
+  size: 13.0
 
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
@@ -102,6 +104,7 @@ draw_bold_text_with_bright_colors: true
 #     magenta: '#dd97b1'
 #     cyan:    '#96b1ad'
 #     white:   '#9a9a9a'
+
 # TokyoNight Alacritty Colors
 colors:
   # Default colors
@@ -139,8 +142,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: '#ffffff'
-
-background_opacity: 0.80
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
