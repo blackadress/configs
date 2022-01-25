@@ -65,3 +65,4 @@ eval "$(starship init bash)"
 # pyenv
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
+. "$HOME/.cargo/env"
