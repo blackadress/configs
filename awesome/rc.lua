@@ -21,6 +21,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -431,9 +432,11 @@ globalkeys =
     {},
     "XF86AudioMute",
     function()
-      local toggle_command = "pamixer --source 51 -t"
+      local mic_nr =
+        io.popen("pamixer --list-sources | awk '/usb/ {print $1}'"):read("*a"):gsub("%s+", "")
+      local toggle_command = "pamixer --source " .. mic_nr .. " -t"
       awful.spawn.with_shell(toggle_command)
-      local is_muted_cmd = "pamixer --source 51 --get-mute"
+      local is_muted_cmd = "pamixer --source " .. mic_nr .. " --get-mute"
       local handle = io.popen(is_muted_cmd)
       local result = handle:read("*a")
       result = result:gsub("%s+", "")
@@ -1149,5 +1152,5 @@ awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell(
   "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
 )
-awful.spawn.with_shell("eval `ssh-agent -s`")
-os.execute("pamixer --source 51 -m")
+os.execute("start_ssh_agent")
+os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")

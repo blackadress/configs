@@ -3,7 +3,8 @@
 # CONFIGURACIONES PROGRAMAS 
 # configuracion nvim 
 ln -s ~/Documents/configs/nvim/init.vim ~/.config/nvim/init.vim 
-ln -s ~/Documents/configs/nvim/lua-configs/* ~/.config/nvim/ configuracion tmux 
+ln -s ~/Documents/configs/nvim/lua-configs/* ~/.config/nvim/ 
+# configuracion tmux 
 ln -s ~/Documents/configs/tmux/tmux.conf ~/.tmux.conf
 #ln -sf ~/Documents/configs/scripts/ide ~/bin/ide
 # AWESOME WM

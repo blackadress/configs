@@ -96,7 +96,3 @@ map(
 )
 map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-
-map("n", "<Leader>re", "<cmd>lua require('rest-nvim').run()<CR>", opts)
-map("n", "<Leader>rr", "<cmd>lua require('rest-nvim').last()<CR>", opts)
-map("n", "<Leader>pr", "<cmd>lua require('rest-nvim').run(true)<CR>", opts)

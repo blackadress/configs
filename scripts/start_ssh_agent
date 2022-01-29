@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+pid=$(pidof ssh-agent)
+
+if [ -z "$pid" ]
+	then
+		eval `ssh-agent -s`
+fi
