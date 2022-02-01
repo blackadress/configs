@@ -10,7 +10,7 @@ end
 
 return require("packer").startup(
   function(use)
-   use("wbthomason/packer.nvim")
+    use("wbthomason/packer.nvim")
     use({"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons"}})
     use({"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}})
 
@@ -44,7 +44,7 @@ return require("packer").startup(
     --   requires = { "nvim-lua/plenary.nvim" },
     --   branch = "config-request-buffer-placement",
     -- }) --patched version of above
-    use({"~/proyectos/lua/rest.nvim", branch = "estable"})
+    use({"~/proyectos/lua/rest.nvim", branch = "estable", ft = {"http"}})
     -- use("~/proyectos/lua/first-plugin")
 
     -- completion
@@ -96,10 +96,7 @@ return require("packer").startup(
     use("norcalli/nvim-colorizer.lua")
 
     -- Soporte sintactico de lenguaje
-    -- use "HerringtonDarkholme/yats.vim"
-    -- use "MaxMEllon/vim-jsx-pretty"
-    -- use "yuezk/vim-js"
     -- use "rust-lang/rust.vim"
-    use("neovimhaskell/haskell-vim")
+    use({"neovimhaskell/haskell-vim", ft = "hs"})
   end
 )
