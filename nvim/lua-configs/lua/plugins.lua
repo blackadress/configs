@@ -39,11 +39,7 @@ return require("packer").startup(
 
     -- rest client
     -- use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}}
-    -- use({
-    --   "blackadress/rest.nvim",
-    --   requires = { "nvim-lua/plenary.nvim" },
-    --   branch = "config-request-buffer-placement",
-    -- }) --patched version of above
+    --patched version of above
     use({"~/proyectos/lua/rest.nvim", branch = "estable", ft = {"http"}})
     -- use("~/proyectos/lua/first-plugin")
 

@@ -10,32 +10,32 @@
 -- vim.cmd([[colorscheme gruvbox]])
 
 --[[ gruvbox material]]
-vim.g.gruvbox_material_background = "soft"
-vim.g.gruvbox_material_enable_bold = 1
-vim.g.gruvbox_material_palette = 'mix'
-vim.cmd([[colorscheme gruvbox-material]])
+-- vim.g.gruvbox_material_background = "soft"
+-- vim.g.gruvbox_material_enable_bold = 1
+-- vim.g.gruvbox_material_palette = 'mix'
+-- vim.cmd([[colorscheme gruvbox-material]])
 
 --[[ github theme ]]
 -- require("github-theme").setup({
 --   function_style = "bold",
---   -- transparent = true,
+--   transparent = false,
 -- })
 
 --[[ subtle_dark -- solarized ]]
 -- vim.cmd([[colorscheme subtle_dark]]) -- doesn't work with indent_blankline
 
 --[[ material ]]
--- require("material").setup({
---   italics = {
---     comments = true,
---   },
---   custom_highlight = {
---     CursorLine = '#0000FF',
---     LineNr = '#FFFFFF'
---   }
--- })
--- vim.g.material_style = "oceanic"
--- vim.cmd([[colorscheme material]])
+require("material").setup({
+  italics = {
+    comments = true,
+  },
+  custom_highlight = {
+    CursorLine = '#0000FF',
+    LineNr = '#FFFFFF'
+  }
+})
+vim.g.material_style = "oceanic"
+vim.cmd([[colorscheme material]])
 
 --[[ nebulous ]]
 -- require("nebulous").setup({

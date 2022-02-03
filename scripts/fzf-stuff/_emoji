@@ -3776,7 +3776,9 @@ EOF
 selected="$(emoji_list | grep -v -e '^[[:space:]]*$' | fzf -e -i -m --reverse | awk '{printf $1}')"
 [ -z "$selected" ] && exit
 
-echo -n "$selected"
+# selected="$(emoji_list | grep -v -e '^[[:space:]]*$' | dmenu | awk '{printf $1}')"
+#
+# echo -n "$selected"
 echo -n "$selected" | xclip -selection clipboard
 # | xclip -i
 # xclip -i "$selected"

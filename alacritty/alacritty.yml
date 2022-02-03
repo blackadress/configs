@@ -33,7 +33,7 @@ scrolling:
 font:
   # 🌙
   normal:
-    family: "Source Code Pro"
+    family: "monospace"
     style: Normal
 
   bold:

@@ -66,16 +66,16 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = "alacritty"
+local editor = os.getenv("EDITOR") or "nvim"
+local editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+local modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -88,7 +88,7 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
+local myawesomemenu = {
   {
     "hotkeys",
     function()
@@ -106,7 +106,7 @@ myawesomemenu = {
   }
 }
 
-mymainmenu =
+local mymainmenu =
   awful.menu(
   {
     items = {
@@ -116,7 +116,7 @@ mymainmenu =
   }
 )
 
-mylauncher =
+local mylauncher =
   awful.widget.launcher(
   {
     image = beautiful.awesome_icon,
@@ -129,7 +129,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+local mykeyboardlayout = awful.widget.keyboardlayout()
 local kbdcfg = keyboard_layout.kbdcfg()
 
 kbdcfg.add_primary_layout("English", "us", "us")
@@ -161,7 +161,7 @@ kbdcfg.widget:buttons(
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+local mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons =
@@ -314,6 +314,7 @@ awful.screen.connect_for_each_screen(
       }
     )
 
+
     -- Create a tasklist widget
     s.mytasklist =
       awful.widget.tasklist(
@@ -325,7 +326,7 @@ awful.screen.connect_for_each_screen(
     )
 
     -- Create the wibox
-    s.mywibox = awful.wibar({position = "top", screen = s})
+    s.mywibox = awful.wibar({position = "top", screen = s, --[[ bg="#434c5e" ]]})
 
     -- Add widgets to the wibox
     s.mywibox:setup(
@@ -395,6 +396,17 @@ globalkeys =
     {description = "view next", group = "tag"}
   ),
   awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
+  awful.key({modkey}, ".",
+    function()
+      for s in screen do
+        s.mywibox.visible = not s.mywibox.visible
+        if s.mybottomwibox then
+          s.mybottomwibox.visible = not s.mybottomwibox.visible
+        end
+      end
+    end,
+    {description = "toggle wibox visibility", group = "awesome"}
+  ),
   -- media buttons
   awful.key(
     {modkey},
@@ -556,7 +568,7 @@ globalkeys =
     function()
       awful.spawn.with_shell("flameshot gui")
     end,
-    {description = "focus previous by index", group = "client"}
+    {description = "flameshot", group = "client"}
   ),
   -- awful.key(
   --   {modkey},
