@@ -40,7 +40,7 @@ return require("packer").startup(
     -- rest client
     -- use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}}
     --patched version of above
-    use({"~/proyectos/lua/rest.nvim", branch = "estable", ft = {"http"}})
+    use({"~/proyectos/lua/rest.nvim", branch = "estable"})
     -- use("~/proyectos/lua/first-plugin")
 
     -- completion
