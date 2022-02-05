@@ -37,11 +37,11 @@ font:
     style: Normal
 
   bold:
-    family: "Source Code Pro"
+    family: "monospace"
     style: Bold
 
   italic:
-    family: "Fira Code iScript"
+    family: "monospace"
     style: Italic
 
   # Point size
