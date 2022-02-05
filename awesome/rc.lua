@@ -1161,8 +1161,6 @@ beautiful.notification_icon_size = 80
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("key_remap")
 -- awful.spawn.with_shell("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
-awful.spawn.with_shell(
-  "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-)
+awful.spawn.with_shell("wal")
 os.execute("start_ssh_agent")
 os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
