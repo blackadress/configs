@@ -734,9 +734,7 @@ globalkeys =
     "w",
     function()
       -- awful.util.spawn("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
-      awful.util.spawn(
-        "nitrogen --set-zoom-fill --random /mnt/particion_ntfs/imagenes/wp-long-monitor/"
-      )
+      awful.util.spawn("wal")
     end,
     {description = "change wallpaper randomly", group = "launcher"}
   ),
