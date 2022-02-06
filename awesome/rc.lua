@@ -377,7 +377,47 @@ root.buttons(
     awful.button({}, 5, awful.tag.viewprev)
   )
 )
+
+local bling = require("bling")
+-- local rubato = require("rubato") -- Totally optional, only required if you are using animations.
+--
+-- -- These are example rubato tables. You can use one for just y, just x, or both.
+-- -- The duration and easing is up to you. Please check out the rubato docs to learn more.
+-- local anim_y = rubato.timed {
+--     pos = 1090,
+--     rate = 60,
+--     easing = rubato.quadratic,
+--     intro = 0.1,
+--     duration = 0.3,
+--     awestore_compat = true -- This option must be set to true.
+-- }
+--
+-- local anim_x = rubato.timed {
+--     pos = -970,
+--     rate = 60,
+--     easing = rubato.quadratic,
+--     intro = 0.1,
+--     duration = 0.3,
+--     awestore_compat = true -- This option must be set to true.
+-- }
+
+local term_scratch = bling.module.scratchpad {
+    command = "alacritty --class spad",           -- How to spawn the scratchpad
+    rule = { instance = "spad" },                     -- The rule that the scratchpad will be searched by
+    sticky = false,                                    -- Whether the scratchpad should be sticky
+    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
+    geometry = {x=680, y=90, height=900, width=1200}, -- The geometry in a floating state
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
+    -- rubato = {x = anim_x, y = anim_y}                 -- Optional. This is how you can pass in the rubato tables for animations. If you don't want animations, you can ignore this option.
+}
 -- }}}
+
+bling.module.window_swallowing.start()
+-- theme.parent_filter_list   = {"firefox", "Gimp"} -- class names list of parents that should not be swallowed
+-- theme.child_filter_list    = { "Dragon" }        -- class names list that should not swallow their parents
+-- theme.swallowing_filter = true                   -- whether the filters above should be active
 
 -- {{{ Key bindings
 globalkeys =
@@ -747,6 +787,14 @@ globalkeys =
     {description = "open firefox browser", group = "launcher"}
   ),
   awful.key(
+    {},
+    "F12",
+    function()
+      term_scratch:toggle()   -- toggles the scratchpads visibility
+    end,
+    {description = "scratchpad terminal", group = "launcher"}
+  ),
+  awful.key(
     {modkey},
     "e",
     function()
@@ -1111,6 +1159,7 @@ awful.rules.rules = {
 }
 -- }}}
 
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal(
@@ -1128,14 +1177,6 @@ client.connect_signal(
     end
   end
 )
-
--- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal(
---   "mouse::enter",
---   function(c)
---     c:emit_signal("request::activate", "mouse_enter", {raise = false})
---   end
--- )
 
 client.connect_signal(
   "focus",
