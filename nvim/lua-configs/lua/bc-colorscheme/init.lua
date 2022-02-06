@@ -30,8 +30,11 @@ require("material").setup({
     comments = true,
   },
   custom_highlight = {
-    CursorLine = '#0000FF',
-    LineNr = '#FFFFFF'
+    -- CursorLine = '#0000FF',
+    -- LineNr = '#FFFFFF'
+  },
+  disable = {
+    background = false
   }
 })
 vim.g.material_style = "oceanic"
@@ -41,7 +44,7 @@ vim.cmd([[colorscheme material]])
 -- require("nebulous").setup({
 --   variant = "fullmoon",
 --   disable = {
---     background = false,
+--     background = true,
 --     endOfBuffer = false,
 --     terminal_colors = false,
 --   },
@@ -49,7 +52,7 @@ vim.cmd([[colorscheme material]])
 --     comments = true,
 --     keywords = false,
 --     functions = false,
---     variables = true,
+--     variables = false,
 --   },
 --   custom_colors = { -- this table can hold any group of colors with their respective values
 --     -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },

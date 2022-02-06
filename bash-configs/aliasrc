@@ -8,8 +8,8 @@ alias ls='exa --icons' \
 	  server='ssh -i ~/keys/leasingprodbackend.pem ec2-user@54.91.247.128' \
 	  qa-server='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42' \
 	  qa-limpiar='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42 "./scripts/limpiar_qa.sh ~/ft-backend/"'\
-      shutdown='systemctl poweroff'
-      # shutdown='shutdown -h now'
+      shutdown='systemctl poweroff' \
+	  v='nvim'
 
 # alias
 alias tx='before_tmux.sh' \
