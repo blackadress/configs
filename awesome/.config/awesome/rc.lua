@@ -415,9 +415,6 @@ local term_scratch = bling.module.scratchpad {
 -- }}}
 
 bling.module.window_swallowing.start()
--- theme.parent_filter_list   = {"firefox", "Gimp"} -- class names list of parents that should not be swallowed
--- theme.child_filter_list    = { "Dragon" }        -- class names list that should not swallow their parents
--- theme.swallowing_filter = true                   -- whether the filters above should be active
 
 -- {{{ Key bindings
 globalkeys =

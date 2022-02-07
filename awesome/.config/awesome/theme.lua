@@ -132,4 +132,8 @@ theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
+theme.parent_filter_list   = {"dolphin"} -- class names list of parents that should not be swallowed
+-- theme.child_filter_list = { "dolphin" }        -- class names list that should not swallow their parents
+theme.swallowing_filter = true                   -- whether the filters above should be active
+
 return theme
