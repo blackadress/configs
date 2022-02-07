@@ -10,10 +10,10 @@
 -- vim.cmd([[colorscheme gruvbox]])
 
 --[[ gruvbox material]]
--- vim.g.gruvbox_material_background = "soft"
--- vim.g.gruvbox_material_enable_bold = 1
--- vim.g.gruvbox_material_palette = 'mix'
--- vim.cmd([[colorscheme gruvbox-material]])
+vim.g.gruvbox_material_background = "soft"
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_palette = 'mix'
+vim.cmd([[colorscheme gruvbox-material]])
 
 --[[ github theme ]]
 -- require("github-theme").setup({
@@ -25,26 +25,26 @@
 -- vim.cmd([[colorscheme subtle_dark]]) -- doesn't work with indent_blankline
 
 --[[ material ]]
-require("material").setup({
-  italics = {
-    comments = true,
-  },
-  custom_highlight = {
-    -- CursorLine = '#0000FF',
-    -- LineNr = '#FFFFFF'
-  },
-  disable = {
-    background = false
-  }
-})
-vim.g.material_style = "oceanic"
-vim.cmd([[colorscheme material]])
+-- require("material").setup({
+--   italics = {
+--     comments = true,
+--   },
+--   custom_highlight = {
+--     -- CursorLine = '#0000FF',
+--     -- LineNr = '#FFFFFF'
+--   },
+--   disable = {
+--     background = false
+--   }
+-- })
+-- vim.g.material_style = "oceanic"
+-- vim.cmd([[colorscheme material]])
 
 --[[ nebulous ]]
 -- require("nebulous").setup({
 --   variant = "fullmoon",
 --   disable = {
---     background = true,
+--     background = false,
 --     endOfBuffer = false,
 --     terminal_colors = false,
 --   },
@@ -59,8 +59,12 @@ vim.cmd([[colorscheme material]])
 --     -- CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
 --
 --     -- it is possible to specify only the element to be changed
---     TelescopePreviewBorder = { fg = "#A13413" },
---     LspDiagnosticsDefaultError = { bg = "#E11313" },
+--     -- TelescopePreviewBorder = { fg = "#A13413" },
+--     -- LspDiagnosticsDefaultError = { bg = "#E11313" },
 --     TSTagDelimiter = { style = "bold,italic" },
 --   },
 -- })
+--
+
+--[[ catppuccin ]]
+-- vim.cmd[[colorscheme catppuccin]]

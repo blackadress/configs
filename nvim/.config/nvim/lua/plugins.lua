@@ -73,6 +73,7 @@ return require("packer").startup(
     use("Iron-E/nvim-soluarized")
     use("marko-cerovac/material.nvim")
     use("Yagua/nebulous.nvim")
+    use({"catppuccin/nvim", as = "catppuccin"})
 
     -- support italics
     use("challenger-deep-theme/vim")

@@ -40,6 +40,17 @@ local lua_settings = {
   }
 }
 
+local sqls_settings = {
+  sqls = {
+    connections = {
+      {
+        driver = "postgresql",
+        dataSourceName = "host=127.0.0.1 port=5432 user=postgres dbname=factoringtotal"
+      }
+    }
+  }
+}
+
 -- config that activates keymaps and enables snippet support
 -- local function make_config()
 --   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -53,6 +64,18 @@ local lua_settings = {
 -- end
 --
 -- make_config()
+-- require("lspconfig").sqls.setup({
+--   settings = {
+--     sqls = {
+--       connections = {
+--         {
+--           driver = "postgresql",
+--           dataSourceName = "host=127.0.0.1 port=5432 user=postgres dbname=factoringtotal"
+--         }
+--       }
+--     }
+--   }
+-- })
 
 -- lsp-install
 local lsp_installer = require("nvim-lsp-installer")
@@ -64,6 +87,9 @@ lsp_installer.on_server_ready(
 
     if server.name == "lua" then
       opts.settings = lua_settings
+    end
+    if server.name == "sqls" then
+      opts.settings = sqls_settings
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.

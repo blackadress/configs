@@ -1,0 +1,45 @@
+#!/bin/sh
+# alias para programas
+alias ls='exa --icons' \
+      cat='bat' \
+      reds='redshift -P -O 3500 -b .7' \
+      upd='sudo pacman -Syu' \
+      res='du -h --max-depth=1' \
+	  server='ssh -i ~/keys/leasingprodbackend.pem ec2-user@54.91.247.128' \
+	  qa-server='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42' \
+	  qa-limpiar='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42 "./scripts/limpiar_qa.sh ~/ft-backend/"'\
+      shutdown='systemctl poweroff' \
+	  v='nvim'
+
+# alias
+alias tx='before_tmux.sh' \
+      jap='exec fcitx5 &' \
+	  nplug='nvim --cmd "set rtp+=$(pwd)" .'
+
+# alias para ubicaciones
+alias conf='cd ~/Documents/configs/' \
+      lil='cd ~/proyectos/lilab/' \
+      lilfe='cd ~/proyectos/lilab/ft-frontend/'\
+      lilbe='cd ~/proyectos/lilab/ft-backend/'\
+      proy='cd ~/proyectos/' \
+      pgo='cd ~/proyectos/go/' \
+      pgoa='cd ~/proyectos/go/aula_virtual/' \
+      ppy='cd ~/proyectos/python/' \
+      pru='cd ~/proyectos/rust/' \
+      pjs='cd ~/proyectos/node/' \
+      phs='cd ~/proyectos/haskell/'
+
+
+# alias open configs
+alias neoconf='cd ~/Documents/configs/nvim/ && nvim init.vim' \
+      nconf='cd ~/Documents/configs/nvim/lua-configs/ && nvim init.lua' \
+      bashconf='cd ~/Documents/configs/bash-configs/ && nvim bashrc' \
+      profileconf='cd ~/Documents/configs/bash-configs/ && nvim bash_profile' \
+      aliasconf='cd ~/Documents/configs/bash-configs/ && nvim aliasrc' \
+      aweconf='cd ~/Documents/configs/awesome/ && nvim rc.lua' \
+      alaconf='cd ~/Documents/configs/alacritty/ && nvim alacritty.yml'
+
+# alias tunnel
+alias tunnel-prod='ssh -L localhost:5431:bd-leasing-sglt.cvimikcvnl9p.us-east-1.rds.amazonaws.com:5432 -N -T ec2-user@54.91.247.128 -i ~/keys/leasingprodbackend.pem'
+alias tunnel-qa='ssh -L localhost:5431:factoringtotal.cdn6nh2pdjnu.us-east-2.rds.amazonaws.com:5432 -N -T ec2-user@18.222.218.42 -i ~/keys/factoring_total_test.pem'
+
