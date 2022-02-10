@@ -51,8 +51,10 @@ return require("packer").startup(
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-cmdline")
 
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/vim-vsnip")
+    -- use("hrsh7th/cmp-vsnip")
+    -- use("hrsh7th/vim-vsnip")
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
     use("rafamadriz/friendly-snippets")
 
     use("windwp/nvim-autopairs")
@@ -95,5 +97,6 @@ return require("packer").startup(
     -- Soporte sintactico de lenguaje
     -- use "rust-lang/rust.vim"
     use({"neovimhaskell/haskell-vim", ft = "hs"})
+    use({'nanotee/sqls.nvim'})
   end
 )

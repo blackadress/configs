@@ -40,42 +40,6 @@ local lua_settings = {
   }
 }
 
-local sqls_settings = {
-  sqls = {
-    connections = {
-      {
-        driver = "postgresql",
-      }
-    }
-  }
-}
-
--- config that activates keymaps and enables snippet support
--- local function make_config()
---   local capabilities = vim.lsp.protocol.make_client_capabilities()
---   capabilities.textDocument.completion.completionItem.snippetSupport = true
---   return {
---     -- enable snippet support
---     capabilities = capabilities,
---     -- map buffer local keybindings when the language server attaches
---     on_attach = on_attach
---   }
--- end
---
--- make_config()
--- require("lspconfig").sqls.setup({
---   settings = {
---     sqls = {
---       connections = {
---         {
---           driver = "postgresql",
---           dataSourceName = "host=127.0.0.1 port=5432 user=postgres dbname=factoringtotal"
---         }
---       }
---     }
---   }
--- })
-
 -- lsp-install
 local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for all installed servers.
@@ -88,7 +52,14 @@ lsp_installer.on_server_ready(
       opts.settings = lua_settings
     end
     if server.name == "sqls" then
-      opts.settings = sqls_settings
+      opts.cmd = {
+        "/home/erland/.local/share/nvim/lsp_servers/sqls/sqls",
+        "-config",
+        "/home/erland/.local/share/nvim/lsp_servers/sqls/config.yml"
+      }
+      opts.on_attach = function(client, bufnr)
+        require("sqls").on_attach(client, bufnr)
+      end
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.

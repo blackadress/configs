@@ -69,11 +69,11 @@ require("formatter").setup({
     lua = {
       function()
         return {
-          exe = "luafmt",
-          args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
-          stdin = true
-          -- exe = "stylua",
-          -- stdin = false,
+          -- exe = "luafmt",
+          -- args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
+          -- stdin = true
+          exe = "stylua",
+          stdin = false,
         }
       end,
     },
