@@ -24,7 +24,7 @@ require("formatter").setup({
       function()
         return {
           exe = "dprint",
-          args = { "fmt", "--config", "~/Documents/configs/dprint/config.json" },
+          args = { "fmt", "--config", "~/configs/dprint/config.json" },
           stdin = false,
         }
       end,
@@ -33,7 +33,7 @@ require("formatter").setup({
       function()
         return {
           exe = "dprint",
-          args = { "fmt", "--config", "~/Documents/configs/dprint/config.json" },
+          args = { "fmt", "--config", "~/configs/dprint/config.json" },
           stdin = false,
         }
       end,
@@ -42,7 +42,7 @@ require("formatter").setup({
       function()
         return {
           exe = "dprint",
-          args = { "fmt", "--config", "~/Documents/configs/dprint/config.json" },
+          args = { "fmt", "--config", "~/configs/dprint/config.json" },
           stdin = false,
         }
       end,
@@ -51,7 +51,7 @@ require("formatter").setup({
       function()
         return {
           exe = "dprint",
-          args = { "fmt", "--config", "~/Documents/configs/dprint/config.json" },
+          args = { "fmt", "--config", "~/configs/dprint/config.json" },
           stdin = false,
         }
       end,
@@ -98,12 +98,12 @@ require("formatter").setup({
   },
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>==", ":Format<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>t", ":Format<CR>", { noremap = true, silent = true })
 vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.rs,*.hs,*.go, FormatWrite
+  autocmd BufWritePost *.rs,*.hs,*.go FormatWrite
 augroup END
 ]],
   true

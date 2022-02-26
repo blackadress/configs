@@ -35,6 +35,7 @@ local conditions = {
 
 -- Config
 local config = {
+  theme = 'default',
   options = {
     -- Disable sections and component separators
     component_separators = "",
@@ -219,5 +220,6 @@ ins_right {
 }
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
--- lualine.setup({lualine_style = 'default'})
+-- lualine.setup(config)
+lualine.setup({lualine_style = 'default'})
+-- lualine.setup({lualine_style = 'tokyonight'})

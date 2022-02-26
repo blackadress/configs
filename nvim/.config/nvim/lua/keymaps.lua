@@ -22,14 +22,12 @@ vim.api.nvim_set_keymap("v", "<F5>", "<Esc>:set list!<CR>", {noremap = true})
 
 -- new tab
 vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", {noremap = true})
+
+-- desplazamiento tabs
 vim.api.nvim_set_keymap("n", "<Left>", "gT", {noremap = true})
 vim.api.nvim_set_keymap("n", "<A-h>", "gT", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Right>", "gt", {noremap = true})
 vim.api.nvim_set_keymap("n", "<A-l>", "gt", {noremap = true})
-
--- desplazamiento tabs
-vim.api.nvim_set_keymap("n", "<S-Tab>", "gT", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<Tab>", "gt", {noremap = true})
 
 -- buffer split in normal mode
 vim.api.nvim_set_keymap("n", "<Leader>v", ":vertical split<CR>", {noremap = true})
