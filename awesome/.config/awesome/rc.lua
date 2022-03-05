@@ -516,9 +516,11 @@ globalkeys = gears.table.join(
     awful.util.spawn("dmenu_run")
   end, { description = "run dmenu", group = "launcher" }),
   awful.key({ modkey }, "w", function()
-    -- awful.util.spawn("nitrogen --set-zoom-fill --random /usr/share/backgrounds/wallpapers-2018/")
     awful.util.spawn("wal")
-  end, { description = "change wallpaper randomly", group = "launcher" }),
+  end, { description = "change wallpaper", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "w", function()
+    awful.util.spawn("wal prev")
+  end, { description = "change wallpaper to previous one", group = "launcher" }),
   awful.key({ modkey }, "b", function()
     awful.util.spawn("firefox")
   end, { description = "open firefox browser", group = "launcher" }),
@@ -803,8 +805,7 @@ beautiful.notification_icon_size = 80
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("key_remap")
-awful.spawn.with_shell("wal")
--- os.execute("start_ssh_agent")
+awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
 -- os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
 awful.spawn.with_shell(
