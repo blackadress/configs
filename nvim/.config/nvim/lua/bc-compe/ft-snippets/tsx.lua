@@ -22,26 +22,19 @@ local conds = require("luasnip.extras.expand_conditions")
 local copy = require("bc-compe.ft-snippets.utils").copy
 
 local snippets = {
-  ls.parser.parse_snippet("tc", "try:\n\t$1\nexcept $2:\n"),
-  s("te", {
-    t({ "try:", "\t" }),
-    i(1, "pass"),
-    t({ "", "except " }),
-    i(2, "exception"),
-    t({ ":", "\t" }),
-    i(0),
-    i(3, "pass"),
-  }),
-  s("def", {
-    t("# parameters: "),
-    f(copy, 2),
-    t({ "", "def " }),
+  s("div", {
+    t({ '<div className="' }),
     i(1),
-    t("("),
-    i(2, "foo"),
-    t({ "):", "\t" }),
-    i(0),
-    t({ "", "" }),
+    t({ '">' }),
+    i(2),
+    t({ "</div>" }),
+  }),
+  s("img", {
+    t([[<img src="]]),
+    i(1),
+    t([[" alt="]]),
+    i(2),
+    t({ [[" ></img>]], "" }),
   }),
 }
 

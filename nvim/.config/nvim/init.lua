@@ -15,7 +15,6 @@ require("bc-pairs")
 require("bc-colorizer")
 require("bc-vimwiki")
 require("bc-rest")
-require("bc-indentline")
 
 require("bc-lsp")
 require("languages")

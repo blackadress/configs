@@ -23,14 +23,19 @@ local copy = require("bc-compe.ft-snippets.utils").copy
 
 local snippets = {
   s("f", {
-    t({ "func "}),
+    t({ "func " }),
     i(1, "foo"),
-    t({"("}),
+    t({ "(" }),
     i(2, "args"),
-    t({") {", "\t"}),
+    t({ [[) {]], "\t" }),
     i(0),
-    t({"", "}"})
-  })
+    t({ "", "}" }),
+  }),
+  s("main", {
+    t({ "package main", "", "", [[func main(){]], "\t" }),
+    i(1),
+    t({ "", "}" }),
+  }),
 }
 
 return snippets

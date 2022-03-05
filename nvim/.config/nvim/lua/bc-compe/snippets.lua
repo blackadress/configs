@@ -23,18 +23,23 @@ local conds = require("luasnip.extras.expand_conditions")
 package.loaded["bc-compe.ft-snippets.go"] = nil
 package.loaded["bc-compe.ft-snippets.python"] = nil
 package.loaded["bc-compe.ft-snippets.tex"] = nil
+package.loaded["bc-compe.ft-snippets.tsx"] = nil
+package.loaded["bc-compe.ft-snippets.lua"] = nil
 
 local go_snpts = require("bc-compe.ft-snippets.go")
 local python_snpts = require("bc-compe.ft-snippets.python")
 local tex_snpts = require("bc-compe.ft-snippets.tex")
+local tsx_snpts = require("bc-compe.ft-snippets.tsx")
+local lua_snpts = require("bc-compe.ft-snippets.lua")
 
 ls.snippets = {
   all = {},
-  lua = {},
+  lua = lua_snpts,
   python = python_snpts,
   typescript = {
     ls.parser.parse_snippet("cl", "console.log($1)"),
   },
+  typescriptreact = tsx_snpts,
   go = go_snpts,
   tex = tex_snpts,
 }

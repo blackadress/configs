@@ -21,7 +21,6 @@ return require("packer").startup(
     use("tami5/lspsaga.nvim")
     -- use "glepnir/lspsaga.nvim"
 
-    use("lukas-reineke/indent-blankline.nvim")
     use(
       {
         "nvim-telescope/telescope.nvim",

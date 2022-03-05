@@ -22,26 +22,18 @@ local conds = require("luasnip.extras.expand_conditions")
 local copy = require("bc-compe.ft-snippets.utils").copy
 
 local snippets = {
-  ls.parser.parse_snippet("tc", "try:\n\t$1\nexcept $2:\n"),
-  s("te", {
-    t({ "try:", "\t" }),
-    i(1, "pass"),
-    t({ "", "except " }),
-    i(2, "exception"),
-    t({ ":", "\t" }),
-    i(0),
-    i(3, "pass"),
-  }),
-  s("def", {
-    t("# parameters: "),
-    f(copy, 2),
-    t({ "", "def " }),
+  s("trig", {
+    t("text: "),
     i(1),
-    t("("),
-    i(2, "foo"),
-    t({ "):", "\t" }),
-    i(0),
-    t({ "", "" }),
+    t({ "", "copy: " }),
+    d(2, function(args)
+      -- the returned snippetNode doesn't need a position; it's inserted
+      -- "inside" the dynamicNode.
+      return sn(nil, {
+        -- jump-indices are local to each snippetNode, so restart at 1.
+        i(1, args[1]),
+      })
+    end, { 1 }),
   }),
 }
 

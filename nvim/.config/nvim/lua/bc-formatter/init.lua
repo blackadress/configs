@@ -47,6 +47,15 @@ require("formatter").setup({
         }
       end,
     },
+    typescriptreact = {
+      function()
+        return {
+          exe = "dprint",
+          args = { "fmt", "--config", "~/configs/dprint/config.json" },
+          stdin = false,
+        }
+      end,
+    },
     json = {
       function()
         return {
