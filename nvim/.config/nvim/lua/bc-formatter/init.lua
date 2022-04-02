@@ -65,6 +65,11 @@ require("formatter").setup({
         }
       end,
     },
+    xml = {
+      function()
+        return { exe = "xmlstarlet", args = { "format" }, stdin = true }
+      end,
+    },
     rust = {
       function()
         return { exe = "rustfmt", args = { "--emit=stdout" }, stdin = true }
@@ -77,13 +82,7 @@ require("formatter").setup({
     },
     lua = {
       function()
-        return {
-          -- exe = "luafmt",
-          -- args = {"--indent-count", 2, "--stdin", "--line-width", "100"},
-          -- stdin = true
-          exe = "stylua",
-          stdin = false,
-        }
+        return { exe = "stylua", stdin = false }
       end,
     },
     haskell = {
@@ -98,10 +97,7 @@ require("formatter").setup({
     },
     sql = {
       function()
-        return {
-          exe = "pg_format",
-          stdin = true,
-        }
+        return { exe = "pg_format", stdin = true }
       end,
     },
   },

@@ -10,10 +10,10 @@
 -- vim.cmd([[colorscheme gruvbox]])
 
 --[[ gruvbox material]]
--- vim.g.gruvbox_material_background = "soft"
--- vim.g.gruvbox_material_enable_bold = 1
--- vim.g.gruvbox_material_palette = 'mix'
--- vim.cmd([[colorscheme gruvbox-material]])
+vim.g.gruvbox_material_background = "soft"
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_palette = 'mix'
+vim.cmd([[colorscheme gruvbox-material]])
 
 --[[ github theme ]]
 -- require("github-theme").setup({
@@ -67,4 +67,4 @@
 --
 
 --[[ catppuccin ]]
-vim.cmd[[colorscheme catppuccin]]
+-- vim.cmd[[colorscheme catppuccin]]

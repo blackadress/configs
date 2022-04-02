@@ -4,10 +4,9 @@ vim.o.showmode = false -- una barra de estado ya muestra el modo
 vim.o.joinspaces = false
 vim.o.hidden = true
 vim.o.mouse = "nvc" -- quiza lo tenga que cambiar a 'a'
+vim.o.swapfile = false
 -- neovide font
 vim.cmd([[set guifont=SauceCodePro\ Nerd\ Font:h15]])
--- vim.o.undodir = "~/.config/nvim/undodir"
--- vim.bo.undofile = true -- 'inseparable' de undodir a pesar de ser buffer option -- necesita ser global?
 vim.api.nvim_command("set undodir=~/.config/nvim/undodir")
 vim.api.nvim_command("set undofile")
 vim.o.ignorecase = true
