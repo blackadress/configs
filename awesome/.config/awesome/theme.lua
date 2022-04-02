@@ -9,22 +9,22 @@ local theme = {}
 
 theme.font = "Source Code Pro 10"
 
-theme.bg_normal = "#002b36"
-theme.bg_focus = "#004c8c"
-theme.bg_urgent = "#e90752"
-theme.bg_minimize = "#444444"
+theme.bg_normal = "#282828"
+theme.bg_focus = "#076678"
+theme.bg_urgent = "#cc241d"
+theme.bg_minimize = "#504945"
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_focus = "#ebdbb2"
+theme.fg_urgent = "#ebdbb2"
+theme.fg_minimize = "#ebdbb2"
 
 theme.useless_gap = dpi(0)
 theme.border_width = dpi(2)
 theme.border_normal = "#000000"
-theme.border_focus = "#004c8c"
-theme.border_marked = "#91231c"
+theme.border_focus = "#458588"
+theme.border_marked = "#d65d0e"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -37,7 +37,7 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
---theme.taglist_bg_focus = "#ff0000"
+theme.taglist_bg_focus = "#076678"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)

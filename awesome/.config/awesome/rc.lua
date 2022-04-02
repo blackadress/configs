@@ -368,7 +368,7 @@ globalkeys = gears.table.join(
     volume_widget:dec(5)
   end, { description = "decrease volume", group = "media keys" }),
   awful.key({}, "XF86AudioMute", function()
-    local mic_nr = io.popen("pamixer --list-sources | awk '/usb/ {print $1}'")
+    local mic_nr = io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'")
       :read("*a")
       :gsub("%s+", "")
     local toggle_command = "pamixer --source " .. mic_nr .. " -t"
@@ -804,10 +804,10 @@ beautiful.notification_icon_size = 80
 
 -- autostart applications
 awful.spawn.with_shell("picom -i 1.0")
-awful.spawn.with_shell("key_remap")
 awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
 -- os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
 awful.spawn.with_shell(
-  "pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m"
+  "pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m & key_remap"
 )
+-- awful.spawn.with_shell("key_remap")
