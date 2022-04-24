@@ -13,7 +13,7 @@ require("bc-treesitter")
 require("bc-compe")
 require("bc-pairs")
 require("bc-colorizer")
-require("bc-vimwiki")
+require("bc-wiki")
 require("bc-rest")
 
 require("bc-lsp")
