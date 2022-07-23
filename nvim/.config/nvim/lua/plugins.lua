@@ -17,7 +17,9 @@ return require("packer").startup(function(use)
   use("neovim/nvim-lspconfig")
   use("williamboman/nvim-lsp-installer")
   use("tami5/lspsaga.nvim")
-  -- use "glepnir/lspsaga.nvim"
+  -- use("glepnir/lspsaga.nvim")
+  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+  use({ "lewis6991/spellsitter.nvim", requires = "nvim-treesitter/nvim-treesitter" })
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -66,6 +68,8 @@ return require("packer").startup(function(use)
   use("marko-cerovac/material.nvim")
   use("Yagua/nebulous.nvim")
   use({ "catppuccin/nvim", as = "catppuccin" })
+  use("daschw/leaf.nvim")
+  use("EdenEast/nightfox.nvim")
 
   -- support italics
   use("challenger-deep-theme/vim")
@@ -74,6 +78,7 @@ return require("packer").startup(function(use)
 
   -- use("morhetz/gruvbox")
   use("kadekillary/subtle_solo")
+  use("romainl/flattened")
   use("hachy/eva01.vim")
   use("tyrannicaltoucan/vim-deep-space")
   use("wadackel/vim-dogrun")

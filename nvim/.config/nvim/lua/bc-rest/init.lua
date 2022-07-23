@@ -1,15 +1,20 @@
 local rest = require("rest-nvim")
 
-rest.setup(
-  {
-    jump_to_request = false,
-    result_split_horizontal = false,
-    result_split_in_place = true
-  }
-)
+rest.setup({
+  jump_to_request = false,
+  result_split_horizontal = false,
+  result_split_in_place = true,
+})
 
-local map = vim.api.nvim_set_keymap
-local opts = {noremap = true, silent = true}
-map("n", "<Leader>re", "<cmd>lua require('rest-nvim').run()<CR>", opts)
-map("n", "<Leader>rr", "<cmd>lua require('rest-nvim').last()<CR>", opts)
-map("n", "<Leader>pr", "<cmd>lua require('rest-nvim').run(true)<CR>", opts)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "http",
+
+  callback = function()
+    local buff = tonumber(vim.fn.expand("<abuf>"), 10)
+    vim.keymap.set("n", "<leader>re", rest.run, { buffer = buff })
+    vim.keymap.set("n", "<leader>rr", rest.last, { buffer = buff })
+    vim.keymap.set("n", "<leader>pr", function()
+      rest.run(true)
+    end, { buffer = buff })
+  end,
+})

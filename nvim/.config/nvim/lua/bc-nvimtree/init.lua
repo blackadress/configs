@@ -4,7 +4,7 @@ require "nvim-tree".setup {
   hijack_netrw = false,
   open_on_setup = false,
   ignore_ft_on_setup = {},
-  auto_close = false,
+  -- auto_close = false,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = false,
@@ -23,15 +23,14 @@ require "nvim-tree".setup {
     args = {}
   },
   view = {
-    width = 45,
+    width = 25,
     side = "left",
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {}
     }
   },
-  ignore = {".git", "node_modules", ".cache"}
+  -- ignore = {".git", "node_modules", ".cache"}
 }
 
 vim.api.nvim_set_keymap("n", "<F4>", ":NvimTreeToggle<CR>", {silent = true})
