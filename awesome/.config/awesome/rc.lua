@@ -119,7 +119,7 @@ local mykeyboardlayout = awful.widget.keyboardlayout()
 local kbdcfg = keyboard_layout.kbdcfg()
 
 kbdcfg.add_primary_layout("English", "us", "us")
-kbdcfg.add_primary_layout("Spanish", "es", "es")
+kbdcfg.add_primary_layout("Spanish", "es", "latam")
 -- kbdcfg.add_primary_layout("English",  "us", "fcitx-keyboard-us")
 -- kbdcfg.add_primary_layout("Spanish",  "es", "fcitx-keyboard-es")
 -- kbdcfg.add_primary_layout("Japanese", "ja", "mozc")
@@ -317,8 +317,6 @@ local term_scratch = bling.module.scratchpad({
   -- rubato = {x = anim_x, y = anim_y}                 -- Optional. This is how you can pass in the rubato tables for animations. If you don't want animations, you can ignore this option.
 })
 -- }}}
-
-bling.module.window_swallowing.start()
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -533,6 +531,9 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "s", function()
     awful.util.spawn("spotify")
   end, { description = "open spotify", group = "launcher" }),
+  awful.key({ modkey }, "o", function()
+    awful.util.spawn("discord-canary")
+  end, { description = "open discord canary", group = "launcher" }),
   awful.key({ modkey }, "r", function()
     awful.util.spawn("gui_launcher")
   end, { description = "launcher", group = "launcher" }),
@@ -697,7 +698,7 @@ awful.rules.rules = {
     rule = { class = "discord" },
     properties = {
       maximized = false,
-      floating = true,
+      floating = false,
       tag = "8",
       placement = awful.placement.centered,
     },
@@ -808,6 +809,6 @@ awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
 -- os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
 awful.spawn.with_shell(
-  "pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m & key_remap"
+  "pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m && sleep 2 && key_remap"
 )
 -- awful.spawn.with_shell("key_remap")
