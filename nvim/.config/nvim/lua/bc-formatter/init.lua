@@ -1,5 +1,3 @@
-local util = require("formatter.util")
-
 -- FORMATER.VIM
 require("formatter").setup({
   logging = false,
@@ -52,19 +50,15 @@ require("formatter").setup({
     },
     typescript = {
       function()
-        --[[ return {
+        return {
           exe = "dprint",
           args = {
             "fmt",
+            "--stdin",
+            vim.api.nvim_buf_get_name(0),
             "--config",
             "~/configs/dprint/config.json",
-            util.escape_path(util.get_current_buffer_file_path()),
           },
-          stdin = false,
-        } ]]
-        return {
-          exe = "prettierd",
-          args = { vim.api.nvim_buf_get_name(0) },
           stdin = true,
         }
       end,

@@ -1,5 +1,8 @@
-local lspsaga = require("lspsaga")
-lspsaga.setup()
+local saga = require("lspsaga")
+
+saga.init_lsp_saga({
+  move_in_saga = { prev = "<C-p>", next = "<C-n>" },
+})
 
 -- Configure lua language server for neovim development
 local runtime_path = vim.split(package.path, ";")
