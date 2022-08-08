@@ -1,22 +1,24 @@
 require("bc-editor.autorun")
 
+local keymap_set = vim.keymap.set
+
 --leader
 vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 
 -- copy to systemclipboard
-vim.api.nvim_set_keymap("x", "<C-c>", '"+y', { noremap = true })
+keymap_set("x", "<C-c>", '"+y')
 
 -- no highlight on search
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":nohlsearch<CR>", { noremap = true })
+keymap_set("n", "<Leader><Leader>", ":nohlsearch<CR>")
 
 --move line
 -- vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
 -- vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
 
 -- better indenting
-vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true })
-vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true })
+keymap_set("v", "<", "<gv")
+keymap_set("v", ">", ">gv")
 
 -- shortcut para mostrar los trailing <Space> y <Tab>
 vim.api.nvim_set_keymap("n", "<F5>", ":set list!<CR>", { noremap = true })
