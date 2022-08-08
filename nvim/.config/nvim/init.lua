@@ -1,6 +1,6 @@
 require("plugins")
 require("keymaps")
-require("editor")
+require("bc-editor")
 
 require("bc-formatter")
 require("bc-bufferline")

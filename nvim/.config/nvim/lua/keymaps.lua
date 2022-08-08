@@ -1,64 +1,66 @@
+require("bc-editor.autorun")
+
 --leader
-vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 
 -- copy to systemclipboard
-vim.api.nvim_set_keymap("x", "<C-c>", '"+y', {noremap = true})
+vim.api.nvim_set_keymap("x", "<C-c>", '"+y', { noremap = true })
 
 -- no highlight on search
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":nohlsearch<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":nohlsearch<CR>", { noremap = true })
 
 --move line
 -- vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
 -- vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
 
 -- better indenting
-vim.api.nvim_set_keymap("v", "<", "<gv", {noremap = true})
-vim.api.nvim_set_keymap("v", ">", ">gv", {noremap = true})
+vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true })
+vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true })
 
 -- shortcut para mostrar los trailing <Space> y <Tab>
-vim.api.nvim_set_keymap("n", "<F5>", ":set list!<CR>", {noremap = true})
-vim.api.nvim_set_keymap("v", "<F5>", "<Esc>:set list!<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<F5>", ":set list!<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<F5>", "<Esc>:set list!<CR>", { noremap = true })
 
 -- new tab
-vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", { noremap = true })
 
 -- desplazamiento tabs
-vim.api.nvim_set_keymap("n", "<Left>", "gT", {noremap = true})
-vim.api.nvim_set_keymap("n", "<A-h>", "gT", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Right>", "gt", {noremap = true})
-vim.api.nvim_set_keymap("n", "<A-l>", "gt", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Left>", "gT", { noremap = true })
+vim.api.nvim_set_keymap("n", "<A-h>", "gT", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Right>", "gt", { noremap = true })
+vim.api.nvim_set_keymap("n", "<A-l>", "gt", { noremap = true })
 
 -- buffer split in normal mode
-vim.api.nvim_set_keymap("n", "<Leader>v", ":vertical split<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>a", ":split<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>v", ":vertical split<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>a", ":split<CR>", { noremap = true })
 
 -- guardar con <C-s>
-vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 
 -- mover entre splitted buffers
-vim.api.nvim_set_keymap("n", "<Leader>h", "<C-w>h", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>l", "<C-w>l", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>k", "<C-w>k", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>j", "<C-w>j", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>h", "<C-w>h", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>l", "<C-w>l", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>k", "<C-w>k", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>j", "<C-w>j", { noremap = true })
 -- swap splitted buffers
-vim.api.nvim_set_keymap("n", "<Leader><Left>", "<C-w>r", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader><Right>", "<C-w>r", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader><Left>", "<C-w>r", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader><Right>", "<C-w>r", { noremap = true })
 -- resize splitted buffer
-vim.api.nvim_set_keymap("n", "<C-w><Left>", "<C-w><", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-w><Right>", "<C-w>>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-w><Up>", "<C-w>+", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-w><Down>", "<C-w>-", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-w><Left>", "<C-w><", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-w><Right>", "<C-w>>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-w><Up>", "<C-w>+", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-w><Down>", "<C-w>-", { noremap = true })
 
 -- ESC remappings
-vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>", {noremap = true})
-vim.api.nvim_set_keymap("v", "<A-j>", "<Esc>", {noremap = true})
-vim.api.nvim_set_keymap("i", "<C-j>", "<Esc>", {noremap = true})
-vim.api.nvim_set_keymap("v", "<C-j>", "<Esc>", {noremap = true})
+vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<A-j>", "<Esc>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-j>", "<Esc>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<C-j>", "<Esc>", { noremap = true })
 
 local map = vim.api.nvim_set_keymap
-local opts = {noremap = true, silent = true}
-map("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {noremap = true, silent = true})
+local opts = { noremap = true, silent = true }
+map("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { noremap = true, silent = true })
 map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
 map("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
 map("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
@@ -94,3 +96,5 @@ map(
 )
 map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+-- execute current
+map("n", "<leader>x", "<cmd>source %<CR>", opts)

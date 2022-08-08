@@ -70,11 +70,13 @@ return require("packer").startup(function(use)
   use({ "catppuccin/nvim", as = "catppuccin" })
   use("daschw/leaf.nvim")
   use("EdenEast/nightfox.nvim")
+  use {'articblush/articblush.nvim', as = 'articblush'}
 
   -- support italics
   use("challenger-deep-theme/vim")
   use("liuchengxu/space-vim-dark")
   use("sainnhe/edge")
+  use("lunarvim/horizon.nvim")
 
   -- use("morhetz/gruvbox")
   use("kadekillary/subtle_solo")

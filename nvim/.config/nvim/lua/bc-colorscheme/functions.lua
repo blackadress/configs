@@ -131,7 +131,22 @@ function M.colo_nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.colo_reset()
+function M.colo_horizon()
+  vim.cmd("colorscheme horizon")
 end
+
+function M.colo_articblush(code, comm_it, contrast)
+  require("articblush").setup({
+    italics = {
+      code = code or true,
+      comments = comm_it or true, -- to disable italic comments, replace to true to enable
+    },
+    nvim_tree = {
+      contrast = contrast or true,
+    },
+  })
+end
+
+function M.colo_reset() end
 
 return M
