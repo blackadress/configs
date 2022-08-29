@@ -33,41 +33,37 @@ local lua_settings = {
 }
 
 -- lsp-install
-local lsp_installer = require("nvim-lsp-installer")
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
+-- local lsp_installer = require("nvim-lsp-installer")
+require("nvim-lsp-installer").setup({
+  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗",
+    },
+  },
+})
 
-  if server.name == "emmet_ls" then
-    opts.filetypes = {
-      "html",
-      "css",
-      "scss",
-      "javascriptreact",
-      "typescriptreact",
-      "xml",
-      "sass",
-    }
-  end
+local lspconfig = require("lspconfig")
 
-  if server.name == "sumneko_lua" then
-    opts.settings = lua_settings
-  end
-  if server.name == "sqls" then
-    opts.cmd = {
-      "/home/erland/.local/share/nvim/lsp_servers/sqls/sqls",
-      "-config",
-      "/home/erland/.local/share/nvim/lsp_servers/sqls/config.yml",
-    }
-    opts.on_attach = function(client, bufnr)
-      require("sqls").on_attach(client, bufnr)
-    end
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+lspconfig.angularls.setup({})
+lspconfig.bashls.setup({})
+lspconfig.emmet_ls.setup({})
+lspconfig.gopls.setup({})
+lspconfig.pyright.setup({})
+lspconfig.rust_analyzer.setup({})
+lspconfig.sqls.setup({
+  cmd = {
+    "/home/erland/.local/share/nvim/lsp_servers/sqls/sqls",
+    "-config",
+    "/home/erland/.local/share/nvim/lsp_servers/sqls/config.yml",
+  },
+})
+lspconfig.sumneko_lua.setup({
+  settings = lua_settings,
+})
+lspconfig.texlab.setup({})
+lspconfig.tsserver.setup({})
 
 -- require("bc-lsp/lspsaga_config")

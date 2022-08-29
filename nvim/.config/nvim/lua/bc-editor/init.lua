@@ -1,4 +1,5 @@
 require("bc-editor.autorun")
+require("bc-editor.ufo")
 
 -- GLOBAL OPTS
 vim.o.scrolloff = 2

@@ -21,6 +21,10 @@ return require("packer").startup(function(use)
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
   use({ "lewis6991/spellsitter.nvim", requires = "nvim-treesitter/nvim-treesitter" })
 
+  -- debugger dap
+  use({ "mfussenegger/nvim-dap" })
+  use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
   use({
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
@@ -55,8 +59,6 @@ return require("packer").startup(function(use)
   use("mhartington/formatter.nvim")
   use("tpope/vim-surround")
 
-  -- use "mattn/emmet-vim"
-
   -- color themes
   -- lua
   use("folke/tokyonight.nvim")
@@ -70,15 +72,12 @@ return require("packer").startup(function(use)
   use({ "catppuccin/nvim", as = "catppuccin" })
   use("daschw/leaf.nvim")
   use("EdenEast/nightfox.nvim")
-  use {'articblush/articblush.nvim', as = 'articblush'}
-
-  -- support italics
+  use({ "articblush/articblush.nvim", as = "articblush" })
   use("challenger-deep-theme/vim")
   use("liuchengxu/space-vim-dark")
   use("sainnhe/edge")
   use("lunarvim/horizon.nvim")
 
-  -- use("morhetz/gruvbox")
   use("kadekillary/subtle_solo")
   use("romainl/flattened")
   use("hachy/eva01.vim")
@@ -90,18 +89,27 @@ return require("packer").startup(function(use)
 
   use("vimwiki/vimwiki")
   -- use("oberblastmeister/neuron.nvim")
+  -- use({
+  --   "pyrho/nerveux.nvim",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-lua/popup.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- })
   use({
-    "pyrho/nerveux.nvim",
+    "epwalsh/obsidian.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-lua/popup.nvim",
-      "nvim-telescope/telescope.nvim",
+      "hrsh7th/nvim-cmp",
+      "godlygeek/tabular",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-treesitter/nvim-treesitter",
     },
   })
   use("norcalli/nvim-colorizer.lua")
 
   -- Soporte sintactico de lenguaje
-  -- use "rust-lang/rust.vim"
-  use({ "neovimhaskell/haskell-vim", ft = "hs" })
+  -- use({ "neovimhaskell/haskell-vim", ft = "hs" })
   use({ "nanotee/sqls.nvim" })
 end)
