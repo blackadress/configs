@@ -2,4 +2,5 @@
 
 setxkbmap -option "ctrl:nocaps"
 setxkbmap -option "shift:both_capslock_cancel"
-xset r rate 310 50
+xset r rate 220 50
+xbindkeys
