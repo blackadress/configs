@@ -47,6 +47,11 @@ ex ()
   fi
 }
 
+pyenv-disable ()
+{
+  export PATH=`echo $PATH | python -c "import sys, re; print(':'.join(x for x in sys.stdin.read().strip().split(':') if not 'pyenv' in x))"`
+}
+
 # aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
