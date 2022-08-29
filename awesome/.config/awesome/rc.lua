@@ -366,9 +366,8 @@ globalkeys = gears.table.join(
     volume_widget:dec(5)
   end, { description = "decrease volume", group = "media keys" }),
   awful.key({}, "XF86AudioMute", function()
-    local mic_nr = io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'")
-      :read("*a")
-      :gsub("%s+", "")
+    local mic_nr =
+      io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'"):read("*a"):gsub("%s+", "")
     local toggle_command = "pamixer --source " .. mic_nr .. " -t"
     awful.spawn.with_shell(toggle_command)
     local is_muted_cmd = "pamixer --source " .. mic_nr .. " --get-mute"
@@ -393,19 +392,19 @@ globalkeys = gears.table.join(
     os.execute("playerctl play-pause")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({}, "XF86AudioPlay", function()
-    os.execute("playerctl play-pause")
+    os.execute("playerctl play-pause --player=spotify")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({ modkey }, "Next", function()
     os.execute("playerctl next")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({}, "XF86AudioNext", function()
-    os.execute("playerctl next")
+    os.execute("playerctl next --player=spotify")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({ modkey }, "Prior", function()
     os.execute("playerctl previous")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86AudioPrev", function()
-    os.execute("playerctl previous")
+    os.execute("playerctl previous --player=spotify")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86MonBrightnessUp", function()
     brightness_widget:inc()
