@@ -1,8 +1,6 @@
 local saga = require("lspsaga")
 
-saga.init_lsp_saga({
-  move_in_saga = { prev = "<C-p>", next = "<C-n>" },
-})
+saga.setup({})
 
 -- Configure lua language server for neovim development
 local runtime_path = vim.split(package.path, ";")
@@ -33,9 +31,7 @@ local lua_settings = {
 }
 
 -- lsp-install
--- local lsp_installer = require("nvim-lsp-installer")
-require("nvim-lsp-installer").setup({
-  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+require("mason").setup({
   ui = {
     icons = {
       server_installed = "✓",
@@ -47,20 +43,28 @@ require("nvim-lsp-installer").setup({
 
 local lspconfig = require("lspconfig")
 
+local config = require("utils").config_vars
+
 lspconfig.angularls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.emmet_ls.setup({})
 lspconfig.gopls.setup({})
+lspconfig.omnisharp.setup({
+  cmd = {
+    "dotnet",
+    config["OMNISHARP"],
+  },
+})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.sqls.setup({
   cmd = {
-    "/home/erland/.local/share/nvim/lsp_servers/sqls/sqls",
+    config["SQLS_BIN"],
     "-config",
-    "/home/erland/.local/share/nvim/lsp_servers/sqls/config.yml",
+    config["SQLS_CONF"],
   },
 })
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = lua_settings,
 })
 lspconfig.texlab.setup({})

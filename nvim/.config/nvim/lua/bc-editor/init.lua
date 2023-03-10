@@ -40,6 +40,7 @@ vim.bo.autoindent = true
 vim.bo.tabstop = 4
 vim.o.tabstop = 4
 vim.bo.shiftwidth = 4
+vim.o.fixendofline = false
 vim.o.shiftwidth = 4
 
 vim.cmd([[au TextYankPost * silent! lua vim.highlight.on_yank()]])

@@ -22,11 +22,17 @@ require("formatter").setup({
     },
     javascript = {
       function()
-        --[[ return {
-          exe = "dprint",
-          args = { "fmt", "--config", "~/configs/dprint/config.json" },
-          stdin = false,
-        } ]]
+        -- return {
+        --   exe = "dprint",
+        --   args = {
+        --     "fmt",
+        --     "--stdin",
+        --     vim.api.nvim_buf_get_name(0),
+        --     "--config",
+        --     "~/configs/dprint/config.json",
+        --   },
+        --   stdin = true,
+        -- }
         return {
           exe = "prettierd",
           args = { vim.api.nvim_buf_get_name(0) },
@@ -122,10 +128,24 @@ require("formatter").setup({
         return { exe = "pg_format", stdin = true }
       end,
     },
+    cs = {
+      function()
+        return {
+          exe = "dotnet-csharpier",
+          args = {
+            "--write-stdout",
+            vim.api.nvim_buf_get_name(0),
+          },
+          stdin = true,
+        }
+      end,
+    },
   },
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>t", ":Format<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<Leader>t", "<cmd>lua vim.lsp.buf.format()<CR>")
+vim.keymap.set("n", "<Leader>t", ":Format<CR>")
+
 vim.api.nvim_exec(
   [[
 augroup FormatAutogroup

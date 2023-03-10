@@ -17,6 +17,7 @@ require("bc-wiki")
 require("bc-rest")
 
 require("bc-lsp")
+require("bc-dap")
 require("languages")
 
 require("bc-colorscheme")

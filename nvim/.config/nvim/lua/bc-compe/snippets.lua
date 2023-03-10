@@ -31,6 +31,7 @@ local python_snpts = require("bc-compe.ft-snippets.python")
 local tex_snpts = require("bc-compe.ft-snippets.tex")
 local tsx_snpts = require("bc-compe.ft-snippets.tsx")
 local lua_snpts = require("bc-compe.ft-snippets.lua")
+local csharp_snpts = require("bc-compe.ft-snippets.csharp")
 -- local ts_snpts = require("bc-compe.ft-snippets.js")
 
 ls.add_snippets("all", {})
@@ -47,5 +48,6 @@ ls.add_snippets("typescript", {
 ls.add_snippets("typescriptreact", tsx_snpts)
 ls.add_snippets("go", go_snpts)
 ls.add_snippets("tex", tex_snpts)
+ls.add_snippets("cs", csharp_snpts)
 
 require("luasnip.loaders.from_vscode").lazy_load()

@@ -40,10 +40,6 @@ function M.colo_github(theme_style, fun_style, transparent, kw_style)
   })
 end
 
-function M.colo_solarized()
-  vim.cmd("colorscheme subtle_dark") -- subtle_light subtle_dark
-end
-
 function M.colo_soluarized()
   vim.cmd("colorscheme soluarized")
 end
@@ -131,10 +127,6 @@ function M.colo_nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.colo_horizon()
-  vim.cmd("colorscheme horizon")
-end
-
 function M.colo_articblush(code, comm_it, contrast)
   require("articblush").setup({
     italics = {
@@ -145,6 +137,60 @@ function M.colo_articblush(code, comm_it, contrast)
       contrast = contrast or true,
     },
   })
+end
+
+function M.colo_challenger_deep()
+  vim.cmd("colorscheme challenger_deep")
+end
+
+function M.colo_space_dark()
+  vim.cmd("colorscheme space-vim-dark")
+end
+
+function M.colo_edge()
+  vim.g.edge_style = "neon"
+  vim.g.edge_better_performance = 1
+  vim.cmd("colorscheme edge")
+end
+
+function M.colo_horizon()
+  vim.cmd("colorscheme horizon")
+end
+
+function M.colo_solarized()
+  -- subtle_solo
+  vim.cmd("colorscheme subtle_dark") -- subtle_light subtle_dark
+end
+
+function M.colo_flattened()
+  vim.cmd("colorscheme flattened_dark")
+end
+
+function M.colo_eva()
+  vim.cmd("colorscheme eva01") -- eva01-LCL
+end
+
+function M.colo_deep_space()
+  vim.g.deepspace_italics = 1
+  vim.cmd("colorscheme deep-space")
+end
+
+function M.colo_dogrun()
+  vim.cmd("colorscheme dogrun")
+end
+
+function M.colo_afterglow()
+  vim.cmd("colorscheme afterglow")
+end
+
+function M.colo_deus()
+  vim.cmd("colorscheme deus")
+end
+
+function M.colo_hybrid()
+  -- vim.g.hybrid_reduced_contrast = 1 -- Remove this line if using the default palette.
+  -- vim.g.hybrid_custom_term_colors = 1
+  vim.cmd("colorscheme hybrid")
 end
 
 function M.colo_reset() end

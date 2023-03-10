@@ -1,3 +1,5 @@
 [user]
 	email = blackadress.01@gmail.com
 	name = blackadress
+[init]
+	defaultBranch = main

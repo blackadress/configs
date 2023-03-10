@@ -14,9 +14,11 @@ return require("packer").startup(function(use)
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-  use("neovim/nvim-lspconfig")
-  use("williamboman/nvim-lsp-installer")
-  -- use("tami5/lspsaga.nvim")
+  use({
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  })
   use("glepnir/lspsaga.nvim")
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
   use({ "lewis6991/spellsitter.nvim", requires = "nvim-treesitter/nvim-treesitter" })
@@ -24,6 +26,7 @@ return require("packer").startup(function(use)
   -- debugger dap
   use({ "mfussenegger/nvim-dap" })
   use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+  use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -37,7 +40,6 @@ return require("packer").startup(function(use)
   -- use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}}
   --patched version of above
   use({ "~/proyectos/lua/rest.nvim", branch = "estable" })
-  -- use("~/proyectos/lua/first-plugin")
 
   -- completion
   use("hrsh7th/nvim-cmp")
@@ -73,7 +75,7 @@ return require("packer").startup(function(use)
   use("daschw/leaf.nvim")
   use("EdenEast/nightfox.nvim")
   use({ "articblush/articblush.nvim", as = "articblush" })
-  use("challenger-deep-theme/vim")
+  use({ "challenger-deep-theme/vim", as = "challenger-deep" })
   use("liuchengxu/space-vim-dark")
   use("sainnhe/edge")
   use("lunarvim/horizon.nvim")

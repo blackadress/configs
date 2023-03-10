@@ -64,8 +64,6 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 map("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { noremap = true, silent = true })
 map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-map("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
-map("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 
 map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 map("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
