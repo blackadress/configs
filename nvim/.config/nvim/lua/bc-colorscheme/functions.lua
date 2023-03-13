@@ -1,11 +1,11 @@
 M = {}
 
-function M.colo_tokyo(style)
+function M.tokyo(style)
   vim.g.tokyonight_style = style or "night" --  day, storm or night
   vim.cmd("colorscheme tokyonight")
 end
 
-function M.colo_gruvbox_baby(bg, transparent, kw_style, fun_style, var_style)
+function M.gruvbox_baby(bg, transparent, kw_style, fun_style, var_style)
   vim.g.gruvbox_baby_background_color = bg or "medium" -- "medium" or "dark"
   vim.g.gruvbox_baby_transparent_mode = transparent or false -- "false" or "true"
   vim.g.gruvbox_baby_keyword_style = kw_style or "bold" -- see :h attr-list
@@ -15,12 +15,12 @@ function M.colo_gruvbox_baby(bg, transparent, kw_style, fun_style, var_style)
   vim.cmd("colorscheme gruvbox-baby")
 end
 
-function M.colo_gruvbox(bg)
+function M.gruvbox(bg)
   vim.o.background = bg or "dark" -- "light" or "dark"
   vim.cmd([[colorscheme gruvbox]])
 end
 
-function M.colo_gruvbox_material(bg, material_bg, enable_bold, enable_italic, transparent, palette)
+function M.gruvbox_material(bg, material_bg, enable_bold, enable_italic, transparent, palette)
   local bg_cmd = string.format("set background=%s", bg or "dark") -- "light" or "dark"
   vim.cmd(bg_cmd)
   vim.g.gruvbox_material_background = material_bg or "medium" -- "soft", "medium" or "hard"
@@ -31,7 +31,7 @@ function M.colo_gruvbox_material(bg, material_bg, enable_bold, enable_italic, tr
   vim.cmd([[colorscheme gruvbox-material]])
 end
 
-function M.colo_github(theme_style, fun_style, transparent, kw_style)
+function M.github(theme_style, fun_style, transparent, kw_style)
   require("github-theme").setup({
     theme_style = theme_style or "dark", -- "light_colorblind", "light_default", "light", "dark_colorblind", "dark_default", "dimmed", "dark"
     function_style = fun_style or "bold",
@@ -40,11 +40,11 @@ function M.colo_github(theme_style, fun_style, transparent, kw_style)
   })
 end
 
-function M.colo_soluarized()
+function M.soluarized()
   vim.cmd("colorscheme soluarized")
 end
 
-function M.colo_material(it_comments, transparent, mat_style)
+function M.material(it_comments, transparent, mat_style)
   require("material").setup({
     italics = {
       comments = it_comments or true,
@@ -61,7 +61,7 @@ function M.colo_material(it_comments, transparent, mat_style)
   vim.cmd("colorscheme material")
 end
 
-function M.colo_nebulous(style, it_comments, it_kw, it_fun, it_var)
+function M.nebulous(style, it_comments, it_kw, it_fun, it_var)
   require("nebulous").setup({
     variant = style or "fullmoon", -- "night", "twilight", "midnight", "fullmoon" or "quasar"
     disable = {
@@ -87,14 +87,14 @@ function M.colo_nebulous(style, it_comments, it_kw, it_fun, it_var)
   })
 end
 
-function M.colo_catpuccin(transparent)
+function M.catpuccin(transparent)
   require("catppuccin").setup({
     transparent_background = transparent or false,
   })
   vim.cmd("colorscheme catppuccin")
 end
 
-function M.colo_leaf(comm, fun, kw, sttm, type, var, transparent, theme)
+function M.leaf(comm, fun, kw, sttm, type, var, transparent, theme)
   require("leaf").setup({
     undercurl = true,
     commentStyle = comm or "italic",
@@ -113,7 +113,7 @@ function M.colo_leaf(comm, fun, kw, sttm, type, var, transparent, theme)
   vim.cmd("colorscheme leaf")
 end
 
-function M.colo_nightfox(comm, const, kw)
+function M.nightfox(comm, const, kw)
   require("nightfox").setup({
     options = {
       styles = {
@@ -127,7 +127,7 @@ function M.colo_nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.colo_articblush(code, comm_it, contrast)
+function M.articblush(code, comm_it, contrast)
   require("articblush").setup({
     italics = {
       code = code or true,
@@ -139,60 +139,60 @@ function M.colo_articblush(code, comm_it, contrast)
   })
 end
 
-function M.colo_challenger_deep()
+function M.challenger_deep()
   vim.cmd("colorscheme challenger_deep")
 end
 
-function M.colo_space_dark()
+function M.space_dark()
   vim.cmd("colorscheme space-vim-dark")
 end
 
-function M.colo_edge()
+function M.edge()
   vim.g.edge_style = "neon"
   vim.g.edge_better_performance = 1
   vim.cmd("colorscheme edge")
 end
 
-function M.colo_horizon()
+function M.horizon()
   vim.cmd("colorscheme horizon")
 end
 
-function M.colo_solarized()
+function M.solarized()
   -- subtle_solo
   vim.cmd("colorscheme subtle_dark") -- subtle_light subtle_dark
 end
 
-function M.colo_flattened()
+function M.flattened()
   vim.cmd("colorscheme flattened_dark")
 end
 
-function M.colo_eva()
+function M.eva()
   vim.cmd("colorscheme eva01") -- eva01-LCL
 end
 
-function M.colo_deep_space()
+function M.deep_space()
   vim.g.deepspace_italics = 1
   vim.cmd("colorscheme deep-space")
 end
 
-function M.colo_dogrun()
+function M.dogrun()
   vim.cmd("colorscheme dogrun")
 end
 
-function M.colo_afterglow()
+function M.afterglow()
   vim.cmd("colorscheme afterglow")
 end
 
-function M.colo_deus()
+function M.deus()
   vim.cmd("colorscheme deus")
 end
 
-function M.colo_hybrid()
+function M.hybrid()
   -- vim.g.hybrid_reduced_contrast = 1 -- Remove this line if using the default palette.
   -- vim.g.hybrid_custom_term_colors = 1
   vim.cmd("colorscheme hybrid")
 end
 
-function M.colo_reset() end
+function M.reset() end
 
 return M

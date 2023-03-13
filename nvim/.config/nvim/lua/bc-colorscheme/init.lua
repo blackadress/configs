@@ -1,3 +1,3 @@
-local funcs = require("bc-colorscheme.functions")
+local colors = require("bc-colorscheme.functions")
 
-funcs.colo_catpuccin()
+colors.leaf()

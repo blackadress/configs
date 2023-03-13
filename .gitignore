@@ -4,4 +4,4 @@ nvim/config_separated/**
 /* telescope shenanigans? */
 bash-configs/aliasrc
 .luarc.json
-.vars
+*vars*

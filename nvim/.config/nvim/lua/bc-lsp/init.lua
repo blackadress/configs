@@ -43,7 +43,7 @@ require("mason").setup({
 
 local lspconfig = require("lspconfig")
 
-local config = require("utils").config_vars
+local config = require("utils").VARS
 
 lspconfig.angularls.setup({})
 lspconfig.bashls.setup({})

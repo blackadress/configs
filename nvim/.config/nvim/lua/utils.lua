@@ -35,7 +35,6 @@ M.lines_from = function(file)
   return lines
 end
 
-local config_file = ".vars"
-M.config_vars = M.lines_from(config_file)
+M.VARS = require("vars")
 
 return M
