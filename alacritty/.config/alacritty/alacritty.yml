@@ -165,9 +165,6 @@ cursor:
 
 live_config_reload: true
 
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
-
 key_bindings:
   # - { key: Space,        mods: Control, action: ClearLogNotice                   }
   - { key: P, mods: Control|Shift, chars: "fzf \x0D" }
