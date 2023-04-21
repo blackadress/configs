@@ -338,12 +338,7 @@ globalkeys = gears.table.join(
     awful.tag.viewnext,
     { description = "view next", group = "tag" }
   ),
-  awful.key(
-    { modkey },
-    "Escape",
-    awful.tag.history.restore,
-    { description = "go back", group = "tag" }
-  ),
+  awful.key({ modkey }, "`", awful.tag.history.restore, { description = "go back", group = "tag" }),
   awful.key({ modkey }, ".", function()
     for s in screen do
       s.mywibox.visible = not s.mywibox.visible
@@ -530,6 +525,10 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "s", function()
     awful.util.spawn("spotify")
   end, { description = "open spotify", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "t", function()
+    awful.util.spawn("teams")
+    awful.util.spawn("slack")
+  end, { description = "trabajo", group = "launcher" }),
   awful.key({ modkey }, "o", function()
     awful.util.spawn("discord-canary")
   end, { description = "open discord canary", group = "launcher" }),
@@ -703,6 +702,12 @@ awful.rules.rules = {
     },
   },
   {
+    rule = { class = "Microsoft Teams - Preview" },
+    properties = {
+      tag = "5",
+    },
+  },
+  {
     rule = { class = "Anki" },
     properties = {
       maximized = false,
@@ -808,6 +813,6 @@ awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
 -- os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
 awful.spawn.with_shell(
-  "pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m && sleep 2 && key_remap"
+  "sleep 1 && pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m && sleep 2 && key_remap"
 )
 -- awful.spawn.with_shell("key_remap")
