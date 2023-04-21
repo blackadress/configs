@@ -2,7 +2,7 @@
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "html" }, -- list of language that will be disabled
+    disable = { "html", "http" }, -- list of language that will be disabled
   },
   incremental_selection = {
     keymaps = {

@@ -74,7 +74,6 @@ return require("packer").startup(function(use)
   use({ "catppuccin/nvim", as = "catppuccin" })
   use("daschw/leaf.nvim")
   use("EdenEast/nightfox.nvim")
-  use({ "articblush/articblush.nvim", as = "articblush" })
   use({ "challenger-deep-theme/vim", as = "challenger-deep" })
   use("liuchengxu/space-vim-dark")
   use("sainnhe/edge")
@@ -105,7 +104,6 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
       "godlygeek/tabular",
-      "nvim-treesitter/nvim-treesitter",
       "nvim-treesitter/nvim-treesitter",
     },
   })

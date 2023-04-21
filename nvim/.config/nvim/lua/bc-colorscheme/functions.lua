@@ -127,18 +127,6 @@ function M.nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.articblush(code, comm_it, contrast)
-  require("articblush").setup({
-    italics = {
-      code = code or true,
-      comments = comm_it or true, -- to disable italic comments, replace to true to enable
-    },
-    nvim_tree = {
-      contrast = contrast or true,
-    },
-  })
-end
-
 function M.challenger_deep()
   vim.cmd("colorscheme challenger_deep")
 end

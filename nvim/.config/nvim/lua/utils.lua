@@ -37,4 +37,13 @@ end
 
 M.VARS = require("vars")
 
+local RELOAD = function(...)
+  return require("plenary.reload").reload_module(...)
+end
+
+M.reload_plugin = function(name)
+  RELOAD(name)
+  return require(name)
+end
+
 return M
