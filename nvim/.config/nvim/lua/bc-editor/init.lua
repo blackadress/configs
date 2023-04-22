@@ -16,7 +16,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.o.fileencoding = "utf-8" -- The encoding written to file -- Es necesario?
+-- vim.o.fileencoding = "utf-8" -- The encoding written to file -- Es necesario?
 vim.o.wrap = false
 
 --[[

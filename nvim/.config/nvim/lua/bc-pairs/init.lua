@@ -1,24 +1,16 @@
 -- local remap = vim.api.nvim_set_keymap
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
-local cond = require('nvim-autopairs.conds')
+local cond = require("nvim-autopairs.conds")
 
-npairs.setup {
+npairs.setup({
   check_ts = true,
   ts_config = {
-    lua = {"string"},
+    lua = { "string" },
     -- it will not add pair on that treesitter node
-    javascript = {"template_string"}
-  }
-}
-
-require("nvim-treesitter.configs").setup {
-  autopairs = {enable = true},
-  highlight = {enable = true},
-  autotag = {enable = true},
-  ensure_installed = "all",
-  incremental_selection = {enable = true}
-}
+    javascript = { "template_string" },
+  },
+})
 
 local remap = vim.api.nvim_set_keymap
 _G.MUtils = {}
@@ -31,4 +23,4 @@ MUtils.completion_confirm = function()
   end
 end
 
-remap("i", "<C-Space>", "v:lua.MUtils.completion_confirm()", {expr = true, noremap = true})
+remap("i", "<C-Space>", "v:lua.MUtils.completion_confirm()", { expr = true, noremap = true })
