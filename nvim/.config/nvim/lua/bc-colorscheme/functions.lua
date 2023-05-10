@@ -127,6 +127,15 @@ function M.nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
+function M.kanagawa()
+  vim.cmd("colorscheme kanagawa")
+end
+
+function M.oxocarbon()
+  vim.opt.background = "dark" -- set this to dark or light
+  vim.cmd("colorscheme oxocarbon")
+end
+
 function M.challenger_deep()
   vim.cmd("colorscheme challenger_deep")
 end
@@ -143,11 +152,6 @@ end
 
 function M.horizon()
   vim.cmd("colorscheme horizon")
-end
-
-function M.solarized()
-  -- subtle_solo
-  vim.cmd("colorscheme subtle_dark") -- subtle_light subtle_dark
 end
 
 function M.flattened()

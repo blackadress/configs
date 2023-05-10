@@ -49,11 +49,13 @@ lspconfig.angularls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.emmet_ls.setup({})
 lspconfig.gopls.setup({})
+-- lspconfig.csharp_ls.setup({})
 lspconfig.omnisharp.setup({
   cmd = {
     "dotnet",
     config["OMNISHARP"],
   },
+  analyze_open_documents_only = true,
   on_attach = function(client, bufnr)
     if client.name == "omnisharp" then
       client.server_capabilities.semanticTokensProvider = {
@@ -133,7 +135,6 @@ lspconfig.omnisharp.setup({
     end
   end,
 })
--- lspconfig.csharp_ls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({
   settings = {

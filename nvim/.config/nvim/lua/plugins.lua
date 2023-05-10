@@ -21,8 +21,10 @@ require("lazy").setup({
       patterns = { "blackadress" },
     },
   },
+  -- editor
   { "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
   { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "vladdoster/remember.nvim", lazy = false, config = [[ require("remember") ]] },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -39,7 +41,18 @@ require("lazy").setup({
   },
   "glepnir/lspsaga.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-  { "lewis6991/spellsitter.nvim", dependencies = "nvim-treesitter/nvim-treesitter" },
+  -- { "lewis6991/spellsitter.nvim", dependencies = "nvim-treesitter/nvim-treesitter" },
+  {
+    "olimorris/persisted.nvim",
+    config = function()
+      require("persisted").setup({
+        autoload = true,
+        on_autoload_no_session = function()
+          vim.notify("No existing session to load.")
+        end,
+      })
+    end,
+  },
 
   -- debugger dap
   { "mfussenegger/nvim-dap" },
@@ -93,12 +106,13 @@ require("lazy").setup({
   { "catppuccin/nvim", name = "catppuccin" },
   "daschw/leaf.nvim",
   "EdenEast/nightfox.nvim",
+  "rebelot/kanagawa.nvim",
+  "nyoom-engineering/oxocarbon.nvim",
   { "challenger-deep-theme/vim", name = "challenger-deep" },
   "liuchengxu/space-vim-dark",
   "sainnhe/edge",
   "lunarvim/horizon.nvim",
 
-  "kadekillary/subtle_solo",
   "romainl/flattened",
   "hachy/eva01.vim",
   "tyrannicaltoucan/vim-deep-space",

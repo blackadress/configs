@@ -35,6 +35,17 @@ M.lines_from = function(file)
   return lines
 end
 
+M.split_str = function(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
 M.VARS = require("vars")
 
 local RELOAD = function(...)

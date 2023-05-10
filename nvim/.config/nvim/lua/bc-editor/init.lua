@@ -56,8 +56,3 @@ vim.cmd(
   ]],
   false
 )
-
-require("spellsitter").setup({
-  filetypes = { "tex", "markdown" },
-  enable = true,
-})

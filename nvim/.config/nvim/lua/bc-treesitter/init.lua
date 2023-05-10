@@ -2,6 +2,7 @@
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
+    "c",
     "c_sharp",
     "css",
     "go",
@@ -26,7 +27,7 @@ require("nvim-treesitter.configs").setup({
   autotag = { enable = true },
   highlight = {
     enable = true,
-    disable = { "html", "http" },
+    disable = { "html" },
   },
   indent = {
     enable = true,
