@@ -32,12 +32,13 @@ function M.gruvbox_material(bg, material_bg, enable_bold, enable_italic, transpa
 end
 
 function M.github(theme_style, fun_style, transparent, kw_style)
-  require("github-theme").setup({
-    theme_style = theme_style or "dark", -- "light_colorblind", "light_default", "light", "dark_colorblind", "dark_default", "dimmed", "dark"
-    function_style = fun_style or "bold",
-    transparent = transparent or false,
-    keyword_style = kw_style or "italic",
-  })
+  -- require("github-theme").setup({
+  --   theme_style = theme_style or "dark", -- "light_colorblind", "light_default", "light", "dark_colorblind", "dark_default", "dimmed", "dark"
+  --   function_style = fun_style or "bold",
+  --   transparent = transparent or false,
+  --   keyword_style = kw_style or "italic",
+  -- })
+  vim.cmd("colorscheme github_dark")
 end
 
 function M.soluarized()
@@ -94,6 +95,18 @@ function M.catpuccin(transparent)
   vim.cmd("colorscheme catppuccin")
 end
 
+function M.kanagawa()
+  vim.cmd("colorscheme kanagawa")
+end
+
+function M.nord()
+  vim.cmd("colorscheme nord")
+end
+
+function M.melange()
+  vim.cmd.colorscheme("melange")
+end
+
 function M.leaf(comm, fun, kw, sttm, type, var, transparent, theme)
   require("leaf").setup({
     undercurl = true,
@@ -127,10 +140,6 @@ function M.nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.kanagawa()
-  vim.cmd("colorscheme kanagawa")
-end
-
 function M.oxocarbon()
   vim.opt.background = "dark" -- set this to dark or light
   vim.cmd("colorscheme oxocarbon")
@@ -159,7 +168,7 @@ function M.flattened()
 end
 
 function M.eva()
-  vim.cmd("colorscheme eva01") -- eva01-LCL
+  vim.cmd("colorscheme eva01-LCL") -- eva01-LCL
 end
 
 function M.deep_space()

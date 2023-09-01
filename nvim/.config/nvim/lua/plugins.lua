@@ -43,12 +43,31 @@ require("lazy").setup({
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   -- { "lewis6991/spellsitter.nvim", dependencies = "nvim-treesitter/nvim-treesitter" },
   {
-    "olimorris/persisted.nvim",
+    "Shatur/neovim-session-manager",
+    cond = not vim.g.vscode,
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("persisted").setup({
-        autoload = true,
-        on_autoload_no_session = function()
-          vim.notify("No existing session to load.")
+      require("session_manager").setup({
+        autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
+        autosave_ignore_dirs = {
+          "/",
+          "~",
+        },
+        autosave_ignore_filetypes = {
+          "gitcommit",
+          "toggleterm",
+        },
+      })
+
+      vim.keymap.set("n", "<leader>sx", "<cmd>cd ~|%bd|Alpha<cr>", { desc = "Clear session" })
+
+      local session_loading = vim.api.nvim_create_augroup("SessionLoading", { clear = true })
+
+      vim.api.nvim_create_autocmd({ "User" }, {
+        pattern = "SessionLoadPre",
+        group = session_loading,
+        callback = function()
+          vim.cmd("silent! Neotree close")
         end,
       })
     end,
@@ -68,10 +87,16 @@ require("lazy").setup({
   { "nvim-lualine/lualine.nvim" },
 
   -- rest client
-  -- use {"NTBBloodbath/rest.nvim", dependencies = {"nvim-lua/plenary.nvim"}}
+  -- { "rest-nvim/rest.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   --patched version of above
   -- { "blackadress/rest.nvim", branch = "response_body_stored" },
-  { "blackadress/rest.nvim", dir = "~/proyectos/lua/rest.nvim", lazy = true, ft = "http" },
+  {
+    "blackadress/rest.nvim",
+    dir = "~/proyectos/lua/rest.nvim",
+    lazy = true,
+    ft = "http",
+    dev = true,
+  },
 
   -- completion
   "hrsh7th/nvim-cmp",
@@ -112,6 +137,8 @@ require("lazy").setup({
   "liuchengxu/space-vim-dark",
   "sainnhe/edge",
   "lunarvim/horizon.nvim",
+  "gbprod/nord.nvim",
+  "savq/melange-nvim",
 
   "romainl/flattened",
   "hachy/eva01.vim",

@@ -46,13 +46,10 @@ vim.o.shiftwidth = 4
 vim.cmd([[au TextYankPost * silent! lua vim.highlight.on_yank()]])
 vim.o.inccommand = "split"
 
-vim.cmd(
-  [[
+vim.cmd([[
     augroup markdownSpell
         autocmd!
         autocmd FileType tex,markdown setlocal spell spelllang=es
         autocmd BufRead,BufNewFile *.tex,*.md setlocal spell spelllang=es
     augroup END
-  ]],
-  false
-)
+  ]])
