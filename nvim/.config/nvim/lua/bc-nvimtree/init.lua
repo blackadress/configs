@@ -23,10 +23,6 @@ require("nvim-tree").setup({
   view = {
     width = 25,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {},
-    },
   },
   -- ignore = {".git", "node_modules", ".cache"}
 })

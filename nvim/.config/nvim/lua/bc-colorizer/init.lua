@@ -1,2 +1,0 @@
--- colorizer
-require "colorizer".setup()
