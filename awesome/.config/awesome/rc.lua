@@ -525,9 +525,18 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "s", function()
     awful.util.spawn("spotify")
   end, { description = "open spotify", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "Return", function()
+    awful.util.spawn("xterm")
+  end, { description = "open xterm", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "s", function()
+    awful.util.spawn("steam")
+    awful.util.spawn("com.discordapp.Discord")
+  end, { description = "open steam", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "l", function()
+    awful.util.spawn("lutris")
+  end, { description = "open lutris", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "t", function()
     awful.util.spawn("teams")
-    awful.util.spawn("slack")
   end, { description = "trabajo", group = "launcher" }),
   awful.key({ modkey }, "o", function()
     awful.util.spawn("discord-canary")
@@ -723,6 +732,22 @@ awful.rules.rules = {
     },
   },
   {
+    rule = { class = "steam" },
+    properties = {
+      maximized = false,
+      floating = true,
+      tag = "2",
+    },
+  },
+  {
+    rule = { class = "lutris" },
+    properties = {
+      maximized = false,
+      floating = true,
+      tag = "2",
+    },
+  },
+  {
     rule = { class = "vlc" },
     properties = { tag = "8" },
   },
@@ -811,7 +836,6 @@ beautiful.notification_icon_size = 80
 awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
--- os.execute("pamixer --list-sources | awk '/usb/ {print $1}' | xargs -I _ pamixer --source _ -m")
 awful.spawn.with_shell(
   "sleep 1 && pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m && sleep 2 && key_remap"
 )
