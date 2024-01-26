@@ -30,6 +30,23 @@ return {
   "lunarvim/horizon.nvim",
   "gbprod/nord.nvim",
   "savq/melange-nvim",
+  { "stevedylandev/flexoki-nvim", name = "flexoki" },
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  {
+    "baliestri/aura-theme",
+    lazy = false,
+    priority = 1000,
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+    end,
+  },
+  {
+    "uloco/bluloco.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = { "rktjmp/lush.nvim" },
+  },
+  { "rose-pine/neovim", name = "rose-pine" },
 
   "romainl/flattened",
   "hachy/eva01.vim",

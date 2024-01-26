@@ -4,6 +4,8 @@ local M = {}
 local DEBUGGER_LOCATION = "/usr/bin"
 
 function M.setup()
+  print("---------------------------------------------")
+  print("holiwi")
   local dap = require("dap")
 
   -- Adapter configuration
@@ -20,7 +22,7 @@ function M.setup()
       name = "launch - netcoredbg",
       request = "launch",
       program = function()
-        return vim.fn.input("Path to DLL > ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
       end,
     },
   }

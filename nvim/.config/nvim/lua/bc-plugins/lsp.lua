@@ -4,7 +4,8 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
+    "Hoffs/omnisharp-extended-lsp.nvim",
   },
   config = function()
     require("bc-lsp")

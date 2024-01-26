@@ -2,7 +2,7 @@ return {
   {
     "vimwiki/vimwiki",
     config = function()
-      vim.api.nvim_set_var("vimwiki_list", { { path = "~/Documents/vimwiki/" } })
+      vim.api.nvim_set_var("vimwiki_list", { { path = "/home/erland/Documents/vimwiki/" } })
     end,
   },
   {
