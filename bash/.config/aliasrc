@@ -1,0 +1,66 @@
+#!/bin/sh
+# alias para programas
+alias ls='exa --icons' \
+      cat='bat' \
+	  grh='git reset --hard' \
+      res='du -h --max-depth=1' \
+      server='ssh -i ~/keys/leasingprodbackend.pem ec2-user@54.91.247.128' \
+      qa-server='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42' \
+      qa-limpiar='ssh -i ~/keys/factoring_total_qa.pem ec2-user@18.222.218.42 "./scripts/limpiar_qa.sh ~/ft-backend/"'\
+	  dev-server='ssh -i ~/keys/factoring_total_test.pem ec2-user@3.139.77.41' \
+	  v='nvim'
+
+# alias
+alias tx='before_tmux.sh' \
+      jap='exec fcitx5 &' \
+	  nplug='nvim --cmd "set rtp+=$(pwd)" .' \
+	  yt-mp3='youtube-dl -x --audio-format mp3' \
+	  vpn='sudo openfortivpn -c ~/keys/vpn/vpn_faast' \
+	  vpn-progreso='sudo openfortivpn -c ~/keys/vpn/vpn_progreso'
+
+# alias para ubicaciones
+alias conf='cd ~/configs/' \
+	  lilof='cd ~/proyectos/lilab/progreso/operaciones-front/ && tmux' \
+	  lilbo='cd ~/proyectos/lilab/progreso/operaciones-api/ && tmux' \
+      lilbe='cd ~/proyectos/lilab/progreso/fintec-apiback/ && export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 && tmux'\
+      lilbf='cd ~/proyectos/lilab/progreso/fintec-apifactoring/ && export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 && tmux'\
+	  lilgw='cd ~/proyectos/lilab/progreso/fintec-gateway/ && export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 && tmux'\
+	  lilau='cd ~/proyectos/lilab/progreso/fintec-automatizacion/ && tmux'\
+	  lilmel='cd ~/proyectos/lilab/mel-backend/ && export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 && tmux'\
+	  fa='cd ~/proyectos/faast/' \
+	  fafb='cd ~/proyectos/faast/faast-front-backoffice/ && tmux' \
+	  fafv='cd ~/proyectos/faast/faast-front-venta-cartera/ && tmux' \
+	  fafg='cd ~/proyectos/faast/faast-front-gestion-cobranza/ && tmux' \
+	  fafc='cd ~/proyectos/faast/faast-contenedora/ && tmux' \
+	  fabo='cd ~/proyectos/faast/faast-api-backoffice/ && tmux' \
+	  fabg='cd ~/proyectos/faast/faast-api-gestion-cobranza/ && tmux' \
+	  fagg='cd ~/proyectos/faast/faast-gw-gestion-cobranza/ && tmux' \
+	  fagv='cd ~/proyectos/faast/faast-gw-venta-cartera/ && tmux' \
+	  fabf='cd ~/proyectos/faast/faast-api-factoring/ && tmux' \
+	  fagf='cd ~/proyectos/faast/faast-gw-factoring/ && tmux' \
+	  fabr='cd ~/proyectos/faast/faast-api-rolesperfiles/ && tmux' \
+	  fabh='cd ~/proyectos/faast/faast-hangfire/ && tmux' \
+	  fabv='cd ~/proyectos/faast/faast-api-venta-cartera/ && tmux' \
+	  fagw='cd ~/proyectos/faast/faast-gw-backoffice/ && tmux' \
+	  fagr='cd ~/proyectos/faast/faast-gw-rolesperfiles/ && tmux' \
+      proy='cd ~/proyectos/' \
+      pgo='cd ~/proyectos/golang/' \
+      pgoa='cd ~/proyectos/go/aula_virtual/' \
+      ppy='cd ~/proyectos/python/' \
+      pru='cd ~/proyectos/rust/' \
+      pjs='cd ~/proyectos/node/' \
+      plu='cd ~/proyectos/lua/' \
+      phs='cd ~/proyectos/haskell/' \
+
+# alias open configs
+alias nconf='cd ~/configs/nvim/.config/nvim/ && nvim init.lua' \
+      bashconf='cd ~/configs/bash/ && nvim .bashrc' \
+      profileconf='cd ~/configs/bash/ && nvim .bash_profile' \
+      aliasconf='cd ~/configs/bash/.config/ && nvim aliasrc' \
+      aweconf='cd ~/configs/awesome/.config/awesome/ && nvim rc.lua' \
+      alaconf='cd ~/configs/alacritty/.config/alacritty/ && nvim alacritty.toml' \
+	  od='cd ~/.obsidian-vaults/Inicial/ && nvim'
+
+# alias tunnel
+alias dashboard-qa='ssh -L localhost:3306:backdashboard.cdn6nh2pdjnu.us-east-2.rds.amazonaws.com:3306 -N -T ec2-user@18.223.146.209 -i ~/keys/bridge_progreso.pem'
+alias prog-dev='ssh -L localhost:3306:progreso.cdn6nh2pdjnu.us-east-2.rds.amazonaws.com:3306 -N -T ec2-user@18.223.146.209 -i ~/keys/bridge_progreso.pem'

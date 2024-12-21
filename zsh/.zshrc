@@ -47,6 +47,9 @@ ex ()
   fi
 }
 
+# nvm start
+source /usr/share/nvm/init-nvm.sh
+
 pyenv-disable ()
 {
   export PATH=`echo $PATH | python -c "import sys, re; print(':'.join(x for x in sys.stdin.read().strip().split(':') if not 'pyenv' in x))"`

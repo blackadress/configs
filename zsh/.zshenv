@@ -21,6 +21,9 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/bin/fzf-stuff:$PATH"
 
+# dotnet
+export PATH="$PATH:/home/erland/.dotnet/tools"
+
 export ANDROID_HOME="$HOME/Android/Sdk"
 
 export PATH="$ANDROID_HOME/emulator:$PATH"
