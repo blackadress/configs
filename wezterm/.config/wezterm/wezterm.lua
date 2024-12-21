@@ -21,5 +21,7 @@ return {
 		{ key = "p", mods = "LEADER", action = wezterm.action({ ActivateTabRelative = -1 }) },
 		{ key = "w", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 		{ key = "j", mods = "CTRL", action = { SendKey = { key = "Escape" } } },
+
+		{ key = "r", mods = "CTRL", action = wezterm.action.SendString("fzf-history-widget") },
 	},
 }
