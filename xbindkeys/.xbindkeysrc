@@ -1,5 +1,2 @@
-"xvkbd -xsendevent -text "\Cv""
-   control + semicolon
-
 "xvkbd -xsendevent -text "\e""
-   control + j
+   control + k
