@@ -536,7 +536,7 @@ globalkeys = gears.table.join(
     awful.util.spawn("lutris")
   end, { description = "open lutris", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "t", function()
-    awful.util.spawn("teams")
+    awful.util.spawn("com.github.IsmaelMartinez.teams_for_linux")
   end, { description = "trabajo", group = "launcher" }),
   awful.key({ modkey }, "o", function()
     awful.util.spawn("discord-canary")
@@ -711,7 +711,7 @@ awful.rules.rules = {
     },
   },
   {
-    rule = { class = "Microsoft Teams - Preview" },
+    rule = { class = "teams-for-linux" },
     properties = {
       tag = "5",
     },
@@ -837,6 +837,6 @@ awful.spawn.with_shell("picom -i 1.0")
 awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("start_ssh_agent")
 awful.spawn.with_shell(
-  "sleep 1 && pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m && sleep 2 && key_remap"
+  "sleep 1 && pamixer --list-sources | awk '/Blue/ {print $1}' | xargs -I _ pamixer --source _ -m"
 )
--- awful.spawn.with_shell("key_remap")
+awful.spawn.with_shell("key_remap")
