@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 
 [bell]
@@ -48,10 +49,10 @@ unfocused_hollow = true
 TERM = "alacritty"
 
 [font]
-size = 13.0
+size = 11.0
 
 [font.bold]
-family = "monospace"
+family = "CascadiaCode"
 style = "Bold"
 
 [font.glyph_offset]
@@ -59,11 +60,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "monospace"
+family = "CascadiaCode"
 style = "Italic"
 
 [font.normal]
-family = "monospace"
+family = "CascadiaCode"
 style = "Normal"
 
 [font.offset]
