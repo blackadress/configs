@@ -83,7 +83,7 @@ map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 map("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-map("n", "grr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+map("n", "<leader>rr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 -- buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 

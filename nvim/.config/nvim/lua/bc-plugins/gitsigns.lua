@@ -4,12 +4,38 @@ return {
   lazy = false,
   config = function()
     require("gitsigns").setup({
+      signs = {
+        add = { text = "┃" },
+        change = { text = "┃" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked = { text = "┆" },
+      },
+      signcolumn = true,
       numhl = true,
+      linehl = false,
+      word_diff = false,
+      watch_gitdir = {
+        follow_files = true,
+      },
+      auto_attach = true,
+      attach_to_untracked = false,
       current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = false,
+        virt_text_priority = 100,
+      },
+      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
       sign_priority = 6,
       update_debounce = 100,
+      status_formatter = nil, -- Use default
+      max_file_length = 40000, -- Disable if file is longer than this (in lines)
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        local gs = require("gitsigns")
 
         local function map(mode, l, r, opts)
           opts = opts or {}
@@ -20,22 +46,19 @@ return {
         -- Navigation
         map("n", "]c", function()
           if vim.wo.diff then
-            return "]c"
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
           end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true })
+        end)
+
         map("n", "[c", function()
           if vim.wo.diff then
-            return "[c"
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
           end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true })
+        end)
 
         -- Actions
         map({ "n", "v" }, "<leader>;s", gs.stage_hunk)

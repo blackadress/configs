@@ -14,7 +14,7 @@ return {
       ts_config = {
         lua = { "string" },
         -- it will not add pair on that treesitter node
-        javascript = { "template_string" },
+        -- javascript = { "template_string" },
       },
     })
 

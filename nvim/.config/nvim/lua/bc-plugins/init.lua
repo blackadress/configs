@@ -1,8 +1,4 @@
 return {
-  -- debugger dap
-  { "mfussenegger/nvim-dap" },
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-  { "theHamsta/nvim-dap-virtual-text", dependencies = { "mfussenegger/nvim-dap" } },
 
   -- editor
   -- { "vladdoster/remember.nvim", lazy = false, config = [[ require("remember") ]] },
@@ -16,30 +12,22 @@ return {
   "ellisonleao/gruvbox.nvim",
   "sainnhe/gruvbox-material",
   "projekt0n/github-nvim-theme",
-  "Iron-E/nvim-soluarized",
+  "maxmx03/solarized.nvim",
+  "craftzdog/solarized-osaka.nvim",
+  -- { "Iron-E/nvim-highlite", version = "^4.0.0" },
   "marko-cerovac/material.nvim",
   "Yagua/nebulous.nvim",
   { "catppuccin/nvim", name = "catppuccin" },
   "daschw/leaf.nvim",
   "EdenEast/nightfox.nvim",
   "rebelot/kanagawa.nvim",
-  "nyoom-engineering/oxocarbon.nvim",
   { "challenger-deep-theme/vim", name = "challenger-deep" },
   "liuchengxu/space-vim-dark",
   "sainnhe/edge",
   "lunarvim/horizon.nvim",
   "gbprod/nord.nvim",
   "savq/melange-nvim",
-  { "stevedylandev/flexoki-nvim", name = "flexoki" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
-  {
-    "baliestri/aura-theme",
-    lazy = false,
-    priority = 1000,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-    end,
-  },
   {
     "uloco/bluloco.nvim",
     lazy = false,

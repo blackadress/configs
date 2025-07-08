@@ -15,22 +15,6 @@ function M.gruvbox_baby(bg, transparent, kw_style, fun_style, var_style)
   vim.cmd("colorscheme gruvbox-baby")
 end
 
-function M.gruvbox(bg)
-  vim.o.background = bg or "dark" -- "light" or "dark"
-  vim.cmd([[colorscheme gruvbox]])
-end
-
-function M.gruvbox_material(bg, material_bg, enable_bold, enable_italic, transparent, palette)
-  local bg_cmd = string.format("set background=%s", bg or "dark") -- "light" or "dark"
-  vim.cmd(bg_cmd)
-  vim.g.gruvbox_material_background = material_bg or "medium" -- "soft", "medium" or "hard"
-  vim.g.gruvbox_material_enable_bold = enable_bold or 1
-  vim.g.gruvbox_material_enable_italic = enable_italic or 1
-  vim.g.gruvbox_material_transparent_background = transparent or 0 -- 1 for transparent
-  vim.g.gruvbox_material_palette = palette or "mix" -- "material", "mix" or "original"
-  vim.cmd([[colorscheme gruvbox-material]])
-end
-
 function M.github(theme_style, fun_style, transparent, kw_style)
   -- require("github-theme").setup({
   --   theme_style = theme_style or "dark", -- "light_colorblind", "light_default", "light", "dark_colorblind", "dark_default", "dimmed", "dark"
@@ -41,9 +25,26 @@ function M.github(theme_style, fun_style, transparent, kw_style)
   vim.cmd("colorscheme github_dark")
 end
 
-function M.soluarized()
-  vim.cmd("colorscheme soluarized")
+function M.gruvbox(bg)
+  vim.o.background = bg or "dark" -- "light" or "dark"
+  vim.cmd([[colorscheme gruvbox]])
 end
+
+-- function M.ayu()
+--   vim.api.nvim_command("colorscheme highlite-ayu")
+-- end
+--
+-- function M.everforest()
+--   vim.api.nvim_command("colorscheme highlite-everforest")
+-- end
+--
+-- function M.papercolor()
+--   vim.api.nvim_command("colorscheme highlite-papercolor")
+-- end
+--
+-- function M.seoul256()
+--   vim.api.nvim_command("colorscheme highlite-seoul256")
+-- end
 
 function M.material(it_comments, transparent, mat_style)
   require("material").setup({
@@ -60,6 +61,17 @@ function M.material(it_comments, transparent, mat_style)
   })
   vim.g.material_style = mat_style or "oceanic" -- "lighter", "palenight", "oceanic", "deep ocean", "darker"
   vim.cmd("colorscheme material")
+end
+
+function M.gruvbox_material(bg, material_bg, enable_bold, enable_italic, transparent, palette)
+  local bg_cmd = string.format("set background=%s", bg or "dark") -- "light" or "dark"
+  vim.cmd(bg_cmd)
+  vim.g.gruvbox_material_background = material_bg or "medium" -- "soft", "medium" or "hard"
+  vim.g.gruvbox_material_enable_bold = enable_bold or 1
+  vim.g.gruvbox_material_enable_italic = enable_italic or 1
+  vim.g.gruvbox_material_transparent_background = transparent or 0 -- 1 for transparent
+  vim.g.gruvbox_material_palette = palette or "mix" -- "material", "mix" or "original"
+  vim.cmd([[colorscheme gruvbox-material]])
 end
 
 function M.nebulous(style, it_comments, it_kw, it_fun, it_var)
@@ -88,6 +100,11 @@ function M.nebulous(style, it_comments, it_kw, it_fun, it_var)
   })
 end
 
+function M.solarized()
+  vim.o.background = "dark" -- or "light"
+  vim.cmd.colorscheme("solarized")
+end
+
 function M.catpuccin(transparent)
   require("catppuccin").setup({
     transparent_background = transparent or false,
@@ -99,6 +116,14 @@ function M.kanagawa()
   vim.cmd("colorscheme kanagawa")
 end
 
+function M.solarized_osaka()
+  require("solarized-osaka").setup({
+    transparent = false,
+    day_brightness = 1,
+  })
+  vim.cmd.colorscheme("solarized-osaka")
+end
+
 function M.nord()
   vim.cmd("colorscheme nord")
 end
@@ -107,17 +132,9 @@ function M.melange()
   vim.cmd.colorscheme("melange")
 end
 
-function M.flexoki()
-  vim.cmd.colorscheme("flexoki")
-end
-
 function M.nightfly()
   vim.g.nightflyItalics = true
   vim.cmd.colorscheme("nightfly")
-end
-
-function M.aura()
-  vim.cmd.colorscheme("aura-dark")
 end
 
 function M.bluloco()
@@ -226,11 +243,6 @@ function M.nightfox(comm, const, kw)
   vim.cmd("colorscheme nightfox")
 end
 
-function M.oxocarbon()
-  vim.opt.background = "dark" -- set this to dark or light
-  vim.cmd("colorscheme oxocarbon")
-end
-
 function M.challenger_deep()
   vim.cmd("colorscheme challenger_deep")
 end
@@ -247,10 +259,6 @@ end
 
 function M.horizon()
   vim.cmd("colorscheme horizon")
-end
-
-function M.flattened()
-  vim.cmd("colorscheme flattened_dark")
 end
 
 function M.eva()

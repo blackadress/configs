@@ -48,7 +48,15 @@ vim.o.inccommand = "split"
 vim.cmd([[
     augroup markdownSpell
         autocmd!
-        autocmd FileType tex,markdown setlocal spell spelllang=es
-        autocmd BufRead,BufNewFile *.tex,*.md setlocal spell spelllang=es
+        autocmd FileType tex,markdown setlocal spell spelllang=en
+        autocmd BufRead,BufNewFile *.tex,*.md setlocal spell spelllang=en
     augroup END
   ]])
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "md",
+--
+--   callback = function()
+--     vim.cmd([[setlocal spell spelllang=es]])
+--   end,
+-- })

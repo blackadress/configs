@@ -311,7 +311,7 @@ local term_scratch = bling.module.scratchpad({
   sticky = false, -- Whether the scratchpad should be sticky
   autoclose = true, -- Whether it should hide itself when losing focus
   floating = true, -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
-  geometry = { x = 680, y = 90, height = 900, width = 1200 }, -- The geometry in a floating state
+  geometry = { x = 460, y = 90, height = 700, width = 1000 }, -- The geometry in a floating state
   reapply = true, -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
   dont_focus_before_close = false, -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
   -- rubato = {x = anim_x, y = anim_y}                 -- Optional. This is how you can pass in the rubato tables for animations. If you don't want animations, you can ignore this option.
@@ -349,10 +349,10 @@ globalkeys = gears.table.join(
   end, { description = "toggle wibox visibility", group = "awesome" }),
   -- media buttons
   awful.key({ modkey }, "=", function()
-    volume_widget:inc(3)
+    volume_widget:inc(5)
   end, { description = "increase volume with =", group = "media keys" }),
   awful.key({ modkey }, "-", function()
-    volume_widget:dec(3)
+    volume_widget:dec(5)
   end, { description = "decrease volume with -", group = "media keys" }),
   awful.key({}, "XF86AudioRaiseVolume", function()
     volume_widget:inc(5)
@@ -360,6 +360,29 @@ globalkeys = gears.table.join(
   awful.key({}, "XF86AudioLowerVolume", function()
     volume_widget:dec(5)
   end, { description = "decrease volume", group = "media keys" }),
+  awful.key({ modkey, "Mod1" }, "m", function()
+    local mic_nr =
+      io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'"):read("*a"):gsub("%s+", "")
+    local toggle_command = "pamixer --source " .. mic_nr .. " -t"
+    awful.spawn.with_shell(toggle_command)
+    local is_muted_cmd = "pamixer --source " .. mic_nr .. " --get-mute"
+    local handle = io.popen(is_muted_cmd)
+    local result = handle:read("*a")
+    result = result:gsub("%s+", "")
+    local is_mic_on = "OFF"
+    if result == "true" then
+      is_mic_on = "ON"
+    end
+    local msg = "Mic is " .. is_mic_on
+    naughty.notify({
+      title = msg,
+      timeout = 3,
+      urgency = "normal",
+      position = "top_right",
+      height = 100,
+      width = 300,
+    })
+  end, { description = "toggle mute mic", group = "media keys" }),
   awful.key({}, "XF86AudioMute", function()
     local mic_nr =
       io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'"):read("*a"):gsub("%s+", "")
@@ -383,20 +406,43 @@ globalkeys = gears.table.join(
       width = 300,
     })
   end, { description = "toggle mute mic", group = "media keys" }),
+  awful.key({}, "XF86AudioMicMute", function()
+    local mic_nr =
+      io.popen("pamixer --list-sources | awk '/Blue/ {print $1}'"):read("*a"):gsub("%s+", "")
+    local toggle_command = "pamixer --source " .. mic_nr .. " -t"
+    awful.spawn.with_shell(toggle_command)
+    local is_muted_cmd = "pamixer --source " .. mic_nr .. " --get-mute"
+    local handle = io.popen(is_muted_cmd)
+    local result = handle:read("*a")
+    result = result:gsub("%s+", "")
+    local is_mic_on = "OFF"
+    if result == "true" then
+      is_mic_on = "ON"
+    end
+    local msg = "Mic is " .. is_mic_on
+    naughty.notify({
+      title = msg,
+      timeout = 3,
+      urgency = "normal",
+      position = "top_right",
+      height = 100,
+      width = 300,
+    })
+  end, { description = "toggle mute mic", group = "media keys" }),
   awful.key({ modkey }, "Home", function()
-    os.execute("playerctl play-pause")
+    os.execute("playerctl play-pause --player=spotify")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({}, "XF86AudioPlay", function()
     os.execute("playerctl play-pause --player=spotify")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({ modkey }, "Next", function()
-    os.execute("playerctl next")
+    os.execute("playerctl next --player=spotify")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({}, "XF86AudioNext", function()
     os.execute("playerctl next --player=spotify")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({ modkey }, "Prior", function()
-    os.execute("playerctl previous")
+    os.execute("playerctl previous --player=spotify")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86AudioPrev", function()
     os.execute("playerctl previous --player=spotify")
@@ -421,6 +467,9 @@ globalkeys = gears.table.join(
     awful.client.focus.byidx(-1)
   end, { description = "focus previous by index", group = "client" }),
   awful.key({}, "Print", function()
+    awful.spawn.with_shell("flameshot gui")
+  end, { description = "flameshot", group = "client" }),
+  awful.key({}, "XF86Calculator", function()
     awful.spawn.with_shell("flameshot gui")
   end, { description = "flameshot", group = "client" }),
   -- awful.key(
@@ -827,6 +876,11 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
 end)
 -- }}}
+
+gears.timer.start_new(60 * 15, function()
+  awful.spawn.with_shell("/home/erland/bin/wal")
+  return true
+end)
 
 -- GAPS
 beautiful.useless_gap = 3

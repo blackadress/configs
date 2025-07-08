@@ -36,6 +36,11 @@ local snippets = {
     i(2),
     t({ [[" ></img>]], "" }),
   }),
+  s("cl", {
+    t({ "console.log(" }),
+    i(1),
+    t({ ");" }),
+  }),
 }
 
 return snippets

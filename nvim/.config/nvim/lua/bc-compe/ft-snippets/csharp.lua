@@ -27,6 +27,16 @@ local snippets = {
     i(1),
     t({ ");" }),
   }),
+  s("psr", {
+    t({ "public sealed record " }),
+    i(1),
+    t({ "();" }),
+  }),
+  s("isc", {
+    t({ "internal sealed class " }),
+    i(1),
+    t({ "{}" }),
+  }),
 }
 
 return snippets
