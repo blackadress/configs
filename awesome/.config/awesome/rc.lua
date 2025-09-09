@@ -430,22 +430,22 @@ globalkeys = gears.table.join(
     })
   end, { description = "toggle mute mic", group = "media keys" }),
   awful.key({ modkey }, "Home", function()
-    os.execute("playerctl play-pause --player=spotify")
+    os.execute("playerctl play-pause")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({}, "XF86AudioPlay", function()
-    os.execute("playerctl play-pause --player=spotify")
+    os.execute("playerctl play-pause")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({ modkey }, "Next", function()
-    os.execute("playerctl next --player=spotify")
+    os.execute("playerctl next")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({}, "XF86AudioNext", function()
-    os.execute("playerctl next --player=spotify")
+    os.execute("playerctl next")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({ modkey }, "Prior", function()
-    os.execute("playerctl previous --player=spotify")
+    os.execute("playerctl previous")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86AudioPrev", function()
-    os.execute("playerctl previous --player=spotify")
+    os.execute("playerctl previous")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86MonBrightnessUp", function()
     brightness_widget:inc()
@@ -572,8 +572,8 @@ globalkeys = gears.table.join(
     awful.util.spawn("dolphin")
   end, { description = "open file browser", group = "launcher" }),
   awful.key({ modkey }, "s", function()
-    awful.util.spawn("spotify")
-  end, { description = "open spotify", group = "launcher" }),
+    awful.util.spawn("tidal-hifi")
+  end, { description = "open tidal", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "Return", function()
     awful.util.spawn("xterm")
   end, { description = "open xterm", group = "launcher" }),
@@ -773,7 +773,7 @@ awful.rules.rules = {
     },
   },
   {
-    rule = { class = "Spotify" },
+    rule = { class = "tidal-hifi" },
     properties = {
       maximized = false,
       floating = false,
