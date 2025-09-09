@@ -70,7 +70,7 @@ map("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
 
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 map("n", "gs", "<cmd>Lspsaga signature_help<CR>", opts)
-map("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+map("n", "grn", "<cmd>Lspsaga rename<CR>", opts)
 map("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 map("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 map("n", "<leader>cc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)

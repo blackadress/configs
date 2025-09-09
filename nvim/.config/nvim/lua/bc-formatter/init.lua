@@ -154,19 +154,44 @@ require("formatter").setup({
         }
       end,
     },
+    java = {
+      function()
+        return {
+          exe = "clang-format",
+          args = {
+            "--assume-filename=.java",
+            '--style="{BasedOnStyle: chromium, IndentWidth: 4}"',
+            -- "{BasedOnStyle: llvm, IndentWidth: 4}",
+          },
+          -- args = {
+          --   "--aosp",
+          --   util.escape_path(util.get_current_buffer_file_path()),
+          --   "--replace",
+          -- },
+          stdin = true,
+        }
+      end,
+    },
   },
 })
 
 vim.keymap.set("v", "<Leader>t", "<cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set("n", "<Leader>t", ":Format<CR>")
 
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.lua,*.rs,*.hs,*.go FormatWrite
-augroup END
-]],
-  true
-)
+-- vim.api.nvim_exec(
+--   [[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.lua,*.rs,*.hs,*.go FormatWrite
+-- augroup END
+-- ]],
+--   true
+-- )
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = vim.api.nvim_create_augroup("FormatAutogroup", { clear = true }),
+  pattern = { "*.lua", "*.rs", "*.hs", "*.go", "*.java" },
+  callback = function()
+    vim.cmd("FormatWrite")
+  end,
+})
 -- autocmd BufWritePost *.html,*.js,*.jsx,*.ts,*.rs,*.lua,*.hs,*.go,*py FormatWrite

@@ -1,4 +1,5 @@
 local rest = require("rest-nvim")
+print("holiwi from rest-nvim config")
 
 rest.setup({
   jump_to_request = true,

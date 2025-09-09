@@ -1,8 +1,8 @@
 return {
   -- lsp
-  "williamboman/mason.nvim",
+  "mason-org/mason-lspconfig.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
     "nvimdev/lspsaga.nvim",
     "Hoffs/omnisharp-extended-lsp.nvim",
