@@ -1,10 +1,10 @@
 return {
-  {
-    "vimwiki/vimwiki",
-    config = function()
-      vim.api.nvim_set_var("vimwiki_list", { { path = "/home/erland/Documents/vimwiki/" } })
-    end,
-  },
+  -- {
+  --   "vimwiki/vimwiki",
+  --   config = function()
+  --     vim.api.nvim_set_var("vimwiki_list", { { path = "/home/erland/Documents/vimwiki/" } })
+  --   end,
+  -- },
   {
     "epwalsh/obsidian.nvim",
     dependencies = {
