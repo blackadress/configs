@@ -1,5 +1,106 @@
-local utils = require("utils")
--- Eviline config for lualine
+require("lualine").setup({
+  options = {
+    icons_enabled = true,
+    theme = "auto",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        "WinEnter",
+        "BufEnter",
+        "BufWritePost",
+        "SessionLoadPost",
+        "FileChangedShellPost",
+        "VimResized",
+        "Filetype",
+        "CursorMoved",
+        "CursorMovedI",
+        "ModeChanged",
+      },
+    },
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_c = {
+      "filename",
+      {
+        function()
+          local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+          local word_count = 0
+          for _, line in ipairs(lines) do
+            for _ in string.gmatch(line, "([^" .. "%s" .. "]+)") do
+              word_count = word_count + 1
+            end
+          end
+          return "Word count: " .. word_count
+        end,
+        cond = function()
+          local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+          return buf_ft == "markdown"
+        end,
+      },
+      {
+        function()
+          return "%="
+        end,
+      },
+      {
+        -- Lsp server name .
+        function()
+          local msg = "No Active Lsp"
+          local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+          local clients = vim.lsp.get_clients()
+          if next(clients) == nil then
+            return msg
+          end
+          for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+              return client.name
+            end
+          end
+          return msg
+        end,
+        icon = " LSP:",
+        color = { fg = "#ffffff", gui = "bold" },
+      },
+      "searchcount",
+    },
+    lualine_x = {
+      "encoding",
+      "fileformat",
+      "filetype",
+    },
+    lualine_y = { "progress" },
+    lualine_z = { "location" },
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { "filename" },
+    lualine_x = { "location" },
+    lualine_y = {},
+    lualine_z = {},
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {},
+})
+--[[ -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
 local lualine = require("lualine")
@@ -238,4 +339,4 @@ ins_right({
 })
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+lualine.setup(config) ]]

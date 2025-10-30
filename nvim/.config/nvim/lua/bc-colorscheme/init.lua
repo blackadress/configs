@@ -1,3 +1,3 @@
 local colors = require("bc-colorscheme.functions")
 
-colors.catpuccin()
+colors.nebulous()

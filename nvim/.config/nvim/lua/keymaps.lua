@@ -98,4 +98,6 @@ map(
 map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 -- execute current
-map("n", "<leader>x", "<cmd>source %<CR>", opts)
+map("n", "<leader><leader>x", "<cmd>source %<CR>", opts)
+map("n", "<leader>x", ":.lua<CR>", opts)
+map("v", "<leader>x", ":lua<CR>", opts)
