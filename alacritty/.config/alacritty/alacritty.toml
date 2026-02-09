@@ -2,9 +2,9 @@
 live_config_reload = true
 
 [bell]
-animation = "EaseOutExpo"
+animation = "Ease"
 color = "#ffffff"
-duration = 0
+duration = 150
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -42,7 +42,8 @@ background = "#24283b"
 foreground = "#c0caf5"
 
 [cursor]
-style = "Block"
+style.shape = "Block"
+style.blinking = "Never"
 unfocused_hollow = true
 
 [env]
