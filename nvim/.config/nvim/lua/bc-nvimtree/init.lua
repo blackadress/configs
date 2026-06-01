@@ -1,30 +1,18 @@
 -- NVIM-TREE
 require("nvim-tree").setup({
-  disable_netrw = false,
-  hijack_netrw = true,
-  -- auto_close = false,
-  open_on_tab = false,
-  hijack_cursor = false,
-  update_cwd = false,
-  update_focused_file = {
-    enable = false,
-    update_cwd = false,
-    ignore_list = {},
-  },
-  git = {
-    enable = true,
-    ignore = false,
-    timeout = 500,
-  },
-  system_open = {
-    cmd = nil,
-    args = {},
+  sort = {
+    sorter = "case_sensitive",
   },
   view = {
     width = 25,
-    side = "left",
   },
-  -- ignore = {".git", "node_modules", ".cache"}
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
+    git_ignored = false,
+  },
 })
 
 vim.api.nvim_set_keymap("n", "<F4>", ":NvimTreeToggle<CR>", { silent = true })

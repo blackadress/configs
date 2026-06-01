@@ -28,6 +28,11 @@ return {
   "gbprod/nord.nvim",
   "savq/melange-nvim",
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  { "kepano/flexoki-neovim", name = "flexoki" },
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000, -- Ensure it loads first
+  },
   {
     "uloco/bluloco.nvim",
     lazy = false,

@@ -123,7 +123,16 @@ require("formatter").setup({
     },
     python = {
       function()
-        return { exe = "black", stdin = false }
+        return { exe = "ruff", args = { "format" }, stdin = false }
+      end,
+    },
+    htmldjango = {
+      function()
+        return {
+          exe = "djlint",
+          args = { vim.api.nvim_buf_get_name(0), "--reformat" },
+          stdin = false,
+        }
       end,
     },
     sql = {
@@ -189,7 +198,7 @@ vim.keymap.set("n", "<Leader>t", ":Format<CR>")
 -- )
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("FormatAutogroup", { clear = true }),
-  pattern = { "*.lua", "*.rs", "*.hs", "*.go", "*.java" },
+  pattern = { "*.lua", "*.rs", "*.hs", "*.go" },
   callback = function()
     vim.cmd("FormatWrite")
   end,

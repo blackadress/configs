@@ -274,6 +274,7 @@ function M.dogrun()
   vim.cmd("colorscheme dogrun")
 end
 
+-- kinda not good looking
 function M.afterglow()
   vim.cmd("colorscheme afterglow")
 end
@@ -286,6 +287,20 @@ function M.hybrid()
   -- vim.g.hybrid_reduced_contrast = 1 -- Remove this line if using the default palette.
   -- vim.g.hybrid_custom_term_colors = 1
   vim.cmd("colorscheme hybrid")
+end
+
+function M.flexoki()
+  vim.cmd("colorscheme flexoki-dark")
+end
+
+function M.vaporwave()
+  -- onedarkpro vaporwave
+  vim.cmd("colorscheme vaporwave")
+end
+
+function M.onedark_dark()
+  -- onedarkpro vaporwave
+  vim.cmd("colorscheme onedark_dark")
 end
 
 function M.reset() end

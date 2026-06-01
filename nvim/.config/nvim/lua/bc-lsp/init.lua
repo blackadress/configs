@@ -1,12 +1,20 @@
 local saga = require("lspsaga")
 
 saga.setup({})
+print("asdf")
 
 -- lsp-install
 require("mason").setup({})
 require("mason-lspconfig").setup({})
+-- require("mason-lspconfig").setup({
+--   ensure_installed = { lua_ls },
+--   automatic_enabled = true,
+-- })
 
 -- local lspconfig = require("lspconfig")
+--
+-- lspconfig.lua_ls.setup {}:
+
 --
 -- local config = require("utils").VARS
 --

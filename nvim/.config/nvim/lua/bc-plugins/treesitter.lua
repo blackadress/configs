@@ -2,13 +2,14 @@ return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
   build = ":TSUpdate",
-  branch = "main",
   dependencies = {
     -- "nvim-treesitter/nvim-treesitter-refactor",
     -- "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
-    require("nvim-treesitter").setup()
+    require("nvim-treesitter").setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
     require("nvim-treesitter").install({
       "bash",
       "c",
@@ -23,7 +24,7 @@ return {
       "lua",
       "markdown",
       "markdown_inline",
-      "org",
+      -- "org",
       "query",
       "rust",
       "sql",
@@ -43,7 +44,8 @@ return {
       end,
     })
 
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo[0][0].foldmethod = "expr"
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     -- require("nvim-treesitter.configs").setup({
     --   ensure_installed = {

@@ -433,19 +433,19 @@ globalkeys = gears.table.join(
     os.execute("playerctl play-pause")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({}, "XF86AudioPlay", function()
-    os.execute("playerctl play-pause")
+    os.execute("playerctl play-pause --player=tidal-hifi")
   end, { description = "pause/play media", group = "media keys" }),
   awful.key({ modkey }, "Next", function()
     os.execute("playerctl next")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({}, "XF86AudioNext", function()
-    os.execute("playerctl next")
+    os.execute("playerctl next --player=tidal-hifi")
   end, { description = "next track on media", group = "media keys" }),
   awful.key({ modkey }, "Prior", function()
     os.execute("playerctl previous")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86AudioPrev", function()
-    os.execute("playerctl previous")
+    os.execute("playerctl previous --player=tidal-hifi")
   end, { description = "previous track on media", group = "media keys" }),
   awful.key({}, "XF86MonBrightnessUp", function()
     brightness_widget:inc()
